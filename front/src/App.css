@@ -36,3 +36,51 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+.Header {
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 440px;
+}
+
+.ImageBG {
+  background-position: center;
+  background-size: cover;
+}
+.Image {
+  background-position: top;
+  background-size: cover;
+}
+
+
+
+
+
+
+.Search::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.Search::-webkit-scrollbar-track {
+  background: none; 
+}
+ 
+/* Handle */
+.Search::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 16px;
+}
+
+/* Handle on hover */
+.Search::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.profileBtn:hover  {
+    background-color: rgb(147, 147, 147);
+    transition: all 400ms;
+}
