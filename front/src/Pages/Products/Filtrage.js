@@ -8,15 +8,11 @@ function Filtrage() {
     const Filters = [
         {
             "title":"Categorie",
-            "body": <Categories show={filter} />
+            "body": <Categories />
         },
         {
             "title":"Categorie",
-            "body": <Categories show={filter} />
-        },
-        {
-            "title":"Categorie",
-            "body": <Categories show={filter} />
+            "body": <Categories />
         }
     ]
 
@@ -32,7 +28,7 @@ function Filtrage() {
                         <button> {filter === key+1 ? <FaMinus /> : <FaPlus />}   </button>
                     </button>
                     
-                    {item.body}
+                    {filter === key+1 && item.body}
                 </div>
             ))}
         </div>

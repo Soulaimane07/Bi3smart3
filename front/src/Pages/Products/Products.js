@@ -10,12 +10,12 @@ function Products() {
     <>
         <Navbar />
 
-        <main className='min-h-screen mt-36 flex'>
+        <main className='min-h-screen mt-36 flex items-start'>
             <Filtrage />
 
             <div className='flex-1 w-full grid grid-cols-4 gap-6 px-20 py-8'>
                 {list.map((item,key)=>(
-                    <div key={key} className='bg-blue-950 flex justify-center rounded-md'>
+                    <div key={key} className='bg-blue-950 flex justify-center rounded-md pb-10'>
                         <div className='bg-blue-200 w-60 h-40 mx-2 my-2'></div>
                     </div>
                 ))}

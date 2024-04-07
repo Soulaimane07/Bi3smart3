@@ -1,11 +1,11 @@
 import React from 'react'
 import { FaPlus } from "react-icons/fa6";
 
-function Categories({show}) {
+function Categories() {
     let list = [1,2,3,4,5,6]
 
   return (
-    <div className={`bg-red-600 hidden ${show && 'inline'}`}>
+    <div className={`transition-all mb-10 px-2`}>
         <ul className='flex flex-col space-y-1'>
             {list.map((item,key)=>(
                 <li key={key}>
