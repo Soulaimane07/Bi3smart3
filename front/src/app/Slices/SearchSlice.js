@@ -16,7 +16,7 @@ export const searchSlice = createSlice({
     search: (state, action)=> {
       state.data = action.payload
       state.data !== '' && (state.opened = true)
-      state.data == '' && (state.opened = false)
+      state.data === '' && (state.opened = false)
     }
   },
 })
