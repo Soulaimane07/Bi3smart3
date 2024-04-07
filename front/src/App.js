@@ -5,7 +5,7 @@ import Auth from './Components/Auth/Auth';
 import { useSelector } from 'react-redux';
 import Products from './Pages/Products/Products';
 
-function App() {
+function App() { 
   let authPage = useSelector(state => state.authPage.opened)
   console.log(useSelector(state => state.User));
 
