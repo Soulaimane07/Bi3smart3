@@ -4,6 +4,7 @@ import Home from './Pages/Home/Home';
 import Auth from './Components/Auth/Auth';
 import { useSelector } from 'react-redux';
 import Products from './Pages/Products/Products';
+import Favorits from './Pages/Favorits/Favorits';
 
 function App() { 
   let authPage = useSelector(state => state.authPage.opened)
@@ -14,6 +15,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route  path="/favorits"  element={<Favorits/>}/>
+
       </Routes>
 
       {authPage && <Auth />}
