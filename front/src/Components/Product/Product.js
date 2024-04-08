@@ -13,7 +13,7 @@ function Product() {
             <h1> products</h1>
             <h2 >40,00$</h2>
         </div>  
-    </div>
+    </div> 
   )
 }
 
