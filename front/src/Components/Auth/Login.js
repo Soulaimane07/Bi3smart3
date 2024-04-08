@@ -34,6 +34,9 @@ function Login({setPage}) {
                     case 404:
                         setErr(true)
                         break
+                    default:
+                        setErr(true)
+                        break
                 }
             })
             .then((data) => {

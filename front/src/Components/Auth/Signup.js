@@ -37,6 +37,10 @@ function Signup({setPage}) {
                         return response.json()
                     case 400:
                         setErr(true)
+                        break;
+                    default:
+                        setErr(true)
+                        break;
                 }
             })
             .then((data) => {
