@@ -66,12 +66,12 @@ function Navbar() {
 
 
   return (
-    <header className='fixed overflow-visible top-0 left-0 w-full z-50 bg-gray-800 text-white px-6 md:px-16'>
+    <header className='fixed overflow-visible top-0 left-0 w-full z-50 bg-teal-800 text-white px-6 md:px-16'>
         <nav className='relative px-4  w-full flex justify-between items-center '>
             <Link to="/"><img className='h-32' src="../images/logo.png" alt="logo" />  </Link>
 
-            <div className=' flex-1   left-0 right-0 mx-auto flex space-x-3 items-center bg-gray-600 rounded-full w-1/3 px-4 py-1'>
-                <CiSearch size={24} />
+            <div className=' absolute flex-1   left-0 right-0 mx-auto flex space-x-3 items-center bg-white rounded-full w-1/2 px-4 py-1 '>
+                <CiSearch size={24} color='black' />
                 <input
                     className='bg-transparent w-full outline-none py-1' 
                     placeholder='Search for products' 
