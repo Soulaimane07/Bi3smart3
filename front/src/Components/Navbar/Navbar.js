@@ -41,7 +41,7 @@ function Navbar() {
 
 
 
-    const [categories, setCategories] = useState([])
+    const [categories, setCategories] = useState([1,1,1,1])
 
     // useEffect(()=>{
     //     try {
@@ -66,11 +66,11 @@ function Navbar() {
 
 
   return (
-    <header className='fixed bg-red-600 overflow-visible top-0 left-0 w-full z-50 text-white px-6 md:px-16'>
-        <nav className='relative px-4  w-full flex justify-between items-center '>
-            <Link to="/"><img className='h-32' src="../images/logo.png" alt="logo" />  </Link>
+    <header className='fixed bg-gray-800 overflow-visible top-0 left-0 w-full z-50 text-white px-6 md:px-16'>
+        <nav className='relative px-4 pt-4 w-full flex justify-between items-center'>
+            <Link to="/"><img className='h-16' src="../images/logo.png" alt="logo" />  </Link>
 
-            <div className=' absolute  left-0 right-0 mx-auto flex space-x-3 items-center bg-gray-600 rounded-full w-1/3 px-4 py-1'>
+            <div className='absolute left-0 right-0 mx-auto flex space-x-3 items-center bg-gray-600 rounded-full w-1/3 px-4 py-1'>
                 <CiSearch size={24} />
                 <input
                     className='bg-transparent w-full outline-none py-1' 
@@ -106,34 +106,38 @@ function Navbar() {
             </div>
         </nav>
 
-        <nav className='Scroll flex justify-center space-x-1'>
+        <nav className='Scroll relative mt-2 flex justify-center space-x-1'>
             {pages?.map((item,key)=>(
                 key === 1 ?
-                    <div 
-                        className='relative' 
-                        onMouseEnter={()=> setOpenCat(true)} 
-                        onMouseLeave={()=> setOpenCat(false)}
-                        key={key}
-                    >
-                        <button className='px-6 py-1 rounded-sm hover:bg-blue-300 transition-all  flex items-center space-x-2'>
+                    <div className=' relative hover:bg-blue-300 ' key={key}>
+                        <button 
+                            onMouseEnter={()=> setOpenCat(true)} 
+                            onMouseLeave={()=> setOpenCat(false)} 
+                            className='px-8 Cat py-1.5 rounded-sm  transition-all  flex items-center space-x-2'
+                        >
                             <p> Categorie </p>
                             <TfiAngleDown />
                         </button>
-                        <ul className={`${openCat ? 'inline' : 'hidden'} rounded-b-md transition-all flex flex-col absolute left-0 bg-gray-800`}>
+                        <ul 
+                            onMouseEnter={()=> setOpenCat(true)} 
+                            onMouseLeave={()=> setOpenCat(false)} 
+                            className={` ${openCat ? 'CatListA' : 'CatList'} absolute top-10 px-1 py-1 -left-10 w-60 rounded-md   bg-gray-800`}
+                        >
                             {categories?.map((item,key)=>(
                                 <Link key={key} to={`/categorie/${key+1}`}>
-                                    <div className='transition-all rounded-md py-1 px-2 mb-1 hover:bg-red-600'>
-                                        {item}       
+                                    <div className='transition-all rounded-md py-1 px-2 mb-1 hover:bg-blue-300'>
+                                        Categorie {key+1}      
                                     </div>
                                 </Link>
                             ))}
                         </ul>
                     </div>
                 :
-                    <Link to={item.link} key={key} className='px-6 py-1 rounded-sm hover:bg-blue-300 transition-all '>
+                    <Link to={item.link} key={key} className='px-8 py-1.5 rounded-sm hover:bg-blue-300 transition-all '>
                         {item.title}
                     </Link>
             ))}
+            
         </nav>
 
         {openProfile && <Profile close={setOpenProfile} />}

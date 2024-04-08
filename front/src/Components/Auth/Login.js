@@ -57,7 +57,7 @@ function Login({setPage}) {
         <form onSubmit={LoginFun}>
             <div className='mb-8'>
                 <h1> Email adress </h1>
-                <input onChange={(e)=> setEmail(e.target.value)} type='email' className='w-full bg-transparent border-b-2 outline-none py-1 px-2 mt-1' />
+                <input autoFocus onChange={(e)=> setEmail(e.target.value)} type='email' className='w-full bg-transparent border-b-2 outline-none py-1 px-2 mt-1' />
             </div>
             <div className='mb-8'>
                 <h1> Password </h1>
