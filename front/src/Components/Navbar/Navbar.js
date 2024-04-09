@@ -64,6 +64,8 @@ function Navbar() {
         setOpenProfile(false)
     }
 
+    let PanierProducts = useSelector((state)=> state.Panier.products.length)
+
 
   return (
     <header  className=' bg-emerald-800 fixed overflow-visible top-0 left-0 w-full z-50 text-white px-6 md:px-16'>
@@ -88,7 +90,7 @@ function Navbar() {
 
                 <Link to="/panier" className='relative'> 
                     <CiShoppingCart size={32} /> 
-                    <i className='absolute -top-1 -right-2 text-white text-xs bg-blue-400 rounded-full p-1.5 py-0.5'> 0 </i> 
+                    <i className='absolute -top-1 -right-2 text-white text-xs bg-blue-400 rounded-full p-1.5 py-0.5'> {PanierProducts} </i> 
                 </Link>
 
                 {isUser 
