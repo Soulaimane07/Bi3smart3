@@ -9,7 +9,7 @@ export const searchSlice = createSlice({
   reducers: {
     open: (state) => {
       state.opened = true
-    },
+    }, 
     close: (state) => {
       state.opened = false
     },
