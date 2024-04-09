@@ -14,7 +14,7 @@ function Product({price,setprice}){
         console.log(checked)
         checked ? setprice(price+10*counter) : setprice(price-10*counter)
     };
-
+ 
    return (
         <div className=' bg-white mb-4 px-2 py-2 flex rounded-md '>
             <input  value={checked}  onChange={handleChange} type='checkbox' className=' size-6 mr-4 '></input>
