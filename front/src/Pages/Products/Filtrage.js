@@ -25,7 +25,7 @@ function Filtrage() {
                 <div className='mt-4' key={key}>
                     <button onClick={()=> setFilter(filter === key+1 ? 0 : key+1)} className='flex justify-between items-center w-full'>
                         <h1 className='mb-2 text-lg font-medium'> {item.title} </h1>
-                        <button> {filter === key+1 ? <FaMinus /> : <FaPlus />}   </button>
+                        <p> {filter === key+1 ? <FaMinus /> : <FaPlus />}   </p>
                     </button>
                     
                     {filter === key+1 && item.body}

@@ -18,7 +18,7 @@ function Product({price,setprice}){
    return (
         <div className=' bg-white mb-4 px-2 py-2 flex rounded-md '>
             <input  value={checked}  onChange={handleChange} type='checkbox' className=' size-6 mr-4 '></input>
-            <img  className='w-40 h-40 ' alt='' src='../images/header.jpg' />
+            <img  className='w-40 h-40 rounded-sm' alt='' src='../images/header.jpg' />
             <div className=' mx-3 w-full flex flex-col'>
                 <div className='  h-full'>   
                     <h1 className='text-2xl'>titre</h1>
@@ -48,12 +48,9 @@ function Product({price,setprice}){
 function ProductsPanier({products,price,setprice}) {
   return (
     <div className=' bg-gray-100 px-4  py-4  flex-col min-h-screen rounded-md'>
-        <div>
-            {products.map((item,key)=>(
-                <Product price={price} setprice={setprice}/>
-            ))}
-           
-        </div>
+        {products.map((item,key)=>(
+            <Product key={key} price={price} setprice={setprice}/>
+        ))}
     </div>
   )
 }
