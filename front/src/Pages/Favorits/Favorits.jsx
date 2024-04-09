@@ -10,7 +10,7 @@ function Favorits(){
         <Navbar/>
         <main className='min-h-screen mt-36 flex  '  >
              <Filtrage/>
-             <div className="w-full mt-10 p-10 grid grid-cols-4 gap-6" >
+             <div className="w-full mt-10 p-10 grid grid-cols-4 gap-8" >
                 {list.map(()=>(
                     <Product/> 
                 ))}
