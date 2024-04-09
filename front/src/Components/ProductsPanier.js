@@ -32,7 +32,7 @@ function Product({item}){
    return (
         <div className=' bg-white mb-4 px-2 py-2 flex rounded-md '>
             <input  value={checked}  onChange={selectProduct} type='checkbox' className=' size-6 mr-4 '></input>
-            <img  className='w-40 h-40 rounded-sm' alt='' src='../images/header.jpg' />
+            <img  className='w-36 h-28 rounded-sm' alt='' src='../images/header.jpg' />
             <div className=' mx-3 w-full flex flex-col'>
                 <div className='  h-full'>   
                     <h1 className='text-2xl'> {item.title} </h1>
