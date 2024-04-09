@@ -84,3 +84,16 @@
     background-color: rgb(147, 147, 147);
     transition: all 400ms;
 }
+
+
+.CatList {
+  transition: all 200ms;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 00%;
+}
+.CatListA {
+  transition: all 200ms;
+  visibility: visible;
+  opacity: 100%;
+}

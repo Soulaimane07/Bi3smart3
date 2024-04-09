@@ -5,6 +5,7 @@ import Auth from './Components/Auth/Auth';
 import { useSelector } from 'react-redux';
 import Products from './Pages/Products/Products';
 import Favorits from './Pages/Favorits/Favorits';
+import Panier from './Pages/Panier/Panier';
 
 function App() { 
   let authPage = useSelector(state => state.authPage.opened)
@@ -16,7 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route  path="/favorits"  element={<Favorits/>}/>
-
+        <Route path="/Panier" element={<Panier />} />
       </Routes>
 
       {authPage && <Auth />}

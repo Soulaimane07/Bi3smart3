@@ -10,11 +10,9 @@ import Subscribe from './Subscribe'
 function Home() {
   return (
     <>
-        <header>
-            <Navbar />
-        </header>
+        <Navbar />
 
-        <main className='min-h-screen mt-36'>
+        <main className='min-h-screen mt-28'>
             <Header />
             <Features />
             <Categories />

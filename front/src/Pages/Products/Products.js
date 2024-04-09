@@ -10,7 +10,7 @@ function Products() {
     <>
         <Navbar />
 
-        <main className='min-h-screen mt-36 flex items-start'>
+        <main className='min-h-screen mt-28 flex items-start'>
             <Filtrage />
 
             <div className='flex-1 w-full grid grid-cols-4 gap-6 px-20 py-8'>
