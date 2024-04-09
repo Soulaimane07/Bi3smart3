@@ -23,7 +23,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route  path="/favorits"  element={<Favorits/>}/>
         <Route path="/Panier" element={<Panier />} />
-        <Route path="/categorie/1" element={<Categories />} />
+        <Route path="/categorie/:id" element={<Categories />} />
         <Route path="/commande" element={<Commande />} />
       </Routes>
 
