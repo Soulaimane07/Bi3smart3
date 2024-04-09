@@ -10,7 +10,10 @@ import { Categories } from './Pages/Categories/Categories';
 
 function App() { 
   let authPage = useSelector(state => state.authPage.opened)
-  console.log(useSelector(state => state.User));
+  // console.log(useSelector(state => state.User));
+
+  let states = useSelector((state) => state.Panier)
+  console.log(states);
 
   return (
     <BrowserRouter>
