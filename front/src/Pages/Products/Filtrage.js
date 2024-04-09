@@ -17,7 +17,7 @@ function Filtrage() {
     ]
 
   return (
-    <div className='bg-blue-100 w-1/6 min-h-screen py-6'>
+    <div className='bg-blue-100 w-1/6 min-h-screen py-6 '>
         <h1 className='text-center font-medium text-2xl'> Filtrer</h1>
 
         <div className='px-8'>
