@@ -16,34 +16,37 @@ export const PanierSlices = createSlice({
         "title":"Product 3",
         "price": 30
       },
+      {
+        "title":"Product 4",
+        "price": 40
+      },
     ],
     productsSelected: [],
     price: 0,
   },
   reducers: {
-    ajouterProduct: (state, action) => {
+    addProduct: (state, action)=> {
     },
-    removeProduct: (state, action) => {
-      const index = state.products.indexOf(action.payload);
-      state.products.splice(index+1, 1);
-    },
-    selectProduct: (state, action) => {
+    addSelectProduct: (state, action)=> {
+      console.log("Select");
       state.productsSelected.push(action.payload)
-      // state.price = action.payload.price + state.price
+      state.productsSelected = Array.from(
+        new Set(state.productsSelected.map(item => JSON.stringify(item)))
+      ).map(item => JSON.parse(item));
     },
-    removeSelectedProduct: (state, action) => {
-      const index = state.productsSelected.indexOf(action.payload)
-      state.productsSelected.splice(index, 1)
-      state.price = state.price - action.payload.price
+    removeSelectProduct: (state, action)=> {
+      console.log("Remove");
+      console.log(state.productsSelected);
+
+      // const updatedProductsSelected = state.productsSelected.filter(item => item.title !== action.payload.title);
+      let updatedItems = state.productsSelected.filter(item => item.title == action.payload.title)
+      // // state.productsSelected = updatedItems
+      console.log(updatedItems);
     },
-    addQuantite: (state, action) => {
-      let indexProduct = state.productsSelected.indexOf(action.payload)
-      state.productsSelected[indexProduct+1].quantite = state.productsSelected[indexProduct+1].quantite + 1
-    },
-    calculePrice: (state, action) => {
+    calculePrice: (state, action)=> {
       state.price = 0
       state.productsSelected.map((item)=> {
-        state.price = state.price + item.price * item.quantite
+        state.price = state.price + item.price
       })
     }
   },
