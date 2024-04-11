@@ -8,7 +8,7 @@ export const Categories = () => {
   return (
     <>
     <Navbar />
-    <main className='min-h-screen mt-28 flex items-start'>
+    <main className='min-h-screen  flex items-start'>
         <Filtrage />
         <div className='w-5/6'>
           <h1 className=' text-2xl mb-4 bg-gray-100 px-10  py-6 rounded-md font-bold text-center '> Categorie1</h1>

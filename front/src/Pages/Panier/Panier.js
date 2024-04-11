@@ -31,7 +31,7 @@ function Panier() {
         <>
             <Navbar />
             
-            <main className='min-h-screen mt-28 py-8 flex mx-10 space-x-4'>
+            <main className='min-h-screen  py-8 flex mx-10 space-x-4'>
                 <div className='flex-1'>
                     <h1 className=' text-xl mb-4 bg-gray-100 px-10  py-6 rounded-md font-bold '> ALL ITEMS ({products.length})</h1>
                     {products.length === 0 

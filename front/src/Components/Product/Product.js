@@ -5,8 +5,8 @@ import { BsFillCartPlusFill } from "react-icons/bs";
 
 function Product({item}) {
   return (
-    <div className=' rounded-sm w-fit  overflow-hidden'>
-        <div className='  h-64 relative ' > 
+    <div className=' rounded-sm w-fit  overflow-hidden  p-2  hover:shadow-xl transition-all '>
+        <div className='  h-72 relative ' > 
         <img src ="../images/t-shirt-jordan.png"  className='h-full '></img>   
             <div className=' absolute top-1 right-1 flex items-center space-x-1 justify-between w-full px-2 ' >
                <div className='flex items-center space-x-2'> 

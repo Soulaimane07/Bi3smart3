@@ -9,27 +9,7 @@ import { searchActions } from '../../app/Slices/SearchSlice';
 import { authPageActions } from '../../app/Slices/AuthSlice';
 
 function Navbar() {
-    const pages = [
-        {
-            "title": "Home",
-            "link": "/"
-        },
-        {
-            "title": "",
-            "link": ""
-        },
-        {
-            "title": "Products",
-            "link": "/products"
-        },
-        {
-            "title": "Contact",
-            "link": "/contact"
-        },
-    ]
-
     const [openProfile, setOpenProfile] = useState(false)
-
 
     let openedSearch = useSelector(state => state.Search.opened)
     const dispatch = useDispatch()
@@ -39,9 +19,7 @@ function Navbar() {
         dispatch(searchActions.search(searchTerm))
     }, [searchTerm])
 
-
-
-    const [categories, setCategories] = useState([1,1,1,1])
+    const [categories, setCategories] = useState(["Men","Women","Kids","Shoes"])
 
     // useEffect(()=>{
     //     try {
@@ -68,11 +46,11 @@ function Navbar() {
 
 
   return (
-    <header  className=' bg-emerald-800 fixed overflow-visible top-0 left-0 w-full z-50 text-white px-6 md:px-16'>
+    <header  className='border-b-2 overflow-visible top-0 left-0 w-full  z-50 text-black px-6 md:px-16'>
         <nav className='relative px-4 pt-4 w-full flex justify-between items-center'>
             <Link to="/"><img className='h-16' src="../images/logo.png" alt="logo" />  </Link>
 
-            <div className='absolute left-0 right-0 mx-auto flex space-x-3 items-center bg-white rounded-full w-1/3 px-4 py-1'>
+            <div className='absolute left-0 right-0 mx-auto flex space-x-3 items-center  bg-gray-200 rounded-full w-1/3 px-4 py-1'>
                 <CiSearch size={24} color='black' />
                 <input
                     className='bg-transparent w-full outline-none py-1' 
@@ -85,23 +63,23 @@ function Navbar() {
             <div className='flex items-center space-x-4 md:space-x-6'>
                 <Link to={"/favorits"} className='relative'> 
                     <CiHeart size={32} /> 
-                    <i className='absolute -top-1 -right-2 text-white text-xs bg-blue-400 rounded-full p-1.5 py-0.5'> 0 </i> 
+                    <i className='absolute -top-1 -right-2 text-white text-xs bg-blue-500 rounded-full p-1.5 py-0.5'> 0 </i> 
                 </Link>
 
                 <Link to="/panier" className='relative'> 
                     <CiShoppingCart size={32} /> 
-                    <i className='absolute -top-1 -right-2 text-white text-xs bg-blue-400 rounded-full p-1.5 py-0.5'> {PanierProducts} </i> 
+                    <i className='absolute -top-1 -right-2 text-white text-xs bg-blue-500 rounded-full p-1.5 py-0.5'> {PanierProducts} </i> 
                 </Link>
 
                 {isUser 
                     ?
                         <button 
                             onClick={()=> setOpenProfile(!openProfile)}
-                            className={`${openProfile && 'bg-gray-600'} hover:bg-gray-600 p-2 rounded-full transition-all`}
+                            className={`${openProfile && 'bg-gray-600'} hover:bg-blue-600 p-2 rounded-full transition-all`}
                         > <CiUser size={32} /> </button>
                     :   
                         <button
-                            className='border-2 my-1.5 px-6 py-1 rounded-md hover:bg-gray-700 transition-all'
+                            className='border-2 border-gray-500 my-1.5 px-6 py-1 rounded-md hover:bg-blue-500 hover:border-gray-600 hover:text-white transition-all'
                             onClick={openAuth}
                         > Login </button>
                 }
@@ -109,34 +87,10 @@ function Navbar() {
         </nav>
 
         <nav className='Scroll relative mt-2 flex justify-center space-x-1'>
-            {pages?.map((item,key)=>(
-                key === 1 ?
-                    <div className=' relative hover:bg-blue-300 ' key={key}>
-                        <button 
-                            onMouseEnter={()=> setOpenCat(true)} 
-                            onMouseLeave={()=> setOpenCat(false)} 
-                            className='px-8 Cat py-1.5 rounded-sm  transition-all  flex items-center space-x-2'
-                        >
-                            <p> Categorie </p>
-                            <TfiAngleDown />
-                        </button>
-                        <ul 
-                            onMouseEnter={()=> setOpenCat(true)} 
-                            onMouseLeave={()=> setOpenCat(false)} 
-                            className={` ${openCat ? 'CatListA' : 'CatList'} absolute top-10 px-1 py-1 -left-10 w-60 rounded-md   bg-gray-800`}
-                        >
-                            {categories?.map((item,key)=>(
-                                <Link key={key} to={`/categorie/${key+1}`}>
-                                    <div className='transition-all rounded-md py-1 px-2 mb-1 hover:bg-blue-300'>
-                                        Categorie {key+1}      
-                                    </div>
-                                </Link>
-                            ))}
-                        </ul>
-                    </div>
-                :
-                    <Link to={item.link} key={key} className='px-8 py-1.5 rounded-sm hover:bg-blue-300 transition-all '>
-                        {item.title}
+            {categories?.map((item,key)=>(
+            
+                    <Link to={`/categorie/${key+1}`} key={key} className='px-8 py-1.5 rounded-sm hover:bg-blue-500 hover:text-white transition-all '>
+                        {item}
                     </Link>
             ))}
             
