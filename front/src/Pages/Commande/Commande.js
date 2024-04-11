@@ -71,9 +71,7 @@ function Commande() {
                     </div>
                 </div>
             </div>
-            <div className='w-96 h-60 right-0 sticky top-36'>
-                <OrderSummery Orderdata={Orderdata} page={"commande"} />
-            </div>
+            <OrderSummery Orderdata={Orderdata} page={"commande"} />
         </main>
         <Footer/>
     </>)

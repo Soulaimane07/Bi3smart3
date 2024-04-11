@@ -9,14 +9,7 @@ import { panierActions } from '../../app/Slices/PanierSlices';
 import OrderSummery from '../../Components/OrderSummery';
 
 function Panier() {
-    let image =[
-       '../images/visa.svg',
-       '../images/discover.svg',
-       '../images/maestro.svg',
-       '../images/mastercard.svg',
-       '../images/paypal.svg',
-       '../images/venmo.svg',
-    ]
+    
 
     let products = useSelector((state)=> state.Panier.products)
     let productsSelected = useSelector((state)=> state.Panier.productsSelected)
@@ -26,6 +19,9 @@ function Panier() {
     useEffect(()=> {
         dispatch(panierActions.calculePrice());
     }, [dispatch, productsSelected]);
+   
+
+    
     
     return (
         <>
@@ -47,19 +43,9 @@ function Panier() {
                     }
                 </div>
 
-                <div className='w-96 h-60 right-0 sticky top-36'>
-                    <div className=' bg-gray-100 mb-4 rounded-md'>
-                        <OrderSummery Orderdata={null} page={"panier"}/>
-                    </div>
-                    <div className=' bg-gray-100 px-6 py-4 rounded-md'> 
-                        <h1 className='mb-4 font-bold text-lg'>We Accept</h1>
-                        <div className=' grid grid-cols-6 items-stretch'>
-                            {image.map((item,key)=>(
-                                <img key={key} src={item} alt='' className='w-10 h-10 overflow-hidden ' />
-                            ))}
-                        </div>
-                    </div>
-                </div>
+                
+                    <OrderSummery Orderdata={null} page={"panier"}/>
+                
             </main>
         
             <Footer />

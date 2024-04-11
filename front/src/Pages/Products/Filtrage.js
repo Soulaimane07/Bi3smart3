@@ -16,8 +16,26 @@ function Filtrage() {
         }
     ]
 
+    const [navbar, setNavbar] = useState(false)
+    const [y, setY] = useState(0)
+
+    const changebg = () => {
+        if(window.scrollY !== 0){
+            setNavbar(true);
+        } else {
+            setNavbar(false)
+        }
+
+        if(window.scrollY < y){
+            setNavbar(false)
+        }
+        setY(window.scrollY)
+    }
+
+    window.addEventListener('scroll',changebg)
+
   return (
-    <div className=' w-1/6 h-full py-6 sticky top-36 '>
+    <div className={`${navbar ? 'top-0' : 'top-36'} transition-all w-1/6 h-full py-6 sticky`}>
         <h1 className='text-center font-medium text-2xl'> Filtrer</h1>
 
         <div className='px-8'>
