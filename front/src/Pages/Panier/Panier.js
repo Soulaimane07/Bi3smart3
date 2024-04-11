@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import ProductsPanier from '../../Components/ProductsPanier';
 import { useDispatch, useSelector } from 'react-redux';
 import { panierActions } from '../../app/Slices/PanierSlices';
+import OrderSummery from '../../Components/OrderSummery';
 
 function Panier() {
     let image =[
@@ -48,14 +49,8 @@ function Panier() {
                 </div>
 
                 <div className='w-96 h-60 right-0'>
-                    <div className=' bg-gray-100 py-6 px-6 mb-4 rounded-md'>
-                        <h1 className='text-xl mb-2 font-bold'>Order Summary</h1>
-                        <h1 className='text-2xl '> ${price} </h1>
-                        <Link to={productsSelected.length!==0 && '/commande'}> 
-                            <div className={`bg-black text-white w-full py-2 text-center mt-6 rounded-lg  ${productsSelected.length==0 ? 'opacity-40 cursor-default':'opacity-100  hover:scale-105 transition-all'} `}>
-                                Checkout Now ({productsSelected.length})
-                            </div>
-                        </Link>
+                    <div className=' bg-gray-100 mb-4 rounded-md'>
+                        <OrderSummery Orderdata={{}} page={"panier"}/>
                     </div>
                     <div className=' bg-gray-100 px-6 py-4 rounded-md'> 
                         <h1 className='mb-4 font-bold text-lg'>We Accept</h1>
