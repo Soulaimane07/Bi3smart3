@@ -42,10 +42,7 @@ function Panier() {
                             <ProductsPanier />
                     }
                 </div>
-
-                
-                    <OrderSummery Orderdata={null} page={"panier"}/>
-                
+                <OrderSummery Orderdata={null} page={"panier"}/>
             </main>
         
             <Footer />
