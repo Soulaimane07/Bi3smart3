@@ -47,7 +47,7 @@ function Panier() {
                     }
                 </div>
 
-                <div className='w-96 h-60 right-0 sticky top-36'>
+                <div className='w-96 h-60 right-0 sticky top-32'>
                     <div className=' bg-gray-100 mb-4 rounded-md'>
                         <OrderSummery Orderdata={null} page={"panier"}/>
                     </div>
