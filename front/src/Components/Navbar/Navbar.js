@@ -45,8 +45,28 @@ function Navbar() {
     let PanierProducts = useSelector((state)=> state.Panier.products.length)
 
 
+
+
+    const [navbar, setNavbar] = useState(false)
+    const [y, setY] = useState(0)
+
+    const changebg = () => {
+        if(window.scrollY !== 0){
+            setNavbar(true);
+        } else {
+            setNavbar(false)
+        }
+
+        if(window.scrollY < y){
+            setNavbar(false)
+        }
+        setY(window.scrollY)
+    }
+
+    window.addEventListener('scroll',changebg)
+
   return (
-    <header  className='border-b-2 overflow-visible top-0 left-0 w-full  z-50 text-black px-6 md:px-16'>
+    <header className={`${navbar ? '-top-32' : 'top-0'} bg-white transition-all fixed border-b-2 overflow-visible top-0 left-0 w-full  z-50 text-black px-6 md:px-16`}>
         <nav className='relative px-4 pt-4 w-full flex justify-between items-center'>
             <Link to="/"><img className='h-16' src="../images/logo.png" alt="logo" />  </Link>
 

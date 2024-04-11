@@ -12,7 +12,7 @@ function Home() {
     <>
         <Navbar />
 
-        <main className='min-h-screen '>
+        <main className='min-h-screen mt-28'>
             <Header />
             <Features />
             <Categories />
