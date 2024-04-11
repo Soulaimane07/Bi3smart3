@@ -3,7 +3,7 @@ import { FaHeart } from "react-icons/fa";
 import { BsFillCartPlusFill } from "react-icons/bs";
 
 
-function Product() {
+function Product({item}) {
   return (
     <div className=' rounded-sm w-fit  overflow-hidden'>
         <div className='  h-64 relative ' > 
@@ -19,8 +19,8 @@ function Product() {
             </div>
         </div>
         <div  className='px-2'>
-            <h1 className='font-medium text-lg'> products </h1>
-            <h2 className='font-bold'>40,00$ </h2>
+            <h1 className='font-medium text-lg'> {item?.title || 'Product'} </h1>
+            <h2 className='font-bold'> {item?.price || 10}$ </h2>
         </div>  
     </div> 
   )

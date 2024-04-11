@@ -22,7 +22,6 @@ function Panier() {
     let productsSelected = useSelector((state)=> state.Panier.productsSelected)
 
     const dispatch = useDispatch()
-    const price = useSelector(state => state.Panier.price);
 
     useEffect(()=> {
         dispatch(panierActions.calculePrice());
@@ -48,9 +47,9 @@ function Panier() {
                     }
                 </div>
 
-                <div className='w-96 h-60 right-0'>
+                <div className='w-96 h-60 right-0 sticky top-36'>
                     <div className=' bg-gray-100 mb-4 rounded-md'>
-                        <OrderSummery Orderdata={{}} page={"panier"}/>
+                        <OrderSummery Orderdata={null} page={"panier"}/>
                     </div>
                     <div className=' bg-gray-100 px-6 py-4 rounded-md'> 
                         <h1 className='mb-4 font-bold text-lg'>We Accept</h1>
