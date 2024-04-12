@@ -45,16 +45,16 @@ function OrderSummery({page, Orderdata}) {
         <h2 className='text-2xl'>${price}</h2>
         {page === "panier" &&(
             <Link to={productsSelected.length!==0 && '/commande'}> 
-              <div className={`bg-black text-white w-full py-2 text-center mt-6 rounded-lg  ${productsSelected.length==0 ? 'opacity-40 cursor-default':'opacity-100  hover:scale-105 transition-all'} `}>
+              <div className={`bg-blue-500 text-white w-full py-2 text-center mt-6 rounded-lg  ${productsSelected.length==0 ? 'opacity-40 cursor-default':'opacity-100  hover:scale-105 transition-all'} `}>
                 Checkout Now ({productsSelected.length})
               </div>
             </Link>
         )}
-        {page === "commande" &&
-            <button disabled={condition} className={ `${condition ? "opacity-40" : "hover:scale-105"} bg-black text-white w-full py-2 text-center mt-6 rounded-lg transition-all`}> 
+        {page === "commande" &&(
+            <button disabled={condition} className={ `${condition ? "opacity-40" : "hover:scale-105"} bg-blue-500 text-white w-full py-2 text-center mt-6 rounded-lg transition-all`}> 
               Order Now 
             </button>
-        }
+        )}
       </div>
 
     </div>

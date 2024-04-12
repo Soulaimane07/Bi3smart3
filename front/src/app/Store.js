@@ -3,13 +3,15 @@ import authPageReducer from './Slices/AuthSlice'
 import userReducer from './Slices/UserSlice'
 import searchReducer from './Slices/SearchSlice'
 import panierReducer from './Slices/PanierSlices'
+import productReducer from './Slices/ProductSlice'
 
 export const store = configureStore({
   reducer: {
     authPage: authPageReducer,
     User: userReducer,
     Search: searchReducer,
-    Panier: panierReducer
+    Panier: panierReducer,
+    ProductPage: productReducer
   },
 })
 

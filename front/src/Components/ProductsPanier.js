@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import { TiPlus } from "react-icons/ti";
 import { MdOutlineRemove } from "react-icons/md";
-import { PiTrashSimpleThin } from "react-icons/pi";
 import { PiHeartStraightFill } from "react-icons/pi";
 import { useDispatch, useSelector } from 'react-redux';
 import { panierActions } from '../app/Slices/PanierSlices';
 import { CiTrash } from "react-icons/ci";
 
-function Product({item, selected}){
+function Product({item}){
     const dispatch = useDispatch()
     const [counter,setcounter]=useState(1)
    
     const [checked, setChecked] = useState(false);
+
+
+    const Remove = () => {
+        dispatch(panierActions.removeProduct(item.productItem.id))
+    }
 
     const selectProduct = () => {
         setChecked(!checked)
@@ -20,24 +24,32 @@ function Product({item, selected}){
             :   dispatch(panierActions.removeSelectProduct(item))
     };
 
-    const Remove = () => {
-        dispatch(panierActions.removeProduct())
+    const addToFav = () => {
+        dispatch(panierActions.addToFavorites(item.productItem))
     }
+    
 
     const addQuantite = () => {
         setcounter(counter+1)
         // dispatch(panierActions.addQuantite(item))
     }
-
     
+
+
+    let selectedProducts = useSelector((state)=> state.Panier.productsSelected)
+
+    let selected = selectedProducts.filter(function(itemm) {
+        return itemm.productItem.id == item.productItem.id 
+    })
+
  
    return (
-        <div className={`${selected  && 'bg-blue-200'} cursor-pointer transition-all w-full bg-white px-2 py-2 flex rounded-md items-stretch`}>
-            <img onClick={selectProduct} className='w-36 h-28 rounded-sm' alt='' src='../images/header.jpg' />
+        <div className={`${selected.length !== 0  ? 'bg-blue-100' : 'bg-white'} cursor-pointer transition-all w-full px-2 py-2 flex rounded-md items-stretch`}>
+            <img onClick={selectProduct} className='w-36 h-28 rounded-sm' alt='' src={item.productItem.image} />
             <div className=' left text-left  mx-3 w-full flex flex-col'>
                 <div onClick={selectProduct} className='pt-2 h-full'> 
-                    <h1 className='text-xl'> {item.title} </h1>
-                    <h2 className=' text-lg font-bold'> {item.price} $</h2>
+                    <h1 className='text-xl'> {item.productItem.title} </h1>
+                    <h2 className=' text-lg font-bold'> ${item.productItem.price}</h2>
                 </div>
             
                 <div className=' cursor-default flex space-x-2 justify-end  items-center mt-3'>
@@ -53,7 +65,11 @@ function Product({item, selected}){
                     <button onClick={Remove} className=' opacity-40 hover:opacity-100 transition-all '>
                         <CiTrash size={25} />
                     </button>
-                    <button className='opacity-20 hover:text-red-500 hover:opacity-100  transition-all'><PiHeartStraightFill size={25}/></button>
+                    <button onClick={addToFav}
+                        className='opacity-20 hover:text-red-500 hover:opacity-100  transition-all'
+                    >
+                        <PiHeartStraightFill size={25}/>
+                    </button>
                 </div> 
             </div>
         </div>
@@ -62,12 +78,11 @@ function Product({item, selected}){
 
 function ProductsPanier() {
     let products = useSelector((state)=> state.Panier.products)
-    let selectedProducts = useSelector((state)=> state.Panier.productsSelected)
 
   return (
     <div className=' bg-gray-100 px-4 py-4 flex-col space-y-2 rounded-md'>
         {products.map((item,key)=>(
-            <Product key={key} item={item} selected={selectedProducts.includes(item) } />
+            <Product key={key} item={item} />
         ))}
     </div>
   )

@@ -21,19 +21,6 @@ function Navbar() {
 
     const [categories, setCategories] = useState(["Men","Women","Kids","Shoes"])
 
-    // useEffect(()=>{
-    //     try {
-    //         fetch('https://fakestoreapi.com/products/categories')
-    //             .then(res=>res.json())
-    //             .then(json=>setCategories(json))
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // }, [])
-
-
-    const [openCat, setOpenCat] = useState(false)
-
 
     const isUser = useSelector((state)=> state.User.data)
 
@@ -42,6 +29,7 @@ function Navbar() {
         setOpenProfile(false)
     }
 
+    let FavoritesProducts = useSelector((state)=> state.Panier.productsFavorites.length)
     let PanierProducts = useSelector((state)=> state.Panier.products.length)
 
 
@@ -66,14 +54,16 @@ function Navbar() {
     window.addEventListener('scroll',changebg)
 
   return (
-    <header className={`${navbar ? '-top-32' : 'top-0'} bg-white transition-all fixed border-b-2 overflow-visible top-0 left-0 w-full  z-50 text-black px-6 md:px-16`}>
+    <header className={`${navbar ? '-top-32' : 'top-0'} drop-shadow-md bg-white transition-all fixed overflow-visible top-0 left-0 w-full  z-50 text-black px-6 md:px-16`}>
         <nav className='relative px-4 pt-4 w-full flex justify-between items-center'>
             <Link to="/"><img className='h-16' src="../images/logoblack.png" alt="logo" />  </Link>
 
             <div className='absolute left-0 right-0 mx-auto flex space-x-3 items-center  bg-gray-200 rounded-full w-1/3 px-4 py-1'>
-                <CiSearch size={24} color='black' />
+                <div className='text-gray-400'>
+                    <CiSearch size={24} />
+                </div>
                 <input
-                    className='bg-transparent w-full outline-none py-1' 
+                    className='bg-transparent w-full outline-none py-1 placeholder:text-gray-400' 
                     placeholder='Search for products' 
                     onChange={(e)=> setSearchTerm(e.target.value)}
                 />
@@ -83,7 +73,7 @@ function Navbar() {
             <div className='flex items-center space-x-4 md:space-x-6'>
                 <Link to={"/favorits"} className='relative'> 
                     <CiHeart size={32} /> 
-                    <i className='absolute -top-1 -right-2 text-white text-xs bg-blue-500 rounded-full p-1.5 py-0.5'> 0 </i> 
+                    <i className='absolute -top-1 -right-2 text-white text-xs bg-blue-500 rounded-full p-1.5 py-0.5'> {FavoritesProducts} </i> 
                 </Link>
 
                 <Link to="/panier" className='relative'> 
@@ -95,25 +85,23 @@ function Navbar() {
                     ?
                         <button 
                             onClick={()=> setOpenProfile(!openProfile)}
-                            className={`${openProfile && 'bg-gray-600'} hover:bg-blue-600 p-2 rounded-full transition-all`}
+                            className={`${openProfile && 'bg-blue-100'} hover:bg-blue-200 p-2 rounded-full transition-all`}
                         > <CiUser size={32} /> </button>
                     :   
                         <button
                             className='border-2 border-gray-500 my-1.5 px-6 py-1 rounded-md hover:bg-blue-500 hover:border-gray-600 hover:text-white transition-all'
                             onClick={openAuth}
-                        > Login </button>
+                        > Sign In </button>
                 }
             </div>
         </nav>
 
         <nav className='Scroll relative mt-2 flex justify-center space-x-1'>
             {categories?.map((item,key)=>(
-            
-                    <Link to={`/categorie/${key+1}`} key={key} className='px-8 py-1.5 rounded-sm hover:bg-blue-500 hover:text-white transition-all '>
-                        {item}
-                    </Link>
+                <Link to={`/categorie/${key+1}`} key={key} className='px-8 py-1.5 rounded-sm hover:bg-blue-500 hover:text-white transition-all '>
+                    {item}
+                </Link>
             ))}
-            
         </nav>
 
         {openProfile && <Profile close={setOpenProfile} />}

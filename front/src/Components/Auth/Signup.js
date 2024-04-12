@@ -54,7 +54,7 @@ function Signup({setPage}) {
     <div className='relative bg-gray-800 text-white h-fit w-1/4 rounded-lg py-10 px-10'>
         <button onClick={closeAuth} className='absolute top-4 right-4 text-white opacity-80 hover:opacity-100 hover:scale-110 transition'> <IoClose size={30} /> </button>
         
-        <h1 className='text-center text-3xl mb-6'> Sign Up </h1>
+        <h1 className='text-center text-3xl mb-6'> Register Now </h1>
         <h2 className='text-red-500 text-center mb-2'> {err && "User is not created !"} </h2>
         <form onSubmit={signup}>
             <div className='mb-8'>
@@ -74,12 +74,13 @@ function Signup({setPage}) {
                 <input onChange={(e)=> setPassword(e.target.value)} type='password' className='w-full bg-transparent border-b-2 outline-none py-1 px-2 mt-1' />
             </div>
 
-            <button disabled={condittion} type='submit' className={`${condittion ? 'opacity-20' : ' hover:bg-gray-600 hover:text-white'} bg-white text-gray-900 w-full rounded-md py-2  transition-all`}> Sign Up </button>
+            <button disabled={condittion} type='submit' className={`${condittion ? 'opacity-20' : ' hover:bg-gray-600 hover:text-white'} bg-white text-gray-900 w-full rounded-md py-2  transition-all`}> Register </button>
         </form>
         <div className='flex space-x-2 mt-6'>
             <p> Have an account? </p>
-            <button onClick={()=> setPage(0)} className='hover:text-blue-500 transition-all'> Login </button>
+            <button onClick={()=> setPage(0)} className='hover:text-blue-500 transition-all'> Sign In </button>
         </div>
+        <p className='text-xs text-center mt-6 opacity-60'> By continuing, you agree to our Privacy & Cookie Policy and Terms & Conditions. </p>
     </div>
   )
 }

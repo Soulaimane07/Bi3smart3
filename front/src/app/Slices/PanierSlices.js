@@ -3,29 +3,19 @@ import { createSlice } from '@reduxjs/toolkit'
 export const PanierSlices = createSlice({
   name: 'Panier',
   initialState: {
-    products: [
-      {
-        "title":"Product 1",
-        "price": 10
-      },
-      {
-        "title":"Product 2",
-        "price": 20
-      },
-      {
-        "title":"Product 3",
-        "price": 30
-      },
-      {
-        "title":"Product 4",
-        "price": 40
-      },
-    ],
+    products: [],
     productsSelected: [],
     price: 0,
+    productsFavorites: [],
   },
   reducers: {
     addProduct: (state, action)=> {
+      state.products.push(action.payload)
+    },
+    removeProduct: (state, action)=> {
+      state.products = state.products.filter(function(item) {
+        return item.productItem.id !== action.payload
+      })
     },
     addSelectProduct: (state, action)=> {
       console.log("Select");
@@ -35,18 +25,24 @@ export const PanierSlices = createSlice({
       ).map(item => JSON.parse(item));
     },
     removeSelectProduct: (state, action)=> {
-      console.log("Remove");
-      console.log(state.productsSelected);
-
-      // const updatedProductsSelected = state.productsSelected.filter(item => item.title !== action.payload.title);
-      let updatedItems = state.productsSelected.filter(item => item.title == action.payload.title)
-      // // state.productsSelected = updatedItems
-      console.log(updatedItems);
+      state.productsSelected = state.productsSelected.filter(function(item) {
+        return item.productItem.id !== action.payload.productItem.id
+      })
     },
     calculePrice: (state, action)=> {
       state.price = 0
       state.productsSelected.map((item)=> {
-        state.price = state.price + item.price
+        state.price = state.price + item.productItem.price
+      })
+    },
+
+
+    addToFavorites: (state, action)=> {
+      state.productsFavorites.push(action.payload)
+    },
+    removeFromFavorites: (state, action)=> {
+      state.productsFavorites = state.productsFavorites.filter(function(item) {
+        return item.id !== action.payload
       })
     }
   },

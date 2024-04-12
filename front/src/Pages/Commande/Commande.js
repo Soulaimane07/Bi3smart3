@@ -55,8 +55,10 @@ function Commande() {
                 
                 <div className='rounded-lg mb-12'>
                     <h1 className=' text-xl uppercase rounded-md font-bold mb-3'>Order Details </h1>
-                    <div className=' grid grid-cols-4 px-5 py-5 gap-4 bg-white rounded-md'>
-                        {products.map((item,key)=>( <Product item={item} key={key} />))}
+                    <div className=' grid grid-cols-4 px-5 py-5 gap-1 bg-white rounded-md'>
+                        {products.map((item,key)=>( 
+                            <Product item={item.productItem} key={key} />
+                        ))}
                     </div>
                 </div>
 

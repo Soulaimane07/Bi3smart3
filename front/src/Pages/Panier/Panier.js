@@ -7,6 +7,7 @@ import ProductsPanier from '../../Components/ProductsPanier';
 import { useDispatch, useSelector } from 'react-redux';
 import { panierActions } from '../../app/Slices/PanierSlices';
 import OrderSummery from '../../Components/OrderSummery';
+import { authPageActions } from '../../app/Slices/AuthSlice';
 
 function Panier() {
     
@@ -20,7 +21,9 @@ function Panier() {
         dispatch(panierActions.calculePrice());
     }, [dispatch, productsSelected]);
    
-
+    const OpenAuth = () => {
+        dispatch(authPageActions.open())
+    }
     
     
     return (
@@ -36,7 +39,7 @@ function Panier() {
                                 <div className=' mx-auto opacity-70 mb-10'> <BsCartDash size={100}/></div>
                                 <h1 className='text-xl text-center mb-1 font-bold'>YOUR CART IS EMPTY</h1>
                                 <p className='text-center opacity-80'> Connectez-vous pour voir votre panier et commencer vos achats. </p>
-                                <Link to='/Products' className='mt-6 w-fit mx-auto text-lg bg-black text-white rounded-md px-20 py-3 hover:scale-105 transition-all'>SHOP NOW</Link>
+                                <button onClick={OpenAuth} className='mt-6 w-fit mx-auto text-lg bg-blue-500 text-white rounded-md px-14 py-2 hover:scale-105 transition-all'> Sign In  /  Register </button>
                             </div>
                         :
                             <ProductsPanier />

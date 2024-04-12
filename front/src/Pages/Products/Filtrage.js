@@ -35,8 +35,8 @@ function Filtrage() {
     window.addEventListener('scroll',changebg)
 
   return (
-    <div className={`${navbar ? 'top-0' : 'top-36'} transition-all w-1/6 h-full py-6 sticky`}>
-        <h1 className='text-center font-medium text-2xl'> Filtrer</h1>
+    <div className={`${navbar ? 'top-0' : 'top-36'} transition-all w-1/6 h-full py-4 sticky`}>
+        <h1 className='text-center text-2xl'> Filtrer</h1>
 
         <div className='px-8'>
             {Filters.map((item,key)=>(
