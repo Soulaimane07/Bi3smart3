@@ -7,6 +7,10 @@ urlpatterns = [
     path("users/login/", views.UserLogin.as_view(), name='login'),
 
     path("sellerrequests/", views.SellerRequestsList.as_view()),
-    path("sellerrequests/<int:pk>/", views.SellerRequestsPk.as_view())
+    path("sellerrequests/<int:pk>/", views.SellerRequestsPk.as_view()),
+
+    path("categorie/", views.CategorieReq.as_view()),
+    path("products/", views.ProductsReq.as_view() ),
+
 ]
 

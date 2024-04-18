@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "bi3smart",
+            "group": "group",
+            "database": "${workspaceFolder:Bi3smart3}/back/db.sqlite3"
+        }
+    ]
+}

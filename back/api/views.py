@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from rest_framework import generics, status
-from .serializers import UserSerializer, SellerRequestsSerializer
+from .serializers import UserSerializer, SellerRequestsSerializer, CategorieSerializer, ProductsSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .models import User, SellerRequests
+from .models import User, SellerRequests ,Categorie, Products
 
 
 class UserListCreate(generics.ListAPIView):
@@ -79,3 +79,15 @@ class SellerRequestsPk(generics.RetrieveUpdateDestroyAPIView):
     queryset = SellerRequests.objects.all()
     serializer_class = SellerRequestsSerializer
     lookup_field = "pk"
+
+class CategorieReq(generics.ListCreateAPIView):
+    queryset = Categorie.objects.all()
+    serializer_class = CategorieSerializer 
+
+class ProductsReq(generics.ListCreateAPIView):
+    queryset = Products.objects.all()
+    serializer_class = ProductsSerializer 
+
+
+
+

@@ -2,11 +2,12 @@ import Navbar from '../../Components/Navbar/Navbar'
 import Footer from '../../Components/Footer/Footer'
 import Filtrage from '../Products/Filtrage'
 import Product from '../../Components/Product/Product'
-import { products } from '../../Components/Functions'
+import { GetProducts, products } from '../../Components/Functions'
 
 
 export const Categories = () => {
-  let list = products
+  let list = GetProducts()
+
 
   return (
     <>

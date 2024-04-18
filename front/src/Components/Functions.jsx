@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react"
+import axios from 'axios';
+
 export const products = [
     {
       "id": 1,
@@ -23,6 +26,23 @@ export const products = [
       "title":"Product 4",
       "price": 40
     },
+
 ]
 
 export const sizes = ["XS", "S", "M", "L", "XL"]
+
+export const GetProducts = () => {
+  const [products, setProducts] = useState([])
+
+  useEffect(()=>{
+  axios.get(" http://127.0.0.1:8000/api/products/")
+    .then(res => {
+      setProducts(res.data)
+      console.log(res.data);
+    })
+  }, [])
+
+  
+
+  return products
+}

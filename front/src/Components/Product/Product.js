@@ -33,7 +33,7 @@ function Product({item, favorit}) {
             onMouseLeave={()=> setHover(false)}
             onClick={OpenProduct}
           >
-            <img src ={item.image}  className='h-full rounded-sm'></img>   
+            <img src ={"../images/t-shirt-jordan.png"}  className='h-full rounded-sm'></img>   
           </button>
           
 
@@ -81,9 +81,9 @@ function Product({item, favorit}) {
           }
         </div>
         <div  className='px-1'>
-          <h1 className='font-medium text-lg'> {item?.title} </h1>
+          <h1 className='font-medium text-lg'> {item?.titre} </h1>
           <div className='flex justify-between items-center'>
-            <h2 className='font-bold'> ${item?.price} </h2>
+            <h2 className='font-bold'> ${item?.prix} </h2>
             <button
               onClick={OpenProduct}
               className=' border-2 border-gray-500 px-4 rounded-full py-1 opacity-70 hover:opacity-100 transition-all'
