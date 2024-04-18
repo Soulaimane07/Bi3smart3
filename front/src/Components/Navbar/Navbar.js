@@ -7,6 +7,7 @@ import SearchZone from './SearchZone';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchActions } from '../../app/Slices/SearchSlice';
 import { authPageActions } from '../../app/Slices/AuthSlice';
+import Categorie from './Categorie';
 
 function Navbar() {
     const [openProfile, setOpenProfile] = useState(false)
@@ -19,7 +20,7 @@ function Navbar() {
         dispatch(searchActions.search(searchTerm))
     }, [searchTerm])
 
-    const [categories, setCategories] = useState(["Men","Women","Kids","Shoes"])
+    
 
 
     const isUser = useSelector((state)=> state.User.data)
@@ -96,13 +97,7 @@ function Navbar() {
             </div>
         </nav>
 
-        <nav className='Scroll relative mt-2 flex justify-center space-x-1'>
-            {categories?.map((item,key)=>(
-                <Link to={`/categorie/${key+1}`} key={key} className='px-8 py-1.5 rounded-sm hover:bg-blue-500 hover:text-white transition-all '>
-                    {item}
-                </Link>
-            ))}
-        </nav>
+       <Categorie />
 
         {openProfile && <Profile close={setOpenProfile} />}
     </header>

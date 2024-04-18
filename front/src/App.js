@@ -15,7 +15,6 @@ function App() {
   // console.log(useSelector(state => state.User));
 
   let states = useSelector((state) => state)
-  // console.log(states);
 
   return (
     <BrowserRouter>

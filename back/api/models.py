@@ -27,3 +27,19 @@ class SellerRequests(models.Model):
 
     def __str__(self):
         return self.userId
+    
+    
+class Categorie(models.Model):
+    titre = models.CharField(max_length=100,unique=True)
+
+    def __str__(self):
+        return self.titre 
+
+class Products(models.Model):
+    titre = models.CharField(max_length=100)
+    prix = models.FloatField()
+    image = models.CharField(max_length=100)
+    categorie = models.ForeignKey(Categorie, on_delete= models.CASCADE)
+
+    def __str__(self):
+        return self.titre
