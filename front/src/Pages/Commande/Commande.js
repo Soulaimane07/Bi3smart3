@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import Footer from '../../Components/Footer/Footer'
-import Product from '../../Components/Product/Product';
+import {Product} from '../../Components/Product/Product';
 import { useSelector } from 'react-redux';
 import OrderSummery from '../../Components/OrderSummery';
 

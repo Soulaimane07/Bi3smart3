@@ -1,8 +1,8 @@
 import Navbar from '../../Components/Navbar/Navbar'
 import Footer from '../../Components/Footer/Footer'
 import Filtrage from '../Products/Filtrage'
-import Product from '../../Components/Product/Product'
-import { GetProducts, products } from '../../Components/Functions'
+import {Product} from '../../Components/Product/Product'
+import { GetProducts } from '../../Components/Functions'
 
 
 export const Categories = () => {

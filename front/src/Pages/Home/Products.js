@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom'
-import { products } from '../../Components/Functions'
-import Product from '../../Components/Product/Product'
+import { GetProducts} from '../../Components/Functions'
+import {Product} from '../../Components/Product/Product'
+
 
 function Products() {
+    const products = GetProducts()
+
   return (
     <div className='mt-28'>
         <h1 className='text-center font-medium text-3xl'> Trending Products </h1>
@@ -12,13 +14,6 @@ function Products() {
                 <Product item={item} key={key} />
             ))}
         </div>
-
-        {/* <div className='flex justify-center'>
-            <Link 
-                to="/products" 
-                className='bg-blue-500 transition-all hover:scale-110 text-white w-fit px-14 rounded-lg py-2 mx-auto'
-            > Explore Now </Link>
-        </div> */}
     </div>
   )
 }

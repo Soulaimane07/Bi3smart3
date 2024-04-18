@@ -12,6 +12,7 @@ import { FaHeart } from "react-icons/fa";
 
 function Product() {
     const productItem = useSelector(state => state.ProductPage.product)
+    console.log(productItem)
     const [size, setSize] = useState(null)
 
     const condition = !productItem | size == null
@@ -44,8 +45,8 @@ function Product() {
             </div>
             <div className='flex-1 flex flex-col clear-start'>
                 <div className='flex-1 h-full'>
-                    <h1 className='text-2xl font-medium'> {productItem.title} </h1>
-                    <h2 className='text-2xl font-bold mt-2'> ${productItem.price} </h2>
+                    <h1 className='text-2xl font-medium'> {productItem.titre} </h1>
+                    <h2 className='text-2xl font-bold mt-2'> ${productItem.prix} </h2>
                     <div className='border-t-2 py-2 border-dotted mt-6'>
                         <h1> Size </h1>  
                         <div className='flex items-center justify-between space-x-4 mt-1'>

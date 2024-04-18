@@ -80,9 +80,20 @@ class SellerRequestsPk(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = SellerRequestsSerializer
     lookup_field = "pk"
 
+
+
+
 class CategorieReq(generics.ListCreateAPIView):
     queryset = Categorie.objects.all()
     serializer_class = CategorieSerializer 
+
+class CategorieReqPk(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Categorie.objects.all()
+    serializer_class = CategorieSerializer
+    lookup_field = "pk"
+    
+
+
 
 class ProductsReq(generics.ListCreateAPIView):
     queryset = Products.objects.all()

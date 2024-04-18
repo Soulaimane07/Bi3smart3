@@ -42,7 +42,5 @@ export const GetProducts = () => {
     })
   }, [])
 
-  
-
   return products
 }
