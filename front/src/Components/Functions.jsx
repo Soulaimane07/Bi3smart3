@@ -1,33 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from 'axios';
 
-export const products = [
-    {
-      "id": 1,
-      "image": "../images/t-shirt-jordan.png",
-      "title":"Product 1",
-      "price": 10
-    },
-    {
-      "id": 2,
-      "image": "../images/t-shirt-jordan.png",
-      "title":"Product 2",
-      "price": 20
-    },
-    {
-      "id": 3,
-      "image": "../images/t-shirt-jordan.png",
-      "title":"Product 3",
-      "price": 30
-    },
-    {
-      "id": 4,
-      "image": "../images/t-shirt-jordan.png",
-      "title":"Product 4",
-      "price": 40
-    },
-
-]
 
 export const sizes = ["XS", "S", "M", "L", "XL"]
 
@@ -38,9 +11,26 @@ export const GetProducts = () => {
   axios.get(" http://127.0.0.1:8000/api/products/")
     .then(res => {
       setProducts(res.data)
-      console.log(res.data);
+      // console.log(res.data);
     })
   }, [])
 
   return products
+}
+
+export const GetCategorie = (id) => {
+  const [product, setProduct] = useState({})
+
+  useEffect(()=> {
+    axios.get(`http://127.0.0.1:8000/api/categorie/${id}`)
+      .then(res => {
+        console.log(res.data);
+        setProduct(res.data)
+      })
+      .catch(err => {
+        console.error(err);
+      })
+  }, [])
+
+    return product
 }

@@ -10,6 +10,7 @@ import { TiPlus } from 'react-icons/ti';
 import { MdOutlineRemove } from 'react-icons/md';
 import { CiTrash } from 'react-icons/ci';
 import { PiHeartStraightFill } from 'react-icons/pi';
+import { GetCategorie } from '../Functions';
 
 
 export function ProductPanier({item}){
@@ -47,6 +48,7 @@ export function ProductPanier({item}){
       return itemm.productItem.id == item.productItem.id 
   })
 
+ const categorie = GetCategorie(item.productItem.categorie)
 
  return (
       <div className={`${selected.length !== 0  ? 'bg-blue-100' : 'bg-white'} cursor-pointer transition-all w-full px-2 py-2 flex rounded-md items-stretch`}>
@@ -54,7 +56,7 @@ export function ProductPanier({item}){
           <div className=' left text-left  mx-3 w-full flex flex-col'>
               <div onClick={selectProduct} className='pt-2 h-full'> 
                   <h1 className='text-xl'> {item.productItem.titre} </h1>
-                  <h1 className='text-xl'> CATEGORIE:{item.productItem.categorie} </h1>
+                  <h1 className='text-xl'> CATEGORIE:{categorie.titre} </h1>
                   <h1 className='text-xl'>SIZE: {item.size} </h1>
                   <h2 className=' text-lg font-bold'> ${item.productItem.prix}</h2>
               </div>
