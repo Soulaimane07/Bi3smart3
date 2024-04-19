@@ -31,6 +31,7 @@ class SellerRequests(models.Model):
     
 class Categorie(models.Model):
     titre = models.CharField(max_length=100,unique=True)
+    image = models.ImageField(upload_to="api/files/categories/", default="")
 
     def __str__(self):
         return self.titre 

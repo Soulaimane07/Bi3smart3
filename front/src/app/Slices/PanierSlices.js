@@ -32,7 +32,7 @@ export const PanierSlices = createSlice({
     calculePrice: (state, action)=> {
       state.price = 0
       state.productsSelected.map((item)=> {
-        state.price = state.price + item.productItem.price
+        state.price = state.price + item.productItem.prix
       })
     },
 

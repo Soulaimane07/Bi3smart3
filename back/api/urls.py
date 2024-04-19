@@ -13,6 +13,7 @@ urlpatterns = [
     path("categorie/<int:pk>", views.CategorieReqPk.as_view()),
 
     path("products/", views.ProductsReq.as_view() ),
+    
 
 ]
 

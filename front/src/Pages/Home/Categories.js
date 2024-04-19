@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { GetCategorie, GetCategories } from '../../Components/Functions'
 
 function Categories() {
-    const data = [1,2,3,4,5,6,7,8]
+    const data = GetCategories()
+    console.log(data);
     
     return (
         <div className='mt-28'>
@@ -10,9 +12,10 @@ function Categories() {
             <div className='flex justify-between mt-10 px-20'>
                 {data?.map((item,key)=>(
                     <Link key={key} to={`/categorie/${key}`}>
-                        <div className='w-32 h-32 bg-gray-400 rounded-full' key={key}>
+                        <div className='w-32 h-32  rounded-full' key={key}>
+                            <img src={item.image} className='w-full' alt='' />
                         </div>
-                        <h1 className='text-center mt-3'> Categorie {key+1} </h1>
+                        <h1 className='text-center mt-3'> {item.titre}</h1>
                     </Link>
                 ))}
             </div>
