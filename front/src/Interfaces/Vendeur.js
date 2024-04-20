@@ -7,9 +7,9 @@ import Categories from '../Pages/Vendeur/Categories/Categories'
 function Vendeur() {
   return (
     <Routes>
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/categories" element={<Categories />} />
+        <Route path="/vendeur/profile" element={<Profile />} />
+        <Route path="/vendeur/products" element={<Products />} />
+        <Route path="/vendeur/categories" element={<Categories />} />
     </Routes>
   )
 }

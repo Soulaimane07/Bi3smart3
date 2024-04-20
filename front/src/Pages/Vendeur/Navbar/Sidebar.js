@@ -5,17 +5,17 @@ function Sidebar() {
   const liste = [
     {
       "title": "Profile",
-      "link":"/profile",
+      "link":"/vendeur/profile",
       "icon": "../images/menu.png",
     },
     {
       "title":"Products",
-      "link":"/products",
+      "link":"/vendeur/products",
       "icon": "../images/products.png",
     },
     {
       "title":"Categories",
-      "link":"/categories",
+      "link":"/vendeur/categories",
       "icon": "../images/categories.png",
     }
   ]

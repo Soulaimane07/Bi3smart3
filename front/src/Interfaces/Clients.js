@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from '../Pages/Client/Home/Home'
-import Categories from '../Pages/Client/Home/Categories'
+import Categories from '../Pages/Client/Categories/Categories'
 import Favorits from '../Pages/Client/Favorits/Favorits'
 import Panier from '../Pages/Client/Panier/Panier'
 import Commande from '../Pages/Client/Commande/Commande'

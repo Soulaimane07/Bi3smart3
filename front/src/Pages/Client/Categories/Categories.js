@@ -5,7 +5,7 @@ import {Product} from '../../../Components/Product/Product'
 import { GetProducts } from '../../../Components/Functions'
 
 
-export const Categories = () => {
+const Categories = () => {
   let list = GetProducts()
 
 
@@ -28,3 +28,5 @@ export const Categories = () => {
     </>
   )
 }
+
+export default Categories
