@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { IoClose } from "react-icons/io5";
 import { useDispatch } from 'react-redux';
-import { authPageActions } from '../../app/Slices/AuthSlice';
-import { UserActions } from '../../app/Slices/UserSlice';
+import { authPageActions } from '../../redux/Slices/AuthSlice';
+import { UserActions } from '../../redux/Slices/UserSlice';
 
 function Login({setPage}) {
     const dispatch = useDispatch()

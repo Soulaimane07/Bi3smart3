@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { FaHeart } from "react-icons/fa";
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { useDispatch, useSelector } from 'react-redux';
-import { panierActions } from '../../app/Slices/PanierSlices';
+import { panierActions } from '../../redux/Slices/PanierSlices';
 import { GoTrash } from "react-icons/go";
 import { FaPlus } from "react-icons/fa6";
-import { productActions } from '../../app/Slices/ProductSlice';
+import { productActions } from '../../redux/Slices/ProductSlice';
 import { TiPlus } from 'react-icons/ti';
 import { MdOutlineRemove } from 'react-icons/md';
 import { CiTrash } from 'react-icons/ci';
@@ -45,7 +45,7 @@ export function ProductPanier({item}){
   let selectedProducts = useSelector((state)=> state.Panier.productsSelected)
 
   let selected = selectedProducts.filter(function(itemm) {
-      return itemm.productItem.id == item.productItem.id 
+      return itemm.productItem.id === item.productItem.id 
   })
 
  const categorie = GetCategorie(item.productItem.categorie)
@@ -111,7 +111,7 @@ export function Product({item, favorit}) {
             onMouseLeave={()=> setHover(false)}
             onClick={OpenProduct}
           >
-            <img src ={"../images/t-shirt-jordan.png"}  className='h-full rounded-sm'></img>   
+            <img src ={"../images/t-shirt-jordan.png"}  className='h-full rounded-sm' alt='product' />  
           </button>
           
 

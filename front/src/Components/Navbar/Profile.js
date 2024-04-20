@@ -1,7 +1,7 @@
 import React from 'react'
 import { IoCloseOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from 'react-redux';
-import { UserActions } from '../../app/Slices/UserSlice';
+import { UserActions } from '../../redux/Slices/UserSlice';
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { Link } from 'react-router-dom';
 

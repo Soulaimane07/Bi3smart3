@@ -4,7 +4,7 @@ import Footer from "../../Components/Footer/Footer"
 import Filtrage from "../Products/Filtrage"
 import {Product} from "../../Components/Product/Product"
 import { useSelector, useDispatch } from 'react-redux';
-import { authPageActions } from "../../app/Slices/AuthSlice"
+import { authPageActions } from "../../redux/Slices/AuthSlice"
 
 function Favorits(){
     let list = useSelector(state => state.Panier.productsFavorites)

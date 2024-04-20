@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { authPageActions } from '../../app/Slices/AuthSlice';
+import { authPageActions } from '../../redux/Slices/AuthSlice';
 
 function Subscribe() {
   const dispatch = useDispatch()

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { CiSearch, CiHeart, CiShoppingCart, CiUser } from "react-icons/ci";
 import { Link } from 'react-router-dom';
-import { TfiAngleDown } from "react-icons/tfi";
+
 import Profile from './Profile';
 import SearchZone from './SearchZone';
 import { useDispatch, useSelector } from 'react-redux';
-import { searchActions } from '../../app/Slices/SearchSlice';
-import { authPageActions } from '../../app/Slices/AuthSlice';
+import { searchActions } from '../../redux/Slices/SearchSlice';
+import { authPageActions } from '../../redux/Slices/AuthSlice';
 import Categorie from './Categorie';
 
 function Navbar() {

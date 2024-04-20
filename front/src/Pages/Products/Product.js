@@ -5,8 +5,8 @@ import { LiaShippingFastSolid } from "react-icons/lia";
 import { BsBox2 } from "react-icons/bs";
 import { HiOutlineInboxArrowDown } from "react-icons/hi2";
 import { IoClose } from "react-icons/io5";
-import { productActions } from '../../app/Slices/ProductSlice';
-import { panierActions } from '../../app/Slices/PanierSlices';
+import { productActions } from '../../redux/Slices/ProductSlice';
+import { panierActions } from '../../redux/Slices/PanierSlices';
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 
@@ -15,7 +15,7 @@ function Product() {
     console.log(productItem)
     const [size, setSize] = useState(null)
 
-    const condition = !productItem | size == null
+    const condition = !productItem | size === null
 
     const selectedProduct = {
         productItem,
