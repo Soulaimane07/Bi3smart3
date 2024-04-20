@@ -6,6 +6,14 @@
             "name": "bi3smart",
             "group": "group",
             "database": "${workspaceFolder:Bi3smart3}/back/db.sqlite3"
+        },
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "db",
+            "group": "sqllite",
+            "database": "${workspaceFolder:Bi3smart3}/back/db.sqlite3"
         }
-    ]
+    ],
+    "sqltools.useNodeRuntime": true
 }

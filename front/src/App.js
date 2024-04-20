@@ -8,6 +8,8 @@ import Panier from './Pages/Panier/Panier';
 import { Categories } from './Pages/Categories/Categories';
 import Commande from './Pages/Commande/Commande';
 import Product from './Pages/Products/Product';
+import Profil from './Pages/Profil/Profil';
+import Admin from './Interfaces/Admin';
 
 function App() { 
   let authPage = useSelector(state => state.authPage.opened)
@@ -24,6 +26,8 @@ function App() {
         <Route  path="/favorits"  element={<Favorits/>}/>
         <Route path="/Panier" element={<Panier />} />
         <Route path="/commande" element={<Commande />} />
+        <Route path="/Profil" element={<Profil />} />
+        <Route path="/Admin" element={<Admin />} />
       </Routes>
 
       {authPage && <Auth />}
