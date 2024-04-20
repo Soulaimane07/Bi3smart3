@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { GetCategorie, GetCategories } from '../../Components/Functions'
+import { GetCategories } from '../../../Components/Functions'
 
 function Categories() {
     const data = GetCategories()

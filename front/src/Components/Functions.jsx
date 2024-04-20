@@ -35,14 +35,15 @@ export const GetCategorie = (id) => {
     return product
 }
 export const GetCategories = () =>{
-   const [categorie ,setcategorie] = useState([])
+  const [categorie ,setcategorie] = useState([])
 
-useEffect(()=> {
-  axios.get(" http://127.0.0.1:8000/api/categorie/")
-      .then(res=> {
-          console.log(res.data);
-          setcategorie(res.data)
-      })
-}, [])
- return categorie
+  useEffect(()=> {
+    axios.get(" http://127.0.0.1:8000/api/categorie/")
+        .then(res=> {
+            console.log(res.data);
+            setcategorie(res.data)
+        })
+  }, [])
+
+  return categorie
 }

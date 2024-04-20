@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
-import Navbar from '../../Components/Navbar/Navbar'
+import Navbar from '../../../Components/Navbar/Navbar'
 import { BsCartDash } from "react-icons/bs";
-import Footer from '../../Components/Footer/Footer';
-
-import ProductsPanier from '../../Components/ProductsPanier';
+import Footer from '../../../Components/Footer/Footer';
+import ProductsPanier from '../../../Components/ProductsPanier';
 import { useDispatch, useSelector } from 'react-redux';
-import { panierActions } from '../../redux/Slices/PanierSlices';
-import OrderSummery from '../../Components/OrderSummery';
-import { authPageActions } from '../../redux/Slices/AuthSlice';
+import { panierActions } from '../../../redux/Slices/PanierSlices';
+import OrderSummery from '../../../Components/OrderSummery';
+import { authPageActions } from '../../../redux/Slices/AuthSlice';
 
 function Panier() {
     

@@ -1,5 +1,5 @@
-import { GetProducts} from '../../Components/Functions'
-import {Product} from '../../Components/Product/Product'
+import { GetProducts} from '../../../Components/Functions'
+import {Product} from '../../../Components/Product/Product'
 
 
 function Products() {
