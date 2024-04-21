@@ -4,9 +4,11 @@ import { CiTrash } from 'react-icons/ci';
 import { BiEditAlt } from "react-icons/bi";
 import { IoAdd } from "react-icons/io5";
 import { Link } from 'react-router-dom';
+
 function Seller() {
     const Sellers = GetSellers()
-  return (
+
+    return (
    
     <>
     <div className='w-5/6 border-l-2   border-gray-100 min-h-svh'>

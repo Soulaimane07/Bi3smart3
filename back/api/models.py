@@ -31,7 +31,7 @@ class SellerRequests(models.Model):
     
 class Categorie(models.Model):
     titre = models.CharField(max_length=100,unique=True)
-    image = models.ImageField(upload_to="api/files/categories/", default="")
+    image = models.ImageField(upload_to="api/files/categories/", blank=True, null=True)
 
     def __str__(self):
         return self.titre 
@@ -39,7 +39,7 @@ class Categorie(models.Model):
 class Products(models.Model):
     titre = models.CharField(max_length=100)
     prix = models.FloatField()
-    image = models.CharField(max_length=100)
+    image = models.ImageField(upload_to="api/files/products/", blank=True, null=True)
     categorie = models.ForeignKey(Categorie, on_delete= models.CASCADE)
 
     def __str__(self):
