@@ -15,7 +15,11 @@ function Sidebar() {
             "body": ""
         },
         {
-            "title":"Product",
+            "title":"Products",
+            "body": ""
+        },
+        {
+            "title":"Sellers",
             "body": ""
         }
     ]
@@ -40,9 +44,9 @@ function Sidebar() {
     window.addEventListener('scroll',changebg)
 
   return (
-    <div className={`${navbar ? 'top-0' : 'top-20'} transition-all w-1/6 h-full py-4 sticky`}>
+    <div className={`${navbar ? 'top-0' : 'top-20'} transition-all  w-1/6 h-full py-4 sticky`}>
         <h1 className='text-center text-2xl'> Dashboard</h1>
-        <div className='px-8'>
+        <div className='px-8 pt-8'>
             {Filters.map((item,key)=>(
                 <div className='mt-4' key={key}>
                     <button onClick={()=> setFilter(filter === key+1 ? 0 : key+1)} className='flex justify-between items-center w-full'>
