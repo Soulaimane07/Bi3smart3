@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { sizes } from '../../Components/Functions';
+import { sizes } from '../../../Components/Functions';
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { BsBox2 } from "react-icons/bs";
 import { HiOutlineInboxArrowDown } from "react-icons/hi2";
 import { IoClose } from "react-icons/io5";
-import { productActions } from '../../redux/Slices/ProductSlice';
-import { panierActions } from '../../redux/Slices/PanierSlices';
+import { productActions } from '../../../redux/Slices/ProductSlice';
+import { panierActions } from '../../../redux/Slices/PanierSlices';
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 

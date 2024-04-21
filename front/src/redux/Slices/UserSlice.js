@@ -3,7 +3,11 @@ import { createSlice } from '@reduxjs/toolkit'
 export const UserSlice = createSlice({
   name: 'AuthPage',
   initialState: {
-    data: null,
+    data: {
+      email: "email@gmail.com",
+      fname: "Seller",
+      lname: "LSeller",
+    },
     requestSeller: false,
     isLoading: false,
     isError: false

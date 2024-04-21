@@ -1,5 +1,5 @@
 import React from 'react'
-import Footer from '../../Components/Footer/Footer'
+import Footer from '../../../Components/Footer/Footer'
 import Filtrage from '../Products/Filtrage'
 function Profil() {
   return (

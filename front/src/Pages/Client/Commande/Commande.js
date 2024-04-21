@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import Navbar from '../../Components/Navbar/Navbar'
-import Footer from '../../Components/Footer/Footer'
-import {Product} from '../../Components/Product/Product';
+import Navbar from '../../../Components/Navbar/Navbar'
+import Footer from '../../../Components/Footer/Footer'
+import {Product} from '../../../Components/Product/Product';
 import { useSelector } from 'react-redux';
-import OrderSummery from '../../Components/OrderSummery';
+import OrderSummery from '../../../Components/OrderSummery';
 
 function Commande() {
     const [fname,setfname]=useState("")  
