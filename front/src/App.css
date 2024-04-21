@@ -99,3 +99,14 @@
 }
 
 
+
+
+.Glass {
+/* From https://css.glass */
+/* From https://css.glass */
+background: rgba(124, 124, 124, 0.21);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(1.2px);
+-webkit-backdrop-filter: blur(1.2px);
+}

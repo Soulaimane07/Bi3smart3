@@ -10,10 +10,10 @@ function Admin() {
     
     <>
     <Routes>
-    <Route path="/Admin/dashboard" element={<Dashboard />} />
-        <Route path="/Admin/readuser" element={<ReadUser />} />
-        <Route path="/Admin/adduser" element={<AddUser />} />
-        <Route path="/Admin/edituser/:id" element={<EditUser />} />
+      <Route path="/admin/dashboard" element={<Dashboard />} />
+        <Route path="/admin/readuser" element={<ReadUser />} />
+        <Route path="/admin/adduser" element={<AddUser />} />
+        <Route path="/admin/edituser/:id" element={<EditUser />} />
     </Routes>
 </>
   )

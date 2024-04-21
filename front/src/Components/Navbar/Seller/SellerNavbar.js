@@ -6,8 +6,30 @@ import Profile from '../../../Components/Navbar/Profile'
 function SellerNavbar() {
     const [openProfile, setOpenProfile] = useState(false)
 
+
+
+
+
+    const [navbar, setNavbar] = useState(false)
+    const [y, setY] = useState(0)
+
+    const changebg = () => {
+        if(window.scrollY !== 0){
+            setNavbar(true);
+        } else {
+            setNavbar(false)
+        }
+
+        if(window.scrollY < y){
+            setNavbar(false)
+        }
+        setY(window.scrollY)
+    }
+
+    window.addEventListener('scroll',changebg)
+
   return (
-    <nav aria-label='nav-1' className=' sticky flex items-center space-x-4 md:space-x-6 justify-between px-20 py-4 '>
+    <nav aria-label='nav-1' className={`${navbar ? '-top-32' : 'top-0'} drop-shadow-md bg-white transition-all flex items-center justify-between py-2 fixed overflow-visible w-full  z-50 text-black px-8 pl-20`}>
       <Link to="/"><img className='h-16' src="../images/logoblack.png" alt="logo" />  </Link>
 
       <button 
