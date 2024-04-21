@@ -39,7 +39,7 @@ function Profile({close}) {
                     <button onClick={()=> close(false)} className='absolute top-4 right-4 hover:scale-110 transition-all'><IoCloseOutline size={26} /></button>
                         <div className='flex-1 h-full'>
                             <h1 className='text-center mb-4'> {user.email} </h1>
-                            <Link to={"/profile"}>
+                            <Link to={"/Profil"}>
                                 <div className='profileBtn transition-all p-4 bg-blue-200 rounded-full w-fit mx-auto mb-2'>
                                     <div style={{ backgroundImage: `url(../images/user.png)` }} className='w-11 h-11 ImageBG'>
                                     </div>
