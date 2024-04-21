@@ -8,23 +8,23 @@ function Sidebar() {
     const Filters = [
         {
             "title":"Dashboard",
-            "body": "/Admin/dashboard"
+            "body": "/admin/dashboard"
         },
         {
             "title":"Users",
-            "body": "/Admin/readuser"
+            "body": "/admin/readuser"
         },
         {
             "title":"Categories",
-            "body": "/Admin/readcategorie"
+            "body": "/admin/readcategorie"
         },
         {
             "title":"Products",
-            "body": "/Admin/readproduct"
+            "body": "/admin/readproduct"
         },
         {
             "title":"Sellers",
-            "body": "/Admin/readseller"
+            "body": "/admin/readSeller"
         }
     ]
 
