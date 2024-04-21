@@ -4,6 +4,7 @@ import SellerSidebar from '../../../Components/Navbar/Seller/SellerSidebar'
 import Footer from '../../../Components/Footer/Footer'
 import { GetProducts } from '../../../Components/Functions';
 import { IoAdd } from "react-icons/io5";
+import { Link } from 'react-router-dom';
 
 function Products() {
     let products = GetProducts()
@@ -12,16 +13,16 @@ function Products() {
     <>
       <SellerNavbar />
 
-      <main className='min-h-screen flex pr-10'>
+      <main className='min-h-screen flex mt-28'>
         <SellerSidebar />
 
-        <article className=' flex-1 px-2 py-2'>
+        <article className=' flex-1 px-8 py-2'>
             <header className='w-full mb-8 justify-between flex text-center'>
                 <h1 className='text-2xl font-medium'> Products ({products?.length}) </h1>
-                <button className='flex items-center px-6 border-2 bg-blue-600 text-white border-blue-600 hover:text-blue-700 hover:bg-white transition-all  rounded-sm py-2 space-x-1'> 
+                <Link to={"add"} className='flex items-center px-6 border-2 bg-blue-600 text-white border-blue-600 hover:text-blue-700 hover:bg-white transition-all  rounded-sm py-2 space-x-1'> 
                     <IoAdd size={20} />
                     <p> Product </p>
-                </button>
+                </Link>
             </header>
 
             <main className='grid grid-cols-4 px-20'>

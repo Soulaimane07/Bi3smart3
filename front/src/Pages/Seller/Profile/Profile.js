@@ -12,10 +12,10 @@ function Profile() {
     <>
       <SellerNavbar />
 
-      <main className='min-h-screen flex pr-10'>
+      <main className='min-h-screen flex mt-28'>
         <SellerSidebar />
 
-        <article className='flex-1 px-2 py-2'>
+        <article className='flex-1 px-8 py-2'>
           <h1 className='text-2xl font-medium'> Welcome {user?.fname} </h1>
           <Boxs /> 
         </article>

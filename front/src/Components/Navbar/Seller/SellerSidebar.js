@@ -21,7 +21,7 @@ function SellerSidebar() {
   ]
 
   return (
-    <nav aria-label='nav-2' className='w-60 px-6 py-2 flex flex-col space-y-2 mt-1'>
+    <nav aria-label='nav-2' className='w-60 flex flex-col space-y-2 mt-1'>
       {liste?.map((item,key)=>(
         <NavLink 
           className={({ isActive }) =>
@@ -30,7 +30,7 @@ function SellerSidebar() {
           to={item.link} 
           key={key}
         > 
-          <div className='transition-all px-4 py-2  flex items-center space-x-2'>
+          <div className='transition-all px-8 py-2  flex items-center space-x-2'>
             <img className='w-6' src={item.icon} />
             <h1> {item.title} </h1> 
           </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { IoAdd, IoAddCircleOutline } from 'react-icons/io5'
+import { IoAdd } from 'react-icons/io5'
 import Footer from '../../../Components/Footer/Footer'
 import { GetCategories } from '../../../Components/Functions'
 import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar'
@@ -12,10 +12,10 @@ function Categories() {
     <>
         <SellerNavbar />
 
-        <main className='min-h-screen flex pr-10'>
+        <main className='min-h-screen flex mt-28'>
             <SellerSidebar />
 
-            <article className=' flex-1 px-2 py-2'>
+            <article className=' flex-1 px-8 py-2'>
                 <header className='w-full mb-8 justify-between flex text-center'>
                     <h1 className='text-2xl font-medium'> Categories ({categories?.length}) </h1>
                     <button className='flex items-center px-6 border-2 bg-blue-600 text-white border-blue-600 hover:text-blue-700 hover:bg-white transition-all  rounded-sm py-2 space-x-1'> 

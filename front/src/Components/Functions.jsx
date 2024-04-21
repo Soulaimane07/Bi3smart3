@@ -24,7 +24,7 @@ export const GetCategorie = (id) => {
   useEffect(()=> {
     axios.get(`http://127.0.0.1:8000/api/categorie/${id}`)
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         setProduct(res.data)
       })
       .catch(err => {
@@ -40,7 +40,7 @@ export const GetCategories = () =>{
 useEffect(()=> {
   axios.get(" http://127.0.0.1:8000/api/categorie/")
       .then(res=> {
-          console.log(res.data);
+          // console.log(res.data);
           setcategorie(res.data)
       })
 }, [])

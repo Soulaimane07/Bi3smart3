@@ -9,7 +9,7 @@ function Footer() {
                     <Link to={'/'} className="mb-6 md:mb-0">
                        <img src="../images/logoblack.png" className='w-24' />
                     </Link>
-                    <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                    <div className="grid grid-cols-3 gap-8">
                  
                         <div>
                             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-black">Follow us</h2>
@@ -30,6 +30,17 @@ function Footer() {
                                 </li>
                                 <li>
                                     <a href="#" className="hover:underline  hover:text-blue-400">Terms &amp; Conditions</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-black">Interfaces</h2>
+                            <ul className="text-gray-700 dark:text-gray-600 font-medium">
+                                <li className="mb-4">
+                                    <Link to="/seller/profile" className="hover:underline  hover:text-blue-400">Seller</Link>
+                                </li>
+                                <li>
+                                    <Link to="/admin/dashboard" className="hover:underline  hover:text-blue-400">Admin</Link>
                                 </li>
                             </ul>
                         </div>
