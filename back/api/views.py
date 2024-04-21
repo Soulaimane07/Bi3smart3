@@ -99,9 +99,9 @@ class ProductsReq(generics.ListCreateAPIView):
     queryset = Products.objects.all()
     serializer_class = ProductsSerializer
 
-    def post(self, request, *args, **kwargs):
-        posts_serializer = ProductsSerializer(data=request.data)
-        print(posts_serializer.data)
+    # def post(self, request, *args, **kwargs):
+    #     posts_serializer = ProductsSerializer(data=request.data)
+    #     print(posts_serializer.data)
         # if posts_serializer.is_valid():
         #     posts_serializer.save()
         #     return Response(posts_serializer.data, status=status.HTTP_201_CREATED)

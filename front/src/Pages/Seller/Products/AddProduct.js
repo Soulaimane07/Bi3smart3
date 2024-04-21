@@ -9,11 +9,15 @@ import axios from 'axios';
 
 
 
-const Buttons = ({createFun}) => {
+const Buttons = ({createFun, condittion}) => {
     return(
         <div className='flex space-x-2 items-stretch'>
             <Link to={'/seller/products'} className='px-8 py-2 text-gray-800 opacity-80 hover:border-blue-600 hover:text-blue-700 hover:bg-white transition-all border-2 border-transparent'>Cancel</Link>
-            <button onClick={createFun} className='bg-blue-600 hover:border-blue-600 hover:text-blue-700 hover:bg-white transition-all border-2 border-transparent px-8 py-2 rounded-sm text-white'>Create</button>
+            <button 
+                onClick={createFun} 
+                disabled={condittion}
+                className={`${condittion ? "opacity-40" : "opacity-100 hover:border-blue-600 hover:text-blue-700 hover:bg-white "} bg-blue-600 text-white transition-all border-2 border-transparent px-8 py-2 rounded-sm`}
+            > Create </button>
         </div>
     )
 }
@@ -25,7 +29,7 @@ function AddProduct() {
     const [titre, setTitre] = useState('')
     const [prix, setPrix] = useState(0)
     const [categorie, setCategorie] = useState(0)
-    const [image, setImage] = useState('')
+    const [image, setImage] = useState(null)
 
     const newProduct = {
         titre: titre,
@@ -33,6 +37,8 @@ function AddProduct() {
         categorie: Number(categorie),
         image: image
     }
+
+    let condittion = titre.length === 0 || categorie === 0 || image === null
 
     console.log(newProduct);
 
@@ -66,13 +72,13 @@ function AddProduct() {
         <article className='flex-1'>
             <header className='w-full mb-6 px-8 justify-between flex text-center items-center'>
                 <div className='flex space-x-3 text-gray-800 '>
-                    <Link to={"products"} className='flex px-4 border-2 text-gray-600 border-gray-200 rounded-sm items-center bg-white hover:border-blue-600 hover:text-blue-700 hover:bg-white transition-all py-2 space-x-1'> 
+                    <Link to={"/seller/products"} className='flex px-4 border-2 text-gray-600 border-gray-200 rounded-sm items-center bg-white hover:border-blue-600 hover:text-blue-700 hover:bg-white transition-all py-2 space-x-1'> 
                         <FaArrowLeft size={20} />
                     </Link>
                     <h1 className='text-2xl font-medium text-gray-800'> Add New Product </h1>
                 </div>
 
-                <Buttons createFun={Create} />
+                <Buttons condittion={condittion} createFun={Create} />
             </header>
 
             <main className='bg-gray-100 px-8 py-6 rounded-sm'>
@@ -126,7 +132,7 @@ function AddProduct() {
                     </div>
 
                     <div className='flex justify-end mt-10'>
-                        <Buttons createFun={Create} />
+                        <Buttons condittion={condittion} createFun={Create} />
                     </div>
                 </div>
             </main>
