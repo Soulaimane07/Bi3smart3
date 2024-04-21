@@ -6,15 +6,12 @@ import User from '../Components/User/User'
 function Admin() {
     
   return (
-    
     <>
-    
     <Navadmin />
-    
-    <main className='min-h-screen mt-28 flex items-start'>
-    <Sidebar />
-    <User />
-        </main>
+      <main className='min-h-screen mt-28 flex items-start'>
+        <Sidebar />
+        <User />
+      </main>
     <Footer />
     </>
   )
