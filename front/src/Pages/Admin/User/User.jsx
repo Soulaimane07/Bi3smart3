@@ -2,8 +2,8 @@ import React from 'react'
 import { CiTrash } from 'react-icons/ci';
 import { BiEditAlt } from "react-icons/bi";
 import { IoAdd } from "react-icons/io5";
-import { GetUsers } from '../Functions';
 import { Link } from 'react-router-dom';
+import { GetUsers } from '../../../Components/Functions';
 function User() {
     const users = GetUsers()
   return (

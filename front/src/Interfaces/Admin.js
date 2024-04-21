@@ -1,22 +1,21 @@
 import React from 'react'
-import Footer from '../Components/Footer/Footer'
-import Navadmin from '../Components/Navbar/Navadmin'
-import Sidebar from '../Components/Navbar/Sidebar'
-import User from '../Components/User/User'
+import { Route, Routes } from 'react-router-dom'
+import ReadUser from '../Pages/Admin/User/ReadUser'
+import AddUser from '../Pages/Admin/User/AddUser'
+import EditUser from '../Pages/Admin/User/EditUser'
+import Dashboard from '../Pages/Admin/Dashboard/Dashboard'
 function Admin() {
     
   return (
     
     <>
-    
-    <Navadmin />
-    
-    <main className='min-h-screen mt-28 flex items-start'>
-    <Sidebar />
-    <User />
-        </main>
-    <Footer />
-    </>
+    <Routes>
+    <Route path="/Admin/dashboard" element={<Dashboard />} />
+        <Route path="/Admin/readuser" element={<ReadUser />} />
+        <Route path="/Admin/adduser" element={<AddUser />} />
+        <Route path="/Admin/edituser/:id" element={<EditUser />} />
+    </Routes>
+</>
   )
 }
 
