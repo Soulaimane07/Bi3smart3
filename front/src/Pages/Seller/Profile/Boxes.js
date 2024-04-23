@@ -6,7 +6,7 @@ function Boxs() {
         {
             image: "../images/products.png",
             title: "Products",
-            link: "/seller/products"
+            link: "/seller/products" 
         },
         {
             image: "../images/categories.png",
