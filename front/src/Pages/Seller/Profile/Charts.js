@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PieChart } from '@mui/x-charts/PieChart';
+import { PieChart } from '@mui/x-charts';
 
 function Charts() {
   return (
@@ -19,7 +19,7 @@ function Charts() {
   width={500}
   height={300}
 />
-        </div>
+        </div> 
     </div>
   )
 }
