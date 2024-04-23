@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FaPlus, FaMinus } from "react-icons/fa6";
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function Sidebar() {
     const [filter, setFilter] = useState(0)
@@ -53,11 +53,13 @@ function Sidebar() {
         <div className='px-8 pt-8'>
             {Filters.map((item,key)=>(
                 <div className='mt-4' key={key}>
-                    <Link to={item.body}>
+                    <NavLink  className={({ isActive }) =>
+            isActive ? " hover:bg-blue-100 transition-all text-blue-600 border-r-2 border-r-blue-600" : "hover:bg-blue-100  transition-all border-r-2 border-transparent"
+          }   to={item.body}>
                    <button onClick={()=> setFilter(filter === key+1 ? 0 : key+1)} className='flex justify-between items-center w-full'>
                         <h1 className='mb-2 text-lg font-medium'> {item.title} </h1>
                     </button>
-                    </Link>
+                    </NavLink>
                   
                 </div>
             ))}
