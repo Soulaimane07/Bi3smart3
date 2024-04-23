@@ -4,6 +4,7 @@ import SellerSidebar from '../../../Components/Navbar/Seller/SellerSidebar'
 import Footer from '../../../Components/Footer/Footer'
 import { useSelector } from 'react-redux'
 import Boxs from './Boxes'
+import Charts from './Charts'
 
 function Profile() {
   const user = useSelector(state => state.User.data)
@@ -17,7 +18,8 @@ function Profile() {
 
         <article className='flex-1 px-8 py-2'>
           <h1 className='text-2xl font-medium'> Welcome {user?.fname} </h1>
-          <Boxs /> 
+          <Boxs />
+          <Charts /> 
         </article>
       </main>
 

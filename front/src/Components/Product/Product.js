@@ -56,8 +56,8 @@ export function ProductPanier({item}){
           <div className=' left text-left  mx-3 w-full flex flex-col'>
               <div onClick={selectProduct} className='pt-2 h-full'> 
                   <h1 className='text-xl'> {item.productItem.titre} </h1>
-                  <h1 className='text-xl'> CATEGORIE:{categorie.titre} </h1>
-                  <h1 className='text-xl'>SIZE: {item.size} </h1>
+                  <h1 className='text-sm'> Categorie: {categorie.titre} </h1>
+                  <h1 className='text-sm'> Size: {item.size} </h1>
                   <h2 className=' text-lg font-bold'> ${item.productItem.prix}</h2>
               </div>
           
@@ -111,7 +111,7 @@ export function Product({item, favorit}) {
             onMouseLeave={()=> setHover(false)}
             onClick={OpenProduct}
           >
-            <img src ={"../images/t-shirt-jordan.png"}  className='h-full rounded-sm' alt='product' />  
+            <img src ={item.image}  className='h-full rounded-sm' alt='product' />  
           </button>
           
 
