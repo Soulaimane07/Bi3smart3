@@ -2,17 +2,18 @@ import React from 'react'
 import { CiTrash } from 'react-icons/ci';
 import { BiEditAlt } from "react-icons/bi";
 import { IoAdd } from "react-icons/io5";
-import { GetUsers } from '../Functions';
 import { Link } from 'react-router-dom';
-function User() {
-    const users = GetUsers()
+import { GetProducts } from '../../../Components/Functions';
+
+function Product() {
+  const Products = GetProducts()
   return (
     
     <>
      <div className='w-5/6 border-l-2   border-gray-100 min-h-svh'>
-     <h1 className=' text-3xl  font-medium px-10  py-2 rounded-md'> Users </h1>
+     <h1 className=' text-3xl  font-medium px-10  py-2 rounded-md'> Product </h1>
         <div className=' w-11/12   justify-end  items-center -mt-20 text-xl mb-4 px-10  py-6 rounded-md font-bold flex '>
-            <Link to={"/Admin/adduser" }>
+            <Link to={"/Admin/addproduct" }>
             <button  className=' hover:text-green-800 p-1 transition-all mr-4 '>
                 <IoAdd size={40} />
             </button>
@@ -30,16 +31,16 @@ function User() {
                     Id
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Last Name
+                    titre
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    First Name
+                    prix
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Email
+                    image
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Role
+                    categorie id
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Action
@@ -47,21 +48,21 @@ function User() {
             </tr>
         </thead>
         <tbody>
-            {users.map((user,key)=>(<tr  class="bg-white border-b ">
+            {Products.map((Product,key)=>(<tr  class="bg-white border-b ">
                 <th  scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                    {user.id}
+                    {Product.id}
                 </th>
                 <td class="px-6 py-4">
-                    {user.lname}
+                    {Product.titre}
                 </td>
                 <td class="px-6 py-4">
-                {user.fname}
+                {Product.prix}
                 </td>
                 <td class="px-6 py-4">
-                {user.email}
+                {Product.image}
                 </td>
                 <td class="px-6 py-4">
-                {user.role}
+                {Product.categorie_id}
                 </td>
                 <td class="px-6 py-4 ">
                 <Link to={"/Admin/edituser" }>
@@ -83,8 +84,7 @@ function User() {
             </div>
         </div>
     </>
-    
   )
 }
 
-export default User
+export default Product

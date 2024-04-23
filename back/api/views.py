@@ -97,7 +97,17 @@ class CategorieReqPk(generics.RetrieveUpdateDestroyAPIView):
 
 class ProductsReq(generics.ListCreateAPIView):
     queryset = Products.objects.all()
-    serializer_class = ProductsSerializer 
+    serializer_class = ProductsSerializer
+
+    # def post(self, request, *args, **kwargs):
+    #     posts_serializer = ProductsSerializer(data=request.data)
+    #     print(posts_serializer.data)
+        # if posts_serializer.is_valid():
+        #     posts_serializer.save()
+        #     return Response(posts_serializer.data, status=status.HTTP_201_CREATED)
+        # else:
+        #     print('error', posts_serializer.errors)
+        #     return Response(posts_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 

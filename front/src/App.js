@@ -5,6 +5,7 @@ import './App.css';
 import Auth from './Components/Auth/Auth';
 import Clients from './Interfaces/Clients';
 import Seller from './Interfaces/Seller';
+import Admin from './Interfaces/Admin';
 
 function App() { 
   let authPage = useSelector(state => state.authPage.opened)
@@ -16,6 +17,8 @@ function App() {
     <BrowserRouter>
       <Clients />
       <Seller />
+      <Admin/>
+
 
       {authPage && <Auth />}
     </BrowserRouter>
