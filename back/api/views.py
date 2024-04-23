@@ -99,6 +99,13 @@ class ProductsReq(generics.ListCreateAPIView):
     queryset = Products.objects.all()
     serializer_class = ProductsSerializer
 
+
+class ProductsReqPk(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Products.objects.all()
+    serializer_class = ProductsSerializer
+    lookup_field = "pk"
+    
+
     # def post(self, request, *args, **kwargs):
     #     posts_serializer = ProductsSerializer(data=request.data)
     #     print(posts_serializer.data)

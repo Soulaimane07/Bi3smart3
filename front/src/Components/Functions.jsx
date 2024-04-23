@@ -64,3 +64,14 @@ export const GetUsers = () => {
 export const GetSellers = () => {
   return []
 }
+export const Removeproduct = () => {
+  const [product, setproduct] = useState([])
+  console.log("hh");
+
+  axios.delete(`http://127.0.0.1:8000/api/products/${id}`)
+  .then(res =>{
+    console.log("hhh");
+    
+  })
+
+}
