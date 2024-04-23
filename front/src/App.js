@@ -6,7 +6,7 @@ import Auth from './Components/Auth/Auth';
 import Clients from './Interfaces/Clients';
 import Seller from './Interfaces/Seller';
 import Admin from './Interfaces/Admin';
-
+ 
 function App() { 
   let authPage = useSelector(state => state.authPage.opened)
   // console.log(useSelector(state => state.User));
