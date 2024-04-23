@@ -49,7 +49,7 @@ export const GetCategories = () =>{
 
 export const GetUsers = () => {
   const [users, setUsers] = useState([])
-
+ 
   useEffect(()=>{
   axios.get(" http://127.0.0.1:8000/api/users/")
     .then(res => {
