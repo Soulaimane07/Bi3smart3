@@ -3,11 +3,12 @@ import Navadmin from '../../../Components/Navbar/Navadmin'
 import Sidebar from '../../../Components/Navbar/Sidebar'
 import Seller from './Seller'
 import Footer from '../../../Components/Footer/Footer'
+import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar'
 
 function ReadSeller() {
   return (
     <>
-    <Navadmin />
+    <SellerNavbar />
     
     <main className='min-h-screen mt-28 flex items-start'>
     <Sidebar />

@@ -11,14 +11,13 @@ function Categorie() {
    
     <>
     <div className='w-5/6 border-l-2   border-gray-100 min-h-svh'>
-    <h1 className=' text-3xl  font-medium px-10  py-2 rounded-md'> Categorie </h1>
-       <div className=' w-11/12   justify-end  items-center -mt-20 text-xl mb-4 px-10  py-6 rounded-md font-bold flex '>
-           <Link to={"/Admin/addcategorie" }>
-           <button  className=' hover:text-green-800 p-1 transition-all mr-4 '>
-               <IoAdd size={40} />
-           </button>
-           </Link>
-       </div>
+    <header className='w-5/6 mb-8 mx-20 justify-between flex text-center'>
+                <h1 className='text-2xl font-medium'> Categories ({Categories?.length}) </h1>
+                <Link to={"../admin/AddCategorie"} className='flex items-center px-6 border-2 bg-blue-600 text-white border-blue-600 hover:text-blue-700 hover:bg-white transition-all  rounded-sm py-2 space-x-1'> 
+                    <IoAdd size={20} />
+                    <p> Category </p>
+                </Link>
+            </header>
            
            <div className=' px-20 text-center'>
          
