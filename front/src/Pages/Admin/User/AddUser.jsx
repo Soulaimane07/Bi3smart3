@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { FaArrowLeft } from "react-icons/fa6";
 import { GetCategories } from '../../../Components/Functions';
 import axios from 'axios';
+import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar'
 
 const Buttons = ({createFun, condittion}) => {
   return(
@@ -24,10 +25,10 @@ function AddUser() {
     const [firstname, setFirstname] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [role, setRole] = useState('user')
+    const [role, setRole] = useState('client')
     const newUser = {
-        lastname: lastname,
-        firstname: firstname,
+        lname: lastname,
+        fname: firstname,
         email: email,
         password: password,
         role: role
@@ -43,7 +44,7 @@ function AddUser() {
         // e.preventDefault();
         console.log("Created !");
 
-        axios.post('http://127.0.0.1:8000/api/products/', newUser, {
+        axios.post('http://127.0.0.1:8000/api/users/', newUser, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
@@ -59,14 +60,14 @@ function AddUser() {
 
   return (
     <>
-    <Navadmin />
+     <SellerNavbar />
 
     <main className='min-h-screen flex mt-28'>
       <Sidebar />
       <article className='flex-1'>
           <header className='w-full mb-6 px-8 justify-between flex text-center items-center'>
               <div className='flex space-x-3 text-gray-800 '>
-                  <Link to={"/seller/products"} className='flex px-4 border-2 text-gray-600 border-gray-200 rounded-sm items-center bg-white hover:border-blue-600 hover:text-blue-700 hover:bg-white transition-all py-2 space-x-1'> 
+                  <Link to={"/admin/readUser"} className='flex px-4 border-2 text-gray-600 border-gray-200 rounded-sm items-center bg-white hover:border-blue-600 hover:text-blue-700 hover:bg-white transition-all py-2 space-x-1'> 
                       <FaArrowLeft size={20} />
                   </Link>
                   <h1 className='text-2xl font-medium text-gray-800'> Add New User </h1>

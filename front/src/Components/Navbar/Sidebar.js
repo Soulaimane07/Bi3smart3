@@ -1,33 +1,38 @@
 import React, { useState } from 'react'
-
 import { NavLink } from 'react-router-dom';
+
 
 function Sidebar() {
     const liste = [
         {
           "title": "Dashboard",
           "link":"/admin/dashboard",
-          "icon": "../images/dashboard.png",
+          "icon": "../../images/dashboard.png",
         },
         {
           "title":"Users",
           "link":"/admin/readuser",
-          "icon": "../images/users.png",
+          "icon": "../../images/users.png",
         },
         {
           "title":"Products",
           "link":"/admin/readproduct",
-          "icon": "../images/products.png",
+          "icon": "../../images/products.png",
         },
         {
           "title":"Categories",
           "link":"/admin/readcategorie",
-          "icon": "../images/categories.png",
+          "icon": "../../images/categories.png",
         },
         {
           "title":"Sellers",
           "link":"/admin/readSeller",
-          "icon": "../images/sellers.png",
+          "icon": "../../images/sellers.png",
+        },
+        {
+          "title":"Become Seller",
+          "link":"/admin/becomeSeller",
+          "icon": "../../images/becomeseller.png",
         }
       ]
     
