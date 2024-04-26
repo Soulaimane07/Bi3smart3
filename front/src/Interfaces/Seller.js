@@ -4,6 +4,7 @@ import Categories from '../Pages/Seller/Categories/Categories'
 import Products from '../Pages/Seller/Products/Products'
 import Profile from '../Pages/Seller/Profile/Profile'
 import AddProduct from '../Pages/Seller/Products/AddProduct'
+import UpdateProduct from '../Pages/Seller/Products/UpdateProduct'
 
 function Seller() {
   return (
@@ -13,6 +14,7 @@ function Seller() {
       <Route path="/seller/products">
         <Route index element={<Products />}  />
         <Route path='add' element={<AddProduct />}  />
+        <Route path='update/:id' element={<UpdateProduct />} />
       </Route>
     </Routes>
   )
