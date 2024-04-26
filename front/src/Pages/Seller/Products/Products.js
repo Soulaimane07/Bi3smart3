@@ -37,8 +37,8 @@ function Products() {
                             <div className=' py-6 bottom-0 bg-white w-full absolute text-center text-lg mt-2 font-medium flex justify-between'> 
                             <h1>{item.titre}</h1>
                             <div className='flex justify-normal space-x-2'>
-                            <button onClick={Removeproduct} className= ''><CiTrash size={25} /></button> 
-                            <button ><CiEdit size={25} /></button>
+                            <button onClick={()=>Removeproduct(item.id)} className= ''><CiTrash size={25} /></button> 
+                            <Link to={`update/${item.id}`} ><CiEdit size={25} /></Link>
                             </div>
                              </div>
                            

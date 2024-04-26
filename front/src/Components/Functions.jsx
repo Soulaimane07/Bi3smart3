@@ -11,11 +11,25 @@ export const GetProducts = () => {
   axios.get(" http://127.0.0.1:8000/api/products/")
     .then(res => {
       setProducts(res.data)
-      // console.log(res.data);
+      console.log(res.data);
     })
   }, [])
 
   return products
+}
+
+export const GetProduct = (id) => {
+  const [product, setProduct] = useState({})
+
+  useEffect(()=>{
+    axios.get(`http://127.0.0.1:8000/api/products/${id}`)
+      .then(res => {
+        setProduct(res.data)
+        
+      })
+  }, [])
+
+  return product
 }
 
 export const GetCategorie = (id) => {
@@ -78,14 +92,14 @@ export const GetUser = (id) => {
 export const GetSellers = () => {
   return []
 }
-export const Removeproduct = () => {
-  const [product, setproduct] = useState([])
+
+export const Removeproduct = (id) => {
   console.log("hh");
 
-  //axios.delete(`http://127.0.0.1:8000/api/products/${id}`)
-  //.then(res =>{
-   // console.log("hhh");
+  axios.delete(`http://127.0.0.1:8000/api/products/${id}`)
+  .then(res =>{
     
-  //})
+  })
 
 }
+

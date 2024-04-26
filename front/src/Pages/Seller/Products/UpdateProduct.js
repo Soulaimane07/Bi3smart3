@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar'
 import Footer from '../../../Components/Footer/Footer'
 import SellerSidebar from '../../../Components/Navbar/Seller/SellerSidebar'
-import { Link, useNavigate } from 'react-router-dom';
-import { GetCategories } from '../../../Components/Functions';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { GetCategories, GetProduct, GetProducts } from '../../../Components/Functions';
 import axios from 'axios';
 import Error from '../../../Components/Error/Error';
+import { IoIosClose } from 'react-icons/io';
 
 const Buttons = ({createFun, condittion, loading}) => {
     return(
@@ -23,7 +24,7 @@ const Buttons = ({createFun, condittion, loading}) => {
                             <span className="sr-only">Loading...</span>
                         </div>
                     : 
-                        <p> Create </p>
+                        <p> Update </p>
                 }
             </button>
         </div>
@@ -31,49 +32,59 @@ const Buttons = ({createFun, condittion, loading}) => {
 }
 
 
-function AddProduct() {
+function UpdateProduct() {
     const categories = GetCategories()
+    let params = useParams()
+    let id = params.id
 
+    let product = GetProduct(id)
+    
     const [titre, setTitre] = useState('')
     const [prix, setPrix] = useState(0)
     const [categorie, setCategorie] = useState(0)
     const [image, setImage] = useState(null)
 
-    const newProduct = {
+    useEffect(()=>{
+        setTitre(product.titre)
+        setPrix(product.prix)
+        setCategorie(product.categorie)
+        setImage(product.image)
+    },[product])
+ 
+    let newProduct = {
         titre: titre,
         prix: Number(prix),
         categorie: Number(categorie),
-        image: image
     }
 
-    let condittion = titre.length === 0 || categorie === 0 || image === null
+    if(typeof(image) === "object"){ newProduct = {...newProduct, image}}
 
-
+    let condittion = titre?.length === 0 || categorie === 0 || image === null
 
     const navigate = useNavigate()
 
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState(null)
-
-    const Create = (e) => {
+    
+    const updateproduc = (e) => {
         e.preventDefault();
-        setMessage(null)
         setLoading(true)
+        setMessage(null)
 
-        axios.post('http://127.0.0.1:8000/api/products/', newProduct, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          })
-            .then(res => {
-                console.log("Created", res.data);
-                setLoading(false)
-                navigate('/seller/products')
+        axios.patch(`http://127.0.0.1:8000/api/products/${id}`,newProduct, {
+                headers: {
+                "Content-Type": "multipart/form-data",
+                },
             })
-            .catch(err => {
-                console.log(err);
+            .then(res => {
                 setLoading(false)
-                setMessage("Product didn't created.")
+                navigate("/seller/products")
+            })
+            .catch(err =>{
+                setLoading(false)
+                setMessage("Product cant be updated !")
+                console.log(err);
+
                 setTimeout(() => {
                     setMessage(null)
                 }, 2000);
@@ -82,6 +93,13 @@ function AddProduct() {
 
 
     
+    
+
+    const [clearImage, setClearImage] = useState(false)
+
+
+
+
   return (
     <>
       <SellerNavbar />
@@ -95,41 +113,53 @@ function AddProduct() {
                     {/* <Link to={"/seller/products"} className='flex px-4 border-2 text-gray-600 border-gray-200 rounded-sm items-center bg-white hover:border-blue-600 hover:text-blue-700 hover:bg-white transition-all py-2 space-x-1'> 
                         <FaArrowLeft size={20} />
                     </Link> */}
-                    <h1 className='text-2xl font-medium text-gray-800'> Add New Product </h1>
+                    <h1 className='text-2xl font-medium text-gray-800'> Update Product </h1>
                 </div>
 
                 {message && <Error message={message} close={()=> setMessage(null)} />}
 
-                <Buttons condittion={condittion} createFun={Create} loading={loading} />
+                <Buttons condittion={condittion} createFun={updateproduc} loading={loading} />
             </header>
 
             <main className='bg-gray-100 px-8 py-6 rounded-sm'>
-                <form action={Create}  className='bg-white px-6 py-6 rounded-sm '>
+                <form onSubmit={updateproduc}  className='bg-white px-6 py-6 rounded-sm '>
                     <div className='w-full flex items-stretch space-x-8'>
-                        <div className="w-2/5 flex items-center justify-center">
-                            <label htmlFor="dropzone-file" className="flex h-full flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
-                                <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                                    <svg className="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                    </svg>
-                                    <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Click to upload</span> or drag and drop</p>
-                                    <p className="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                                </div>
-                                <input onChange={(e)=> setImage(e.target.files[0])} id="dropzone-file" type="file" className="hidden" accept="image/png, image/jpeg" />
-                            </label>
+                        <div className="w-2/5 flex items-center justify-center relative">
+                            
+                            {image && <div onMouseEnter={()=> setClearImage(true)} onMouseLeave={()=> setClearImage(false)} className='Image absolute top-0 left-0 flex w-full h-full justify-center items-center  '>
+                                {clearImage && 
+                                    <div onClick={()=> setImage(null)} className=' cursor-pointer  flex w-full h-full justify-center items-center'>
+                                        <IoIosClose  size={60} />
+                                    </div> 
+                                }
+                            </div> }
+                            {!image 
+                                ?
+                                    <label htmlFor="dropzone-file" className="flex h-full flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
+                                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                            <svg className="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                            </svg>
+                                            <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                                            <p className="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                        </div>
+                                        <input onChange={(e)=> setImage(e.target.files[0])} id="dropzone-file" type="file" className="hidden" accept="image/png, image/jpeg" />
+                                    </label>
+                                :   <img src={image} />
+                            }
                         </div> 
 
                         <div className='flex-1'>
                             <div className='py-2'>
                                 <div className='flex flex-col'>
                                     <label className=' font-medium text-gray-600'> Product Name </label>
-                                    <input onChange={(e)=> setTitre(e.target.value)} type='text' className='border-2 px-4 py-2 rounded-sm mt-2' placeholder='Product Name' />
+                                    <input value={titre} onChange={(e)=> setTitre(e.target.value)} type='text' className='border-2 px-4 py-2 rounded-sm mt-2' placeholder='Product Name' />
                                 </div>
                             </div>
                             <div className='flex-1 py-2'>
                                 <div className='flex flex-col'>
                                     <label className=' font-medium text-gray-600'> Category </label>
-                                    <select onChange={(e)=> setCategorie(e.target.value)} className='border-2 px-4 py-2 rounded-sm mt-2 '>
+                                    <select value={categorie} onChange={(e)=> setCategorie(e.target.value)} className='border-2 px-4 py-2 rounded-sm mt-2 '>
                                         <option className=''> Select Category </option>
                                         {categories?.map((item,key)=>(
                                             <option value={item.id} key={key} className='border-2 px-4 py-2 rounded-sm mt-2'> {item.titre} </option>
@@ -140,7 +170,7 @@ function AddProduct() {
                             <div className='py-2'>
                                 <div className='flex flex-col'>
                                     <label className=' font-medium text-gray-600'> Price </label>
-                                    <input onChange={(e)=> setPrix(e.target.value)} type='number' className='border-2 px-4 py-2 rounded-sm mt-2' placeholder='Product Name' />
+                                    <input value={prix} onChange={(e)=> setPrix(e.target.value)} type='number' className='border-2 px-4 py-2 rounded-sm mt-2' placeholder='Product Name' />
                                 </div>
                             </div>
                             <div className='py-2'>
@@ -154,7 +184,7 @@ function AddProduct() {
                     </div>
 
                     <div className='flex justify-end mt-10'>
-                        <Buttons condittion={condittion} createFun={Create} loading={loading} />
+                        <Buttons condittion={condittion} createFun={updateproduc} loading={loading} />
                     </div>
                 </form>
             </main>
@@ -166,4 +196,4 @@ function AddProduct() {
   )
 }
 
-export default AddProduct
+export default UpdateProduct
