@@ -6,10 +6,6 @@ import Profile from '../../../Components/Navbar/Profile'
 function SellerNavbar() {
     const [openProfile, setOpenProfile] = useState(false)
 
-
-
-
-
     const [navbar, setNavbar] = useState(false)
     const [y, setY] = useState(0)
 

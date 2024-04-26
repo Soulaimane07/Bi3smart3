@@ -6,13 +6,14 @@ import { Link } from 'react-router-dom';
 import { FaArrowLeft } from "react-icons/fa6";
 import { GetCategories } from '../../../Components/Functions';
 import axios from 'axios';
+import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar'
 
 
 
 const Buttons = ({createFun, condittion}) => {
     return(
         <div className='flex space-x-2 items-stretch'>
-            <Link to={'/seller/products'} className='px-8 py-2 text-gray-800 opacity-80 hover:border-blue-600 hover:text-blue-700 hover:bg-white transition-all border-2 border-transparent'>Cancel</Link>
+            <Link to={'/admin/readProduct'} className='px-8 py-2 text-gray-800 opacity-80 hover:border-blue-600 hover:text-blue-700 hover:bg-white transition-all border-2 border-transparent'>Cancel</Link>
             <button 
                 onClick={createFun} 
                 disabled={condittion}
@@ -64,7 +65,7 @@ function AddProduct() {
     
   return (
     <>
-      <Navadmin />
+      <SellerNavbar />
 
       <main className='min-h-screen flex mt-28'>
         <Sidebar />
@@ -72,7 +73,7 @@ function AddProduct() {
         <article className='flex-1'>
             <header className='w-full mb-6 px-8 justify-between flex text-center items-center'>
                 <div className='flex space-x-3 text-gray-800 '>
-                    <Link to={"/seller/products"} className='flex px-4 border-2 text-gray-600 border-gray-200 rounded-sm items-center bg-white hover:border-blue-600 hover:text-blue-700 hover:bg-white transition-all py-2 space-x-1'> 
+                    <Link to={"/admin/readProduct"} className='flex px-4 border-2 text-gray-600 border-gray-200 rounded-sm items-center bg-white hover:border-blue-600 hover:text-blue-700 hover:bg-white transition-all py-2 space-x-1'> 
                         <FaArrowLeft size={20} />
                     </Link>
                     <h1 className='text-2xl font-medium text-gray-800'> Add New Product </h1>
