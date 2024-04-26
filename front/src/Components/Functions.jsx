@@ -36,7 +36,7 @@ export const GetCategorie = (id) => {
   const [product, setProduct] = useState({})
 
   useEffect(()=> {
-    axios.get(`http://127.0.0.1:8000/api/categorie/${id}`)
+    axios.get(`http://127.0.0.1:8000/api/categorie/${id}/`)
       .then(res => {
         // console.log(res.data);
         setProduct(res.data)
@@ -73,6 +73,20 @@ export const GetUsers = () => {
   }, [])
 
   return users
+}
+
+export const GetUser = (id) => {
+  const [user, setUser] = useState([])
+ 
+  useEffect(()=>{
+  axios.get(`http://127.0.0.1:8000/api/users/${id}/`)
+    .then(res => {
+      setUser(res.data)
+      // console.log(res.data);
+    })
+  }, [])
+
+  return user
 }
 
 export const GetSellers = () => {

@@ -3,6 +3,8 @@ import Navadmin from '../../../Components/Navbar/Navadmin'
 import Sidebar from '../../../Components/Navbar/Sidebar'
 import { Link } from 'react-router-dom'
 import Footer from '../../../Components/Footer/Footer'
+import Seller from '../Seller/Seller'
+import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar'
 
 function Dashboard() {
     const list =[
@@ -21,7 +23,7 @@ function Dashboard() {
   return (
     <>
 
-    <Navadmin />
+    <SellerNavbar />
     
     <main className='min-h-screen mt-28 flex items-start'>
     <Sidebar />

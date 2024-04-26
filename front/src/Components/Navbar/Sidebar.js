@@ -1,74 +1,60 @@
 import React, { useState } from 'react'
-import { FaPlus, FaMinus } from "react-icons/fa6";
 import { NavLink } from 'react-router-dom';
 
+
 function Sidebar() {
-    const [filter, setFilter] = useState(0)
-
-    const Filters = [
+    const liste = [
         {
-            "title":"Dashboard",
-            "body": "/admin/dashboard"
+          "title": "Dashboard",
+          "link":"/admin/dashboard",
+          "icon": "../../images/dashboard.png",
         },
         {
-            "title":"Users",
-            "body": "/admin/readuser"
+          "title":"Users",
+          "link":"/admin/readuser",
+          "icon": "../../images/users.png",
         },
         {
-            "title":"Categories",
-            "body": "/admin/readcategorie"
+          "title":"Products",
+          "link":"/admin/readproduct",
+          "icon": "../../images/products.png",
         },
         {
-            "title":"Products",
-            "body": "/admin/readproduct"
+          "title":"Categories",
+          "link":"/admin/readcategorie",
+          "icon": "../../images/categories.png",
         },
         {
-            "title":"Sellers",
-            "body": "/admin/readSeller"
+          "title":"Sellers",
+          "link":"/admin/readSeller",
+          "icon": "../../images/sellers.png",
+        },
+        {
+          "title":"Become Seller",
+          "link":"/admin/becomeSeller",
+          "icon": "../../images/becomeseller.png",
         }
-    ]
+      ]
+    
 
-
-    const [navbar, setNavbar] = useState(false)
-    const [y, setY] = useState(0)
-
-    const changebg = () => {
-        if(window.scrollY !== 0){
-            setNavbar(true);
-        } else {
-            setNavbar(false)
-        }
-
-        if(window.scrollY < y){
-            setNavbar(false)
-        }
-        setY(window.scrollY)
-    }
-
-    window.addEventListener('scroll',changebg)
-
+    
   return (
-    <div className={`${navbar ? 'top-0' : 'top-20'} transition-all  w-1/6 h-full py-4 sticky`}>
-      
-        <div className='px-8 pt-8'>
-            {Filters.map((item,key)=>(
-                <div className='mt-4' key={key}>
-                    <NavLink  className={({ isActive }) =>
-            isActive ? " hover:bg-blue-100 transition-all text-blue-600 border-r-2 border-r-blue-600" : "hover:bg-blue-100  transition-all border-r-2 border-transparent"
-          }   to={item.body}>
-                   <button onClick={()=> setFilter(filter === key+1 ? 0 : key+1)} className='flex justify-between items-center w-full'>
-                        <h1 className='mb-2 text-lg font-medium'> {item.title} </h1>
-                    </button>
-                    </NavLink>
-                  
-                </div>
-            ))}
+    <nav aria-label='nav-2' className='w-60 flex flex-col space-y-2 mt-1'>
+    {liste?.map((item,key)=>(
+      <NavLink 
+        className={({ isActive }) =>
+          isActive ? " hover:bg-blue-100 transition-all text-blue-600 border-r-2 border-r-blue-600" : "hover:bg-blue-100  transition-all border-r-2 border-transparent"
+        }  
+        to={item.link} 
+        key={key}
+      > 
+        <div className='transition-all px-8 py-2  flex items-center space-x-2'>
+          <img className='w-6' src={item.icon} />
+          <h1> {item.title} </h1> 
         </div>
-           
-          
-        
-        
-    </div>
+      </NavLink>
+    ))}
+  </nav>
   )
 }
 
