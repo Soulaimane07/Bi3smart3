@@ -7,6 +7,7 @@ import { GetProducts } from '../../../Components/Functions';
 
 function Product() {
   const Products = GetProducts()
+  console.log(Products)
   return (
     
     <>
@@ -35,9 +36,6 @@ function Product() {
                     prix
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    image
-                </th>
-                <th scope="col" class="px-6 py-3">
                     categorie id
                 </th>
                 <th scope="col" class="px-6 py-3">
@@ -57,10 +55,7 @@ function Product() {
                 {Product.prix}
                 </td>
                 <td class="px-6 py-4">
-                {Product.image}
-                </td>
-                <td class="px-6 py-4">
-                {Product.categorie_id}
+                {Product.categorie}
                 </td>
                 <td class="px-6 py-4 ">
                 <Link to={"/Admin/edituser" }>
