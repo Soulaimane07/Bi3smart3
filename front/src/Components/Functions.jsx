@@ -102,4 +102,7 @@ export const Removeproduct = (id) => {
   })
 
 }
-
+export const GetProductbyCategorie = (id) =>{
+   axios.post(`http://127.0.0.1:8000/api/getproductbycategorie/`,id)
+  return []
+}

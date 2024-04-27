@@ -14,6 +14,7 @@ urlpatterns = [
 
     path("products/", views.ProductsReq.as_view() ),
     path("products/<int:pk>", views.ProductsReqPk.as_view()),
+    path("getproductbycategorie/",views.getproductby)
     
 
 ]

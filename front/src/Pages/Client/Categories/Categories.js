@@ -2,11 +2,18 @@ import Navbar from '../../../Components/Navbar/Navbar'
 import Footer from '../../../Components/Footer/Footer'
 import Filtrage from '../Products/Filtrage'
 import {Product} from '../../../Components/Product/Product'
-import { GetProducts } from '../../../Components/Functions'
+import { GetProducts ,GetProductbyCategorie } from '../../../Components/Functions'
+import { useParams } from 'react-router-dom'
 
 
 export const Categories = () => {
-  let list = GetProducts()
+  let parametre=useParams()
+  let id = parametre.id
+  //console.log(id);
+  let list = GetProductbyCategorie(id)
+
+
+  
 
 
   return (
