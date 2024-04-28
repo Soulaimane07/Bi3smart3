@@ -7,6 +7,7 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { GetUser } from '../../../Components/Functions';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+
 const Buttons = ({createFun, condittion}) => {
   return(
       <div className='flex space-x-2 items-stretch'>
@@ -18,6 +19,7 @@ const Buttons = ({createFun, condittion}) => {
           > Create </button>
       </div>
   )}
+  
 function EditUser() {
   let { id } = useParams();
  const user= GetUser(id)

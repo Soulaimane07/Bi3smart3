@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-import Navadmin from '../../../Components/Navbar/Navadmin'
 import Footer from '../../../Components/Footer/Footer'
 import Sidebar from '../../../Components/Navbar/Sidebar'
 import { Link } from 'react-router-dom';
 import { FaArrowLeft } from "react-icons/fa6";
-import { GetCategories } from '../../../Components/Functions';
 import axios from 'axios';
 import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar'
 

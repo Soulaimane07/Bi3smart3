@@ -8,23 +8,23 @@ import Commande from '../Pages/Client/Commande/Commande';
 import Profil from '../Pages/Client/Profil/Profil';
 import Product from '../Pages/Client/Products/Product';
 import { useSelector } from 'react-redux';
+import Layout from '../Components/Layout';
 
 function Clients() {
   let productPage = useSelector(state => state.ProductPage.opened)
     
   return (
-    <>
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/categorie/:id" element={<Categories />} />
-            <Route path="/favorits"  element={<Favorits/>}/>
-            <Route path="/Panier" element={<Panier />} />
-            <Route path="/commande" element={<Commande />} />
-            <Route path="/Profil" element={<Profil />} />
-        </Routes>
-
-        {productPage && <Product />}
-    </>
+    <Routes>
+      <Route path='/' element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="categorie/:id" element={<Categories />} />
+        <Route path="favorits"  element={<Favorits/>}/>
+        <Route path="Panier" element={<Panier />} />
+        <Route path="commande" element={<Commande />} />
+        <Route path="Profil" element={<Profil />} />
+      </Route>
+      {productPage && <Product />}
+    </Routes>
   )
 }
 

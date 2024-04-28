@@ -1,5 +1,4 @@
 import React from 'react'
-import Navadmin from '../../../Components/Navbar/Navadmin'
 import Sidebar from '../../../Components/Navbar/Sidebar'
 import Seller from './Seller'
 import Footer from '../../../Components/Footer/Footer'
