@@ -103,6 +103,18 @@ export const Removeproduct = (id) => {
 
 }
 export const GetProductbyCategorie = (id) =>{
-   axios.post(`http://127.0.0.1:8000/api/getproductbycategorie/`,id)
-  return []
+  const [categories, setCategories] = useState([])
+
+  useEffect(()=> {
+    axios.get(`http://127.0.0.1:8000/api/getproductbycategorie/${id}/`)
+    .then(res=> {
+      console.log(res.data);
+        setCategories(res.data)
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }, [id])
+
+  return categories
 }

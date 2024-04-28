@@ -5,6 +5,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .models import User, SellerRequests ,Categorie, Products
+from django.db.models import Q
+
 
 
 class UserListCreate(generics.ListAPIView):
@@ -70,7 +72,6 @@ class UserLogin(APIView):
 
 
 
-
 class SellerRequestsList(generics.ListCreateAPIView):
     queryset = SellerRequests.objects.all()
     serializer_class = SellerRequestsSerializer
@@ -90,43 +91,39 @@ class CategorieReq(generics.ListCreateAPIView):
 class CategorieReqPk(generics.RetrieveUpdateDestroyAPIView):
     queryset = Categorie.objects.all()
     serializer_class = CategorieSerializer
-    lookup_field = "pk"
+    lookup_field = "pk"    
     
 
 
 
-class ProductsReq(generics.ListCreateAPIView):
-    queryset = Products.objects.all()
+class ProductsReq(generics.ListAPIView):
     serializer_class = ProductsSerializer
 
-
+    def get_queryset(self):
+        id = self.kwargs.get('id')
+        if id is not None:
+            return Products.objects.filter(categorie=id)
+        else:
+            return Products.objects.all()
 
 class ProductsReqPk(generics.RetrieveUpdateDestroyAPIView):
     queryset = Products.objects.all()
     serializer_class = ProductsSerializer
     lookup_field = "pk"
 
-    
 
-def getproductby(self, request, format=None):
-    categorie = request.data.get("categorie", "") 
-    print(categorie)
 
-    products = Products.objects.all()
-    serializer = ProductsSerializer(products) 
-    return Response(serializer.data, status=status.HTTP_201_CREATED)
-    
 
-    # def post(self, request, *args, **kwargs):
-    #     posts_serializer = ProductsSerializer(data=request.data)
-    #     print(posts_serializer.data)
-        # if posts_serializer.is_valid():
-        #     posts_serializer.save()
-        #     return Response(posts_serializer.data, status=status.HTTP_201_CREATED)
-        # else:
-        #     print('error', posts_serializer.errors)
-        #     return Response(posts_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class Search(APIView):
+    serializer_class = ProductsSerializer
 
+    def get(self, request, format=None):
+        search_term = self.kwargs.get('searchTerm')
+
+        if search_term:
+            return Products.objects.filter(name__icontains=search_term)
+        else:
+            return Products.objects.all()
 
 
 
