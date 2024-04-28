@@ -106,10 +106,32 @@ class ProductsReq(generics.ListAPIView):
         else:
             return Products.objects.all()
 
+
 class ProductsReqPk(generics.RetrieveUpdateDestroyAPIView):
     queryset = Products.objects.all()
     serializer_class = ProductsSerializer
     lookup_field = "pk"
+
+    
+
+def getproductby(self, request, format=None):
+    categorie = request.data.get("categorie", "") 
+    print(categorie)
+
+    products = Products.objects.all()
+    serializer = ProductsSerializer(products) 
+    return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+
+    # def post(self, request, *args, **kwargs):
+    #     posts_serializer = ProductsSerializer(data=request.data)
+    #     print(posts_serializer.data)
+        # if posts_serializer.is_valid():
+        #     posts_serializer.save()
+        #     return Response(posts_serializer.data, status=status.HTTP_201_CREATED)
+        # else:
+        #     print('error', posts_serializer.errors)
+        #     return Response(posts_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 
