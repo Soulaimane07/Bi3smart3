@@ -18,10 +18,7 @@ function Categories() {
             <article className=' flex-1 px-8 py-2'>
                 <header className='w-full mb-8 justify-between flex text-center'>
                     <h1 className='text-2xl font-medium'> Categories ({categories?.length}) </h1>
-                    <button className='flex items-center px-6 border-2 bg-blue-600 text-white border-blue-600 hover:text-blue-700 hover:bg-white transition-all  rounded-sm py-2 space-x-1'> 
-                        <IoAdd size={20} />
-                        <p> Categorie </p>
-                    </button>
+                   
                 </header>
 
                 <main className='grid grid-cols-4 px-20'>

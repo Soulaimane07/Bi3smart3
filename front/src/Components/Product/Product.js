@@ -173,3 +173,23 @@ export function Product({item, favorit}) {
     </div> 
   )
 }
+
+export const  ProdcutSearch = ({item}) => {
+  const dispatch = useDispatch()
+
+  const OpenProduct = () => {
+    dispatch(productActions.open(item))
+  }
+
+  return (
+    <button onClick={OpenProduct} className='flex space-x-2 hover:bg-gray-300 p-2 rounded-md transition-all'>
+      <div className='w-20 rounded-md overflow-hidden'>
+        <img className='w-20 h-20' src={item.image} alt={`image ${item.id}`} />
+      </div>
+      <div className='flex justify-between flex-1'>
+        <h1> {item.titre} </h1>
+        <h1> ${item.prix} </h1>
+      </div>
+    </button>
+  )
+}

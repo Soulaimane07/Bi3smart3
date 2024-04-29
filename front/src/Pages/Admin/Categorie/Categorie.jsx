@@ -23,8 +23,8 @@ function Categorie() {
          
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-   <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
-       <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+   <table class="w-3/5 text-sm text-center rtl:text-right text-gray-500 ">
+       <thead class="text-s text-gray-700 uppercase bg-gray-50 ">
            <tr>
                <th scope="col" class="px-6 py-3">
                    Id
@@ -33,9 +33,8 @@ function Categorie() {
                    Titre
                </th>
                <th scope="col" class="px-6 py-3">
-                   Image
-               </th>
-              
+                    Action
+                </th>
            </tr>
        </thead>
        <tbody>
@@ -46,10 +45,7 @@ function Categorie() {
                <td class="px-6 py-4">
                    {Categorie.titre}
                </td>
-               <td class="px-6 py-4">
-               {Categorie.image}
-               </td>
-               <td class="px-6 py-4 ">
+               <td class="px-2 py-4 ">
                <Link to={"/Admin/edituser" }>
                <button  className=' opacity-40 hover:opacity-100 hover:text-blue-600 transition-all mr-4 '>
                    <BiEditAlt size={25} />

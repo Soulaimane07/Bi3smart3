@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom'
 function SellerSidebar() {
   const liste = [
     {
-      "title": "Profile",
-      "link":"/seller/profile",
+      "title": "Dashboard",
+      "link":"/seller/dashboard",
       "icon": "../images/menu.png",
     },
     {

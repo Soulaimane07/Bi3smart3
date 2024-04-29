@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Navadmin from '../../../Components/Navbar/Navadmin'
 import Footer from '../../../Components/Footer/Footer'
 import Sidebar from '../../../Components/Navbar/Sidebar'
 import { Link } from 'react-router-dom';

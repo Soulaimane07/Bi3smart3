@@ -5,6 +5,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .models import User, SellerRequests ,Categorie, Products
+from django.db.models import Q
+
 
 
 class UserListCreate(generics.ListAPIView):
@@ -70,7 +72,6 @@ class UserLogin(APIView):
 
 
 
-
 class SellerRequestsList(generics.ListCreateAPIView):
     queryset = SellerRequests.objects.all()
     serializer_class = SellerRequestsSerializer
@@ -90,15 +91,26 @@ class CategorieReq(generics.ListCreateAPIView):
 class CategorieReqPk(generics.RetrieveUpdateDestroyAPIView):
     queryset = Categorie.objects.all()
     serializer_class = CategorieSerializer
-    lookup_field = "pk"
+    lookup_field = "pk"    
     
 
 
 
-class ProductsReq(generics.ListCreateAPIView):
-    queryset = Products.objects.all()
+class ProductsReq(generics.ListAPIView):
     serializer_class = ProductsSerializer
 
+    def get_queryset(self):
+        id = self.kwargs.get('id')
+        if id is not None:
+            return Products.objects.filter(categorie=id)
+        else:
+            return Products.objects.all()
+        
+class ProductsReq1(generics.ListCreateAPIView):
+    serializer_class = ProductsSerializer
+
+    def get_queryset(self):
+            return Products.objects.all()
 
 
 class ProductsReqPk(generics.RetrieveUpdateDestroyAPIView):
@@ -132,3 +144,23 @@ def getproductby(self, request, format=None):
     #queryset = Tag.objects.all()
     #serializer_class = TagSerializer
 
+class Search(APIView):
+    serializer_class = ProductsSerializer
+
+    def get(self, request, format=None):
+        search_term = self.kwargs.get('searchTerm')
+
+        if search_term:
+            return Products.objects.filter(name__icontains=search_term)
+        else:
+            return Products.objects.all()
+
+class Productbyidseller(generics.ListAPIView):
+    serializer_class = ProductsSerializer
+
+    def get_queryset(self):
+        sellerid = self.kwargs.get('sellerid')
+        if sellerid is not None:
+            return Products.objects.filter(seller=sellerid)
+        else:
+            return Products.objects.all()
