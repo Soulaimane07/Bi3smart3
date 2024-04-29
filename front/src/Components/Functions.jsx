@@ -92,9 +92,24 @@ export const GetUser = (id) => {
 
 
 export const GetSellers = () => {
-  return []
+  const [sellers, setSellers] = useState([])
+ 
+  useEffect(()=>{
+    axios.get(" http://127.0.0.1:8000/api/sellerrequests/")
+      .then(res => {
+        setSellers(res.data)
+      })
+  }, [])
+
+  return sellers
 }
 
+export const Removeuser = (id) => {
+  axios.delete(`http://127.0.0.1:8000/api/users/${id}/`)
+  .then(res =>{
+    console.log("Deleted !");
+  })
+}
 
 export const Removeproduct = (id) => {
   axios.delete(`http://127.0.0.1:8000/api/products/${id}`)
