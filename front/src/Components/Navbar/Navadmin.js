@@ -58,7 +58,7 @@ function Navadmin() {
   return (
     <header className={`${navbar ? '-top-32' : 'top-0'} drop-shadow-md bg-white transition-all fixed overflow-visible top-0 left-0 w-full  z-50 text-black pb-5 px-6 md:px-16`}>
         <nav className='relative px-4 pt-4 w-full flex justify-between items-center'>
-            <Link to="/"><img className='h-16' src="../images/logoblack.png" alt="logo" />  </Link>
+            <Link to="/"><img className='h-16' src="/../images/logoblack.png" alt="logo" />  </Link>
 
             <div className='absolute left-0 right-0 mx-auto flex space-x-3 items-center  bg-gray-200 rounded-full w-1/3 px-4 py-1'>
                 <div className='text-gray-400'>

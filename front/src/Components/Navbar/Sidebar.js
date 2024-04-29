@@ -24,20 +24,7 @@ function Sidebar() {
           "link":"/admin/readcategorie",
           "icon": "../../images/categories.png",
         },
-        {
-          "title":"Sellers",
-          "link":"/admin/readSeller",
-          "icon": "../../images/sellers.png",
-        },
-        {
-          "title":"Become Seller",
-          "link":"/admin/becomeSeller",
-          "icon": "../../images/becomeseller.png",
-        }
       ]
-    
-
-    
   return (
     <nav aria-label='nav-2' className='w-60 flex flex-col space-y-2 mt-1'>
     {liste?.map((item,key)=>(

@@ -13,7 +13,7 @@ function Categorie() {
     <div className='w-5/6 border-l-2   border-gray-100 min-h-svh'>
     <header className='w-5/6 mb-8 mx-20 justify-between flex text-center'>
                 <h1 className='text-2xl font-medium'> Categories ({Categories?.length}) </h1>
-                <Link to={"../admin/AddCategorie"} className='flex items-center px-6 border-2 bg-blue-600 text-white border-blue-600 hover:text-blue-700 hover:bg-white transition-all  rounded-sm py-2 space-x-1'> 
+                <Link to={"/admin/addcategorie"} className='flex items-center px-6 border-2 bg-blue-600 text-white border-blue-600 hover:text-blue-700 hover:bg-white transition-all  rounded-sm py-2 space-x-1'> 
                     <IoAdd size={20} />
                     <p> Category </p>
                 </Link>
@@ -22,8 +22,8 @@ function Categorie() {
            <div className=' px-20 text-center'>
          
 
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-   <table class="w-3/5 text-sm text-center rtl:text-right text-gray-500 ">
+<div class="relative overflow-x-auto  shadow-md sm:rounded-lg">
+   <table class="w-full text-sm text-center rtl:text-right text-gray-500 ">
        <thead class="text-s text-gray-700 uppercase bg-gray-50 ">
            <tr>
                <th scope="col" class="px-6 py-3">
@@ -46,7 +46,7 @@ function Categorie() {
                    {Categorie.titre}
                </td>
                <td class="px-2 py-4 ">
-               <Link to={"/Admin/edituser" }>
+               <Link to={`/Admin/editcategorie/${Categorie.id}`}>
                <button  className=' opacity-40 hover:opacity-100 hover:text-blue-600 transition-all mr-4 '>
                    <BiEditAlt size={25} />
                </button>

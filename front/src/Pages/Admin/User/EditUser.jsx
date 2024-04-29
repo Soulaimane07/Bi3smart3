@@ -1,58 +1,69 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Navadmin from '../../../Components/Navbar/Navadmin'
 import Footer from '../../../Components/Footer/Footer'
 import Sidebar from '../../../Components/Navbar/Sidebar'
 import { Link } from 'react-router-dom';
 import { FaArrowLeft } from "react-icons/fa6";
 import { GetUser } from '../../../Components/Functions';
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Buttons = ({createFun, condittion}) => {
   return(
       <div className='flex space-x-2 items-stretch'>
-          <Link to={'/seller/products'} className='px-8 py-2 text-gray-800 opacity-80 hover:border-blue-600 hover:text-blue-700 hover:bg-white transition-all border-2 border-transparent'>Cancel</Link>
+          <Link to={'/admin/readUser'} className='px-8 py-2 text-gray-800 opacity-80 hover:border-blue-600 hover:text-blue-700 hover:bg-white transition-all border-2 border-transparent'>Cancel</Link>
+          
           <button 
               onClick={createFun} 
               disabled={condittion}
               className={`${condittion ? "opacity-40" : "opacity-100 hover:border-blue-600 hover:text-blue-700 hover:bg-white "} bg-blue-600 text-white transition-all border-2 border-transparent px-8 py-2 rounded-sm`}
-          > Create </button>
+          > Update </button>
       </div>
   )}
   
 function EditUser() {
   let { id } = useParams();
+  const navigate = useNavigate();
  const user= GetUser(id)
  console.log(user)
   const [lastname, setLastname] = useState('')
   const [firstname, setFirstname] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [role, setRole] = useState('client')
-  const newUser = {
+
+  useEffect(()=>{
+    if (user){
+    setLastname(user.lname)
+    setFirstname(user.fname)
+    setEmail(user.email)
+    setPassword(user.password)
+}},[user])
+  
+  const newUserData = {
       lname: lastname,
       fname: firstname,
       email: email,
       password: password,
-      role: role
+      
   }
 
-  let condittion = lastname.length === 0 || firstname.length === 0 || email.length === 0 || password.length === 0 
+  let condittion = !lastname || !firstname || !email || !password; 
 
 
 
 
-  const Create = (e) => {
+  const Update = () => {
       // e.preventDefault();
-      console.log("Created !");
+      console.log("Updated !");
 
-      axios.post('http://127.0.0.1:8000/api/users/', newUser, {
+      axios.patch(`http://127.0.0.1:8000/api/users/${id}/`, newUserData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         })
           .then(res => {
               console.log(res);
+              navigate("/admin/readUser")
           })
           .catch(err => {
               console.log(err);
@@ -73,7 +84,7 @@ return (
                 <Link to={"/admin/readUser"} className='flex px-4 border-2 text-gray-600 border-gray-200 rounded-sm items-center bg-white hover:border-blue-600 hover:text-blue-700 hover:bg-white transition-all py-2 space-x-1'> 
                     <FaArrowLeft size={20} />
                 </Link>
-                <h1 className='text-2xl font-medium text-gray-800'> Add New User </h1>
+                <h1 className='text-2xl font-medium text-gray-800'> Update User </h1>
             </div>
         </header>
         <main className='bg-gray-100 px-8 py-6 rounded-sm'>
@@ -85,26 +96,26 @@ return (
                         <div className='py-2'>
                             <div className='flex flex-col'>
                                 <label className=' font-medium text-gray-600'> First Name </label>
-                                <input onChange={(e)=> setFirstname(e.target.value)} type='text' className='border-2 px-4 py-2 rounded-sm mt-2' placeholder='First Name' />
+                                <input value={firstname} onChange={(e)=> setFirstname(e.target.value)} type='text' className='border-2 px-4 py-2 rounded-sm mt-2' placeholder='First Name' />
                             </div>
                         </div>
                       
                         <div className='py-2'>
                             <div className='flex flex-col'>
                                 <label className=' font-medium text-gray-600'> Last Name </label>
-                                <input onChange={(e)=> setLastname(e.target.value)} type='text' className='border-2 px-4 py-2 rounded-sm mt-2' placeholder='Last Name' />
+                                <input value={lastname} onChange={(e)=> setLastname(e.target.value)} type='text' className='border-2 px-4 py-2 rounded-sm mt-2' placeholder='Last Name' />
                             </div>
                         </div>
                         <div className='py-2'>
                             <div className='flex flex-col'>
                                 <label className=' font-medium text-gray-600'> Email </label>
-                                <input onChange={(e)=> setEmail(e.target.value)} type='email' className='border-2 px-4 py-2 rounded-sm mt-2' placeholder='Email' />
+                                <input value={email} onChange={(e)=> setEmail(e.target.value)} type='email' className='border-2 px-4 py-2 rounded-sm mt-2' placeholder='Email' />
                             </div>
                         </div>
                         <div className='py-2'>
                             <div className='flex flex-col'>
                                 <label className=' font-medium text-gray-600'> Password </label>
-                                <input onChange={(e)=> setPassword(e.target.value)} type='password' className='border-2 px-4 py-2 rounded-sm mt-2' placeholder='Password' />
+                                <input value={password} onChange={(e)=> setPassword(e.target.value)} type='password' className='border-2 px-4 py-2 rounded-sm mt-2' placeholder='Password' />
                             </div>
                         </div>
 
@@ -114,7 +125,7 @@ return (
                 </div>
 
                 <div className='flex justify-end mt-10'>
-                    <Buttons condittion={condittion} createFun={Create} />
+                    <Buttons condittion={condittion} createFun={Update} />
                 </div>
             </div>
         </main>
