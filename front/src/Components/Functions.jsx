@@ -106,3 +106,15 @@ export const GetProductbyCategorie = (id) =>{
    axios.post(`http://127.0.0.1:8000/api/getproductbycategorie/`,id)
   return []
 }
+/*export const ProductList() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+      axios.get('/api/products/')
+          .then(response => {
+              setProducts(response.data);
+          })
+          .catch(error => {
+              console.error('Error fetching products:', error);
+          });
+  }, []);*/

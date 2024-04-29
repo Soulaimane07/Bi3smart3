@@ -128,5 +128,7 @@ def getproductby(self, request, format=None):
         #     return Response(posts_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
+#class TagViewReq(generics.ListCreateAPIView):
+    #queryset = Tag.objects.all()
+    #serializer_class = TagSerializer
 
