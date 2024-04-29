@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import axios from 'axios';
+import { useSelector } from "react-redux";
 
 
 export const sizes = ["XS", "S", "M", "L", "XL"]
@@ -119,3 +120,28 @@ export const GetProductbyCategorie = (id) =>{
 
   return categories
 }
+/*export const ProductList() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+      axios.get('/api/products/')
+          .then(response => {
+              setProducts(response.data);
+          })
+          .catch(error => {
+              console.error('Error fetching products:', error);
+          });
+  }, []);*/
+
+  export const GetProductbyIDSeller = () =>{
+   let userid = useSelector(state=>state.User.data.id)
+   let [data , setdata] = useState()
+
+  useEffect(() => {
+    axios.get(`http://127.0.0.1:8000/api/getproductbyidseller/${userid}/`)
+         .then(res=> {
+            setdata(res.data)
+          })
+  },[]) 
+  return data 
+  }

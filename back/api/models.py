@@ -41,11 +41,17 @@ class Products(models.Model):
     prix = models.FloatField()
     image = models.ImageField(upload_to="api/files/products/", blank=True, null=True)
     categorie = models.ForeignKey(Categorie, on_delete= models.CASCADE)
+    #tags = models.ManyToManyField('Tag', related_name='Products')
+    seller = models.ForeignKey(User, on_delete= models.CASCADE,default=0)
 
     def __str__(self):
         return self.titre
     
 
-class Tag(models.Model):
-    titre = models.CharField(max_length=100)
-    
+
+
+#class Tag(models.Model):
+   # name = models.CharField(max_length=100)
+
+   # def __str__(self):
+      #  return self.name
