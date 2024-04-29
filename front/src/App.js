@@ -6,12 +6,12 @@ import Auth from './Components/Auth/Auth';
 import Clients from './Interfaces/Clients';
 import Seller from './Interfaces/Seller';
 import Admin from './Interfaces/Admin';
-import Layout from './Components/Layout';
-import RequireAuth from './Components/RequireAuth';
 import { useEffect } from 'react';
 import { UserActions } from './redux/Slices/UserSlice';
+import  Product  from './Pages/Client/Products/Product';
  
 function App() { 
+  let productPage = useSelector(state => state.ProductPage.opened)
   let authPage = useSelector(state => state.authPage.opened)
   console.log(useSelector(state => state.User));
 
@@ -35,6 +35,7 @@ function App() {
       <Admin />
 
       {authPage && <Auth />}
+      {productPage && <Product />}
     </BrowserRouter>
   );
 }
