@@ -58,7 +58,7 @@ function Product() {
                 {Product.categorie}
                 </td>
                 <td class="px-6 py-4 ">
-                <Link to={"/Admin/edituser" }>
+                <Link to={`/admin/editproduct/${Product.id}` }>
                 <button  className=' opacity-40 hover:opacity-100 hover:text-blue-600 transition-all mr-4 '>
                     <BiEditAlt size={25} />
                 </button>
