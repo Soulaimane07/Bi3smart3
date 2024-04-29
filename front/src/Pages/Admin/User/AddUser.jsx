@@ -4,12 +4,13 @@ import Sidebar from '../../../Components/Navbar/Sidebar'
 import { Link } from 'react-router-dom';
 import { FaArrowLeft } from "react-icons/fa6";
 import axios from 'axios';
-import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar'
+import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar';
+import { useNavigate } from 'react-router-dom';
 
 const Buttons = ({createFun, condittion}) => {
   return(
       <div className='flex space-x-2 items-stretch'>
-          <Link to={'/seller/products'} className='px-8 py-2 text-gray-800 opacity-80 hover:border-blue-600 hover:text-blue-700 hover:bg-white transition-all border-2 border-transparent'>Cancel</Link>
+          <Link to={'/admin/readUser'} className='px-8 py-2 text-gray-800 opacity-80 hover:border-blue-600 hover:text-blue-700 hover:bg-white transition-all border-2 border-transparent'>Cancel</Link>
           <button 
               onClick={createFun} 
               disabled={condittion}
@@ -19,6 +20,7 @@ const Buttons = ({createFun, condittion}) => {
   )
 }
 function AddUser() {
+    const navigate = useNavigate();
     const [lastname, setLastname] = useState('')
     const [firstname, setFirstname] = useState('')
     const [email, setEmail] = useState('')
@@ -49,6 +51,7 @@ function AddUser() {
           })
             .then(res => {
                 console.log(res);
+                navigate("/admin/readUser")
             })
             .catch(err => {
                 console.log(err);

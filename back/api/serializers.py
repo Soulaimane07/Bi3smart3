@@ -17,8 +17,17 @@ class CategorieSerializer(serializers.ModelSerializer):
         model = Categorie  
         fields = '__all__'    
 
+#class TagSerializer(serializers.ModelSerializer):
+   # class Meta:
+      #  model = Tag
+      # fields = '__all__'
+        
 class ProductsSerializer(serializers.ModelSerializer):
+   # tags = TagSerializer(many=True)
     class Meta:
          model = Products
          fields = '__all__'
+
+
+
 

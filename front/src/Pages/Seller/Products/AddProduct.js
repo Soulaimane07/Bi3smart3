@@ -6,6 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { GetCategories } from '../../../Components/Functions';
 import axios from 'axios';
 import Error from '../../../Components/Error/Error';
+import { useSelector } from 'react-redux';
 
 const Buttons = ({createFun, condittion, loading}) => {
     return(
@@ -38,12 +39,14 @@ function AddProduct() {
     const [prix, setPrix] = useState(0)
     const [categorie, setCategorie] = useState(0)
     const [image, setImage] = useState(null)
+    let userid = useSelector(state=>state.User.data.id)
 
     const newProduct = {
         titre: titre,
         prix: Number(prix),
         categorie: Number(categorie),
-        image: image
+        image: image,
+        seller: userid,
     }
 
     let condittion = titre.length === 0 || categorie === 0 || image === null
