@@ -11,7 +11,6 @@ import { useSelector } from 'react-redux';
 import Layout from '../Components/Layout';
 
 function Clients() {
-  let productPage = useSelector(state => state.ProductPage.opened)
     
   return (
     <Routes>
@@ -23,7 +22,6 @@ function Clients() {
         <Route path="commande" element={<Commande />} />
         <Route path="Profil" element={<Profil />} />
       </Route>
-      {productPage && <Product />}
     </Routes>
   )
 }

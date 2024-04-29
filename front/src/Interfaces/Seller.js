@@ -15,7 +15,8 @@ function Seller() {
         <Route element={<RequireAuth role={'seller'} />}>
           <Route path="dashboard" element={<Profile />} />
           <Route path="categories" element={<Categories />} />
-          <Route path="products" element={<Products />} >
+          <Route path="products" >
+            <Route index  element={<Products />} />
             <Route path='add' element={<AddProduct />}  />
             <Route path='update/:id' element={<UpdateProduct />} />
           </Route>

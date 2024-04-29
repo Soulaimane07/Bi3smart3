@@ -105,6 +105,12 @@ class ProductsReq(generics.ListAPIView):
             return Products.objects.filter(categorie=id)
         else:
             return Products.objects.all()
+        
+class ProductsReq1(generics.ListCreateAPIView):
+    serializer_class = ProductsSerializer
+
+    def get_queryset(self):
+            return Products.objects.all()
 
 
 class ProductsReqPk(generics.RetrieveUpdateDestroyAPIView):
@@ -134,7 +140,9 @@ def getproductby(self, request, format=None):
         #     return Response(posts_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
+#class TagViewReq(generics.ListCreateAPIView):
+    #queryset = Tag.objects.all()
+    #serializer_class = TagSerializer
 
 class Search(APIView):
     serializer_class = ProductsSerializer
@@ -147,5 +155,12 @@ class Search(APIView):
         else:
             return Products.objects.all()
 
+class Productbyidseller(generics.ListAPIView):
+    serializer_class = ProductsSerializer
 
-
+    def get_queryset(self):
+        sellerid = self.kwargs.get('sellerid')
+        if sellerid is not None:
+            return Products.objects.filter(seller=sellerid)
+        else:
+            return Products.objects.all()
