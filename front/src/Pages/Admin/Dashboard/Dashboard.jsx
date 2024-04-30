@@ -12,19 +12,21 @@ function Dashboard() {
         {
             image: "../images/user.png",
             title: "Users",
-            stats:users?.length
+            stats:users?.length,
+            link:"../../admin/readuser"
            
         },
         {
             image: "../images/products.png",
             title: "Products",
             stats: products?.length,
-           
+            link:"../../admin/readproduct"
         },
         {
             image: "../images/categories.png",
             title: "Catrgories",
             stats: categories?.length,
+            link:"../../admin/readcategorie"
            
            
         },
