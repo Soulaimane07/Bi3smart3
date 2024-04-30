@@ -46,7 +46,7 @@ function Categorie() {
                    {Categorie.titre}
                </td>
                <td class="px-2 py-4 ">
-               <Link to={`/Admin/editcategorie/${Categorie.id}`}>
+               <Link to={`/admin/editcategorie/${Categorie.id}`}>
                <button  className=' opacity-40 hover:opacity-100 hover:text-blue-600 transition-all mr-4 '>
                    <BiEditAlt size={25} />
                </button>

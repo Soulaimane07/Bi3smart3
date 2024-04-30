@@ -26,7 +26,7 @@ function SellerNavbar() {
 
   return (
     <nav aria-label='nav-1' className={`${navbar ? '-top-32' : 'top-0'} drop-shadow-md bg-white transition-all flex items-center justify-between py-2 fixed overflow-visible w-full  z-50 text-black px-8 pl-20`}>
-      <Link to="/"><img className='h-16' src="../images/logoblack.png" alt="logo" />  </Link>
+      <Link to="/"><img className='h-16' src="/../images/logoblack.png" alt="logo" />  </Link>
 
       <button 
         onClick={()=> setOpenProfile(!openProfile)}
