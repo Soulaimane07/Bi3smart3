@@ -11,6 +11,7 @@ import { MdOutlineRemove } from 'react-icons/md';
 import { CiTrash } from 'react-icons/ci';
 import { PiHeartStraightFill } from 'react-icons/pi';
 import { GetCategorie } from '../Functions';
+import axios from 'axios';
 
 
 export function ProductPanier({item}){
@@ -87,9 +88,22 @@ export function ProductPanier({item}){
 
 export function Product({item, favorit}) {
   const dispatch = useDispatch()
+  let userId = useSelector(state => state.User.data.id)
 
-  const addToFav = () => {
-    dispatch(panierActions.addToFavorites(item))
+  const AddToFav = () => {
+    let fav = {
+      userId: userId,
+      productId: item.id
+    }
+
+    axios.post('http://127.0.0.1:8000/api/favoris/', fav)
+        .then((res)=> {
+          console.log(res);
+          dispatch(panierActions.addToFavorites(item))
+        })
+        .catch((err)=> {
+          console.log(err);
+        })
   }
 
   const removeFromFav = () => {
@@ -131,14 +145,14 @@ export function Product({item, favorit}) {
                     </div>
                   :
                     <div className='flex items-center space-x-2'>
-                      <p className=' text-sm'> 10 </p> 
+                      <p className=' text-sm'> {item.fav} </p> 
                       <FaHeart color="red" size={14}/> 
                     </div>
                 }
               </button>
             :
               <button 
-                onClick={addToFav} 
+                onClick={AddToFav} 
                 onMouseEnter={()=> setHover(true)} 
                 onMouseLeave={()=> setHover(false)}
                 title='Add product to your Wish List' 
@@ -151,7 +165,7 @@ export function Product({item, favorit}) {
                     </div>
                   :
                     <div className='flex items-center space-x-2'>
-                      <p className=' text-sm'> 10 </p> 
+                      <p className=' text-sm'> {item.fav} </p> 
                       <FaHeart color="red" size={14}/> 
                     </div>
                 }

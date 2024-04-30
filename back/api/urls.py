@@ -18,6 +18,9 @@ urlpatterns = [
     path("getproductbycategorie/<int:id>/", views.ProductsReq.as_view(), name="getproductbyCategory"),
     path("searchproducts/<str:searchTerm>/", views.Search.as_view(), name="search_products"),
     path("getproductbyidseller/<int:sellerid>/", views.Productbyidseller.as_view(), name='get'),
+
+    path("favoris/", views.getFav.as_view()),
+    path("favoris/<int:pk>/", views.getFavPk.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

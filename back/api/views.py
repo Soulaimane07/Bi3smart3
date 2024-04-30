@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from rest_framework import generics, status
-from .serializers import UserSerializer, SellerRequestsSerializer, CategorieSerializer, ProductsSerializer
+from .serializers import UserSerializer, SellerRequestsSerializer, CategorieSerializer, ProductsSerializer, FavSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .models import User, SellerRequests ,Categorie, Products
+from .models import User, SellerRequests ,Categorie, Products, Favoris
 from django.db.models import Q
 
 
@@ -110,7 +110,7 @@ class ProductsReq1(generics.ListCreateAPIView):
     serializer_class = ProductsSerializer
 
     def get_queryset(self):
-            return Products.objects.all()
+        return Products.objects.all()
 
 
 class ProductsReqPk(generics.RetrieveUpdateDestroyAPIView):
@@ -127,22 +127,6 @@ def getproductby(self, request, format=None):
     products = Products.objects.all()
     serializer = ProductsSerializer(products) 
     return Response(serializer.data, status=status.HTTP_201_CREATED)
-    
-
-    # def post(self, request, *args, **kwargs):
-    #     posts_serializer = ProductsSerializer(data=request.data)
-    #     print(posts_serializer.data)
-        # if posts_serializer.is_valid():
-        #     posts_serializer.save()
-        #     return Response(posts_serializer.data, status=status.HTTP_201_CREATED)
-        # else:
-        #     print('error', posts_serializer.errors)
-        #     return Response(posts_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-#class TagViewReq(generics.ListCreateAPIView):
-    #queryset = Tag.objects.all()
-    #serializer_class = TagSerializer
 
 class Search(APIView):
     serializer_class = ProductsSerializer
@@ -164,3 +148,39 @@ class Productbyidseller(generics.ListAPIView):
             return Products.objects.filter(seller=sellerid)
         else:
             return Products.objects.all()
+        
+
+class getFav(generics.ListCreateAPIView):
+    queryset = Favoris.objects.all()
+    serializer_class = FavSerializer
+
+    def post(self, request, format=None):
+        userId = request.data.get("userId", "") 
+        productId = request.data.get("productId", "") 
+
+        try:
+            product = Products.objects.get(id=productId)
+
+            try:
+                user = User.objects.get(id=userId)
+            except User.DoesNotExist:
+                return Response({"error": "User does not exist"}, status=status.HTTP_404_NOT_FOUND)
+
+            favoris = Favoris.objects.create(
+                userId=user,
+                productId=product,
+            )
+            if favoris:
+                product.fav += 1
+                product.save()
+
+                productSerializer = ProductsSerializer(product)
+                return Response(productSerializer.data, status=status.HTTP_200_OK)
+
+        except Products.DoesNotExist:
+            return Response({"error": "Product does not exist"}, status=status.HTTP_404_NOT_FOUND)
+        
+class getFavPk(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Favoris.objects.all()
+    serializer_class = FavSerializer
+    lookup_field = "pk"

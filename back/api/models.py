@@ -41,13 +41,19 @@ class Products(models.Model):
     prix = models.FloatField()
     image = models.ImageField(upload_to="api/files/products/", blank=True, null=True)
     categorie = models.ForeignKey(Categorie, on_delete= models.CASCADE)
-    #tags = models.ManyToManyField('Tag', related_name='Products')
     seller = models.ForeignKey(User, on_delete= models.CASCADE,default=0)
+    fav = models.IntegerField(default=0)
 
     def __str__(self):
         return self.titre
     
+class Favoris(models.Model):
+    userId = models.ForeignKey(User, on_delete= models.CASCADE)
+    productId = models.ForeignKey(Products, on_delete= models.CASCADE)
 
+    def __str__(self):
+        return self.userId
+    
 
 
 #class Tag(models.Model):
