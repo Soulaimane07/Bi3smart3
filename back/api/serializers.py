@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, SellerRequests, Categorie, Products
+from .models import User, SellerRequests, Categorie, Products, Favoris
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -28,6 +28,10 @@ class ProductsSerializer(serializers.ModelSerializer):
          model = Products
          fields = '__all__'
 
+class FavSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Favoris 
+        fields = '__all__'  
 
 
 

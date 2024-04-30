@@ -148,7 +148,7 @@ export const GetProductbyCategorie = (id) =>{
           });
   }, []);*/
 
-  export const GetProductbyIDSeller = () =>{
+export const GetProductbyIDSeller = () =>{
    let userid = useSelector(state=>state.User.data.id)
    let [data , setdata] = useState()
 
@@ -159,4 +159,6 @@ export const GetProductbyCategorie = (id) =>{
           })
   },[]) 
   return data 
-  }
+}
+
+
