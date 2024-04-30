@@ -1,1 +1,0 @@
-SELECT * from api_categorie
