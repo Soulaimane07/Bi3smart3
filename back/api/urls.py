@@ -12,15 +12,18 @@ urlpatterns = [
 
     path("categorie/", views.CategorieReq.as_view()),
     path("categorie/<int:pk>", views.CategorieReqPk.as_view()),
+    path("categorie/<str:title>", views.CategorieReqTitle.as_view()),
 
     path("products/", views.ProductsReq1.as_view()),
     path("products/<int:pk>", views.ProductsReqPk.as_view()),
     path("getproductbycategorie/<int:id>/", views.ProductsReq.as_view(), name="getproductbyCategory"),
-    path("searchproducts/<str:searchTerm>/", views.Search.as_view(), name="search_products"),
+    path("searchproducts/<str:searchTerm>/", views.Search.as_view()),
     path("getproductbyidseller/<int:sellerid>/", views.Productbyidseller.as_view(), name='get'),
 
     path("favoris/", views.getFav.as_view()),
     path("favoris/<int:pk>/", views.getFavPk.as_view()),
+    path("favorisuser/<int:userid>/", views.getFav.as_view()),
+    path("removefavoris/", views.removeFav.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

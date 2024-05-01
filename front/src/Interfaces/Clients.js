@@ -5,10 +5,8 @@ import Favorits from '../Pages/Client/Favorits/Favorits';
 import Panier from '../Pages/Client/Panier/Panier';
 import { Categories } from '../Pages/Client/Categories/Categories';
 import Commande from '../Pages/Client/Commande/Commande';
-import Profil from '../Pages/Client/Profil/Profil';
-import Product from '../Pages/Client/Products/Product';
-import { useSelector } from 'react-redux';
 import Layout from '../Components/Layout';
+import Profile from '../Pages/Client/Profile/Profile';
 
 function Clients() {
     
@@ -16,11 +14,11 @@ function Clients() {
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="categorie/:id" element={<Categories />} />
+        <Route path="categorie/:categorie" element={<Categories />} />
         <Route path="favorits"  element={<Favorits/>}/>
-        <Route path="Panier" element={<Panier />} />
+        <Route path="panier" element={<Panier />} />
         <Route path="commande" element={<Commande />} />
-        <Route path="Profil" element={<Profil />} />
+        <Route path="profile" element={<Profile />} />
       </Route>
     </Routes>
   )

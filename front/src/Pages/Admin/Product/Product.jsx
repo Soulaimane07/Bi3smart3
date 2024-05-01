@@ -3,11 +3,10 @@ import { CiTrash } from 'react-icons/ci';
 import { BiEditAlt } from "react-icons/bi";
 import { IoAdd } from "react-icons/io5";
 import { Link } from 'react-router-dom';
-import { GetProducts } from '../../../Components/Functions';
+import { useSelector } from 'react-redux';
 
 function Product() {
-  const Products = GetProducts()
-  console.log(Products)
+  const Products = useSelector(state => state.ProductPage.products)
   return (
     
     <>

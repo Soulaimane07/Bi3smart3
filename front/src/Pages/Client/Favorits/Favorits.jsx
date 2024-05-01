@@ -1,18 +1,28 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Navbar from "../../../Components/Navbar/Navbar"
 import Footer from "../../../Components/Footer/Footer"
 import Filtrage from "../Products/Filtrage"
 import {Product} from "../../../Components/Product/Product"
 import { useSelector, useDispatch } from 'react-redux';
 import { authPageActions } from "../../../redux/Slices/AuthSlice"
+import { getFavorits } from "../../../redux/Slices/FavoritsSlice"
+import { TopPage } from "../../../Components/Functions"
 
 function Favorits(){
-    let list = useSelector(state => state.Panier.productsFavorites)
+    TopPage()
+
+    let list = useSelector(state => state.Favorits.products)
 
     const dispatch = useDispatch()
     const OpenAuth = () => {
         dispatch(authPageActions.open())
     }
+
+    let userId = useSelector(state => state.User.data?.id)
+    
+    useEffect(()=> {
+        userId && dispatch(getFavorits(userId))
+    }, [dispatch, userId])
 
     return (<>
         <Navbar/>
@@ -24,8 +34,8 @@ function Favorits(){
                 
                 {list?.length !== 0 ?
                     <div className='grid grid-cols-4 gap-2 px-20 flex-1'>
-                        {list.map((item,key)=>
-                            <Product item={item} key={key} favorit={true} />
+                        {list?.map((item,key)=>
+                            <Product item={item.productId} key={key} favorit={true} />
                         )}
                     </div>
                     :
@@ -34,10 +44,12 @@ function Favorits(){
                     </div>
                 }
 
-                <div className="mt-20 flex flex-col justify-center items-center">
-                    <h1 className="text-center text-lg font-medium mb-3"> Already have items saved? </h1>
-                    <button onClick={OpenAuth} className="border-2 text-blue-500 border-blue-500 uppercase hover:bg-blue-500 transition-all hover:text-white py-2 px-14 w-fit rounded-md"> Sign In  /  Register </button>
-                </div>
+                {!userId &&
+                    <div className="mt-20 flex flex-col justify-center items-center">
+                        <h1 className="text-center text-lg font-medium mb-3"> Already have items saved? </h1>
+                        <button onClick={OpenAuth} className="border-2 text-blue-500 border-blue-500 uppercase hover:bg-blue-500 transition-all hover:text-white py-2 px-14 w-fit rounded-md"> Sign In  /  Register </button>
+                    </div>
+                }
             </div>
         </main>
         <Footer/>    

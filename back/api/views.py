@@ -36,10 +36,12 @@ class UserListCreate(generics.ListAPIView):
         else:
             return Response("Parameters missing", status=status.HTTP_400_BAD_REQUEST)      
 
+
 class UserRetriveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     lookup_field = "pk"
+
 
 class UserLogin(APIView):
     def post(self, request, format=None):
@@ -72,9 +74,11 @@ class UserLogin(APIView):
 
 
 
+
 class SellerRequestsList(generics.ListCreateAPIView):
     queryset = SellerRequests.objects.all()
     serializer_class = SellerRequestsSerializer
+
 
 class SellerRequestsPk(generics.RetrieveUpdateDestroyAPIView):
     queryset = SellerRequests.objects.all()
@@ -84,15 +88,36 @@ class SellerRequestsPk(generics.RetrieveUpdateDestroyAPIView):
 
 
 
+
 class CategorieReq(generics.ListCreateAPIView):
     queryset = Categorie.objects.all()
     serializer_class = CategorieSerializer 
+
 
 class CategorieReqPk(generics.RetrieveUpdateDestroyAPIView):
     queryset = Categorie.objects.all()
     serializer_class = CategorieSerializer
     lookup_field = "pk"    
-    
+
+
+class CategorieReqTitle(generics.ListAPIView):
+    serializer_class = CategorieSerializer
+
+    def get(self, request, *args, **kwargs):
+        title = kwargs.get('title')
+        
+        if title is not None:
+            categorie = Categorie.objects.filter(titre__iexact=title).first()
+            if categorie:
+                categorieSerializer = CategorieSerializer(categorie)
+                return Response(categorieSerializer.data, status=status.HTTP_200_OK)
+            else:
+                return Response("Categorie not found", status=status.HTTP_404_NOT_FOUND)
+        else:
+            categories = Categorie.objects.all()
+            serializer = self.get_serializer(categories, many=True)
+            return Response(serializer.data)
+
 
 
 
@@ -105,7 +130,8 @@ class ProductsReq(generics.ListAPIView):
             return Products.objects.filter(categorie=id)
         else:
             return Products.objects.all()
-        
+
+
 class ProductsReq1(generics.ListCreateAPIView):
     serializer_class = ProductsSerializer
 
@@ -117,7 +143,6 @@ class ProductsReqPk(generics.RetrieveUpdateDestroyAPIView):
     queryset = Products.objects.all()
     serializer_class = ProductsSerializer
     lookup_field = "pk"
-
     
 
 def getproductby(self, request, format=None):
@@ -128,16 +153,25 @@ def getproductby(self, request, format=None):
     serializer = ProductsSerializer(products) 
     return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-class Search(APIView):
+
+class Search(generics.ListCreateAPIView):
     serializer_class = ProductsSerializer
 
-    def get(self, request, format=None):
+    def get_queryset(self):
         search_term = self.kwargs.get('searchTerm')
 
         if search_term:
-            return Products.objects.filter(name__icontains=search_term)
+            products = Products.objects.filter(titre__icontains=search_term)
         else:
-            return Products.objects.all()
+            products = Products.objects.all()
+
+        return products
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        serializer = self.serializer_class(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 class Productbyidseller(generics.ListAPIView):
     serializer_class = ProductsSerializer
@@ -150,26 +184,36 @@ class Productbyidseller(generics.ListAPIView):
             return Products.objects.all()
         
 
+
+
 class getFav(generics.ListCreateAPIView):
-    queryset = Favoris.objects.all()
     serializer_class = FavSerializer
+
+    def get_queryset(self):
+        userid = self.kwargs.get('userid')
+        if userid is not None:
+            return Favoris.objects.filter(userId=userid)
+        else:
+            return Favoris.objects.all()
 
     def post(self, request, format=None):
         userId = request.data.get("userId", "") 
         productId = request.data.get("productId", "") 
 
-        try:
-            product = Products.objects.get(id=productId)
+        favorit = Favoris.objects.filter(productId=productId, userId=userId).first()
 
-            try:
-                user = User.objects.get(id=userId)
-            except User.DoesNotExist:
-                return Response({"error": "User does not exist"}, status=status.HTTP_404_NOT_FOUND)
+        if favorit:  
+            favoritsSerializer = FavSerializer(favorit)
+            return Response(favoritsSerializer.data, status=status.HTTP_200_OK)
+        else:
+            product = Products.objects.get(id=productId)
+            user = User.objects.get(id=userId)
 
             favoris = Favoris.objects.create(
                 userId=user,
                 productId=product,
             )
+
             if favoris:
                 product.fav += 1
                 product.save()
@@ -177,9 +221,26 @@ class getFav(generics.ListCreateAPIView):
                 productSerializer = ProductsSerializer(product)
                 return Response(productSerializer.data, status=status.HTTP_200_OK)
 
-        except Products.DoesNotExist:
-            return Response({"error": "Product does not exist"}, status=status.HTTP_404_NOT_FOUND)
         
+class removeFav(generics.ListCreateAPIView):
+    serializer_class = FavSerializer
+    
+    def post(self, request, format=None):
+        userId = request.data.get("userId", "") 
+        productId = request.data.get("productId", "") 
+
+        favorit = Favoris.objects.filter(productId=productId, userId=userId).first()
+        product = Products.objects.get(id=productId)
+
+
+        if favorit and product:  
+            favorit.delete()
+            product.fav -= 1
+            product.save()
+
+            return Response(status=status.HTTP_204_NO_CONTENT) 
+        
+
 class getFavPk(generics.RetrieveUpdateDestroyAPIView):
     queryset = Favoris.objects.all()
     serializer_class = FavSerializer

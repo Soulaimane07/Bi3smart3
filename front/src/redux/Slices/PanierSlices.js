@@ -35,16 +35,6 @@ export const PanierSlices = createSlice({
         state.price = state.price + item.productItem.prix
       })
     },
-
-
-    addToFavorites: (state, action)=> {
-      state.productsFavorites.push(action.payload)
-    },
-    removeFromFavorites: (state, action)=> {
-      state.productsFavorites = state.productsFavorites.filter(function(item) {
-        return item.id !== action.payload
-      })
-    }
   },
 })
 

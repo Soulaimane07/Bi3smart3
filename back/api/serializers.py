@@ -29,6 +29,8 @@ class ProductsSerializer(serializers.ModelSerializer):
          fields = '__all__'
 
 class FavSerializer(serializers.ModelSerializer):
+    productId = ProductsSerializer(many=False, read_only=True)
+ 
     class Meta:
         model = Favoris 
         fields = '__all__'  
