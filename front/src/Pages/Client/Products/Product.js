@@ -7,10 +7,10 @@ import { HiOutlineInboxArrowDown } from "react-icons/hi2";
 import { IoClose } from "react-icons/io5";
 import { productActions } from '../../../redux/Slices/ProductSlice';
 import { panierActions } from '../../../redux/Slices/PanierSlices';
+import { authPageActions } from '../../../redux/Slices/AuthSlice';
 
 function Product() {
     const productItem = useSelector(state => state.ProductPage.product)
-    console.log(productItem)
     const [size, setSize] = useState(null)
 
     const condition = !productItem | size === null
@@ -26,15 +26,41 @@ function Product() {
         dispatch(productActions.close())
     }
 
-    const addCart = () => {
-        dispatch(panierActions.addProduct(selectedProduct))
-        closeProduct()
+
+
+
+    let userId= useSelector(state => state.User.data?.id)
+
+    const AddCart = () => {
+        if(userId === undefined){
+            dispatch(authPageActions.open())
+        }else{
+            // let fav = {
+            //     userId: userId,
+            //     productId: item.id
+            // }
+        
+            // axios.post('http://127.0.0.1:8000/api/favoris/', fav)
+            //     .then((res)=> {
+            //         dispatch(getFavorits(userId))
+            //         dispatch(getProducts())
+            //         dispatch(getProductsByCategorie(item.categorie))
+            // })
+            // .catch((err)=> {
+            //     console.log(err);
+            // })
+        }
     }
+
+    // const addCart = () => {
+    //     dispatch(panierActions.addProduct(selectedProduct))
+    //     closeProduct()
+    // }
 
 
 
   return (
-    <div className='fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-30 transition-all w-full h-full z-50 mx-0 flex justify-center items-center'>
+    <div className='fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-30 transition-all w-full h-full z-40 mx-0 flex justify-center items-center'>
         <div className='relative flex items-stretch space-x-6 bg-white text-black h-fit w-1/2 rounded-lg py-10 px-10'>
             
             <div className='w-1/2 rounded-md overflow-hidden'>
@@ -75,11 +101,11 @@ function Product() {
                     </div>
                 </div>
 
-                    <button
-                        onClick={addCart}
-                        disabled={condition}
-                        className={`${condition ? 'opacity-40' : 'opacity-100 hover:scale-105'} transition-all uppercase text-md bg-blue-600 w-full text-white py-2.5 rounded-md`}
-                    > Add to cart </button>
+                <button
+                    onClick={AddCart}
+                    disabled={condition}
+                    className={`${condition ? 'opacity-40' : 'opacity-100 hover:scale-105'} transition-all uppercase text-md bg-blue-600 w-full text-white py-2.5 rounded-md`}
+                > Add to cart </button>
             </div>
             
             <button onClick={closeProduct} className=' absolute top-4 right-10 hover:scale-110 opacity-70  transition-all'>

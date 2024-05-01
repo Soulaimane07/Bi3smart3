@@ -44,7 +44,7 @@ function Navbar() {
     window.addEventListener('scroll',changebg)
 
   return (
-    <header className={`${navbar ? '-top-32' : 'top-0'} -top-32 drop-shadow-md bg-white transition-all fixed overflow-visible  w-full  z-50 text-black px-6 md:px-16`}>
+    <header className={`${navbar ? '-top-32' : 'top-0'} -top-32 drop-shadow-md bg-white transition-all fixed overflow-visible  w-full  z-30 text-black px-6 md:px-16`}>
         <nav className='relative px-4 pt-4 w-full flex justify-between items-center'>
             <Link to="/"><img className='h-16' src="../images/logoblack.png" alt="logo" />  </Link>
 

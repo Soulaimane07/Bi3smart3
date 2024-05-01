@@ -3,10 +3,12 @@ import Sidebar from '../../../Components/Navbar/Sidebar'
 import { Link } from 'react-router-dom'
 import Footer from '../../../Components/Footer/Footer'
 import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar'
-import { GetUsers,GetProducts,GetCategories } from '../../../Components/Functions';
+import { GetUsers, GetCategories } from '../../../Components/Functions';
+import { getProducts } from '../../../redux/Slices/ProductSlice'
+
 function Dashboard() {
     const users = GetUsers()
-    const products = GetProducts()
+    const products = getProducts()
     const categories = GetCategories()
     const list =[
         {
