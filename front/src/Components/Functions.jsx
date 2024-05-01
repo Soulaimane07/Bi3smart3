@@ -1,23 +1,13 @@
 import { useEffect, useState } from "react"
 import axios from 'axios';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts, getProductsByCategorie } from "../redux/Slices/ProductSlice";
+import { panierActions } from "../redux/Slices/PanierSlices";
 
+export const apiUrl = 'http://127.0.0.1:8000/api'
 
 export const sizes = ["XS", "S", "M", "L", "XL"]
 
-
-export const GetProducts = () => {
-  const [products, setProducts] = useState([])
-
-  useEffect(()=>{
-    axios.get(" http://127.0.0.1:8000/api/products/")
-      .then(res => {
-        setProducts(res.data)
-      })
-  }, [])
-
-  return products
-}
 
 
 export const GetProduct = (id) => {
@@ -120,34 +110,6 @@ export const Removeproduct = (id) => {
 }
 
 
-export const GetProductbyCategorie = (id) =>{
-  const [categories, setCategories] = useState([])
-
-  useEffect(()=> {
-    axios.get(`http://127.0.0.1:8000/api/getproductbycategorie/${id}/`)
-    .then(res=> {
-        setCategories(res.data)
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }, [id])
-
-  return categories
-}
-/*export const ProductList() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-      axios.get('/api/products/')
-          .then(response => {
-              setProducts(response.data);
-          })
-          .catch(error => {
-              console.error('Error fetching products:', error);
-          });
-  }, []);*/
-
 export const GetProductbyIDSeller = () =>{
    let userid = useSelector(state=>state.User.data.id)
    let [data , setdata] = useState()
@@ -160,5 +122,19 @@ export const GetProductbyIDSeller = () =>{
   },[]) 
   return data 
 }
+
+
+
+
+
+
+
+export const TopPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])  
+}
+
+
 
 

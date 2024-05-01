@@ -49,7 +49,7 @@ class Products(models.Model):
     
 class Favoris(models.Model):
     userId = models.ForeignKey(User, on_delete= models.CASCADE)
-    productId = models.ForeignKey(Products, on_delete= models.CASCADE)
+    productId = models.ForeignKey(Products, related_name='product', on_delete= models.CASCADE)
 
     def __str__(self):
         return self.userId

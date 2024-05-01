@@ -6,8 +6,11 @@ import Features from './Features'
 import Categories from './Categories'
 import Products from './Products'
 import Subscribe from './Subscribe'
+import { TopPage } from '../../../Components/Functions'
 
 function Home() {
+  TopPage()
+  
   return (
     <>
         <Navbar />

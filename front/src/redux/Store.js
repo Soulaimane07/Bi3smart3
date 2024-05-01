@@ -4,6 +4,7 @@ import userReducer from './Slices/UserSlice'
 import searchReducer from './Slices/SearchSlice'
 import panierReducer from './Slices/PanierSlices'
 import productReducer from './Slices/ProductSlice'
+import favoritsReducer from './Slices/FavoritsSlice'
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
     User: userReducer,
     Search: searchReducer,
     Panier: panierReducer,
-    ProductPage: productReducer
+    ProductPage: productReducer,
+    Favorits: favoritsReducer,
   },
 })
 

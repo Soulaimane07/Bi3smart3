@@ -7,8 +7,6 @@ import { HiOutlineInboxArrowDown } from "react-icons/hi2";
 import { IoClose } from "react-icons/io5";
 import { productActions } from '../../../redux/Slices/ProductSlice';
 import { panierActions } from '../../../redux/Slices/PanierSlices';
-import { CiHeart } from "react-icons/ci";
-import { FaHeart } from "react-icons/fa";
 
 function Product() {
     const productItem = useSelector(state => state.ProductPage.product)
@@ -34,7 +32,6 @@ function Product() {
     }
 
 
-    const [love, setLove] = useState(false)
 
   return (
     <div className='fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-30 transition-all w-full h-full z-50 mx-0 flex justify-center items-center'>
@@ -78,19 +75,11 @@ function Product() {
                     </div>
                 </div>
 
-                <div className='flex space-x-2 justify-between items-center'>
                     <button
                         onClick={addCart}
                         disabled={condition}
                         className={`${condition ? 'opacity-40' : 'opacity-100 hover:scale-105'} transition-all uppercase text-md bg-blue-600 w-full text-white py-2.5 rounded-md`}
                     > Add to cart </button>
-
-                    <button 
-                        className='rounded-full hover:scale-110 opacity-90 flex justify-center items-center w-12 hover:opacity-100'
-                    > 
-                        {love ? <FaHeart size={28}  /> : <CiHeart size={34} />}
-                    </button>
-                </div>
             </div>
             
             <button onClick={closeProduct} className=' absolute top-4 right-10 hover:scale-110 opacity-70  transition-all'>

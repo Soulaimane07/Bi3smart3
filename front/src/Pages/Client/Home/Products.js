@@ -1,18 +1,30 @@
-import { GetProducts} from '../../../Components/Functions'
+import { useDispatch, useSelector } from 'react-redux'
 import {Product} from '../../../Components/Product/Product'
-
+import { getProducts } from '../../../redux/Slices/ProductSlice'
+import { useEffect } from 'react'
+import { ProductSkeletonList } from '../../../Components/Skeletons'
 
 function Products() {
-    const products = GetProducts()
+  const dispatch = useDispatch()
+  
+  useEffect(()=> {
+    dispatch(getProducts())
+  }, [dispatch])
+
+  const products = useSelector(state => state.ProductPage.products)
 
   return (
     <div className='mt-28'>
         <h1 className='text-center font-medium text-3xl'> Trending Products </h1>
         
         <div className="grid grid-cols-4 gap-1 px-40 mb-16 mt-10">
-            {products?.map((item,key)=>(
-                <Product item={item} key={key} />
-            ))}
+            {products?.length === 0 ?
+                <ProductSkeletonList />
+              :
+                products?.map((item,key)=>(
+                    <Product item={item} key={key} />
+                ))
+            }
         </div>
     </div>
   )

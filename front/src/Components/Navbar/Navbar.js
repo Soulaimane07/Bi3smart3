@@ -1,27 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import { CiSearch, CiHeart, CiShoppingCart, CiUser } from "react-icons/ci";
+import React, { useState } from 'react'
+import { CiHeart, CiShoppingCart, CiUser } from "react-icons/ci";
 import { Link } from 'react-router-dom';
 
 import Profile from './Profile';
-import SearchZone from './SearchZone';
 import { useDispatch, useSelector } from 'react-redux';
-import { searchActions } from '../../redux/Slices/SearchSlice';
 import { authPageActions } from '../../redux/Slices/AuthSlice';
 import Categorie from './Categorie';
+import Search from './Search';
 
 function Navbar() {
     const [openProfile, setOpenProfile] = useState(false)
 
-    let openedSearch = useSelector(state => state.Search.opened)
     const dispatch = useDispatch()
-
-    const [searchTerm, setSearchTerm] = useState('')
-    useEffect(()=> {
-        dispatch(searchActions.search(searchTerm))
-    }, [searchTerm])
-
-    
-
 
     const isUser = useSelector((state)=> state.User.data)
 
@@ -30,9 +20,8 @@ function Navbar() {
         setOpenProfile(false)
     }
 
-    let FavoritesProducts = useSelector((state)=> state.Panier.productsFavorites.length)
+    let FavoritesProducts = useSelector((state)=> state.Favorits.products.length)
     let PanierProducts = useSelector((state)=> state.Panier.products.length)
-
 
 
 
@@ -59,17 +48,7 @@ function Navbar() {
         <nav className='relative px-4 pt-4 w-full flex justify-between items-center'>
             <Link to="/"><img className='h-16' src="../images/logoblack.png" alt="logo" />  </Link>
 
-            <div className='absolute left-0 right-0 mx-auto flex space-x-3 items-center  bg-gray-200 rounded-full w-1/3 px-4 py-1'>
-                <div className='text-gray-400'>
-                    <CiSearch size={24} />
-                </div>
-                <input
-                    className='bg-transparent w-full outline-none py-1 placeholder:text-gray-400' 
-                    placeholder='Search for products' 
-                    onChange={(e)=> setSearchTerm(e.target.value)}
-                />
-                {openedSearch && <SearchZone />}
-            </div>
+            <Search />
 
             <div className='flex items-center space-x-4 md:space-x-6'>
                 <Link to={"/favorits"} className='relative'> 

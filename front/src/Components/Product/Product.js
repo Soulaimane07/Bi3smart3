@@ -1,17 +1,14 @@
 import React, { useState } from 'react'
-import { FaHeart } from "react-icons/fa";
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { useDispatch, useSelector } from 'react-redux';
 import { panierActions } from '../../redux/Slices/PanierSlices';
-import { GoTrash } from "react-icons/go";
-import { FaPlus } from "react-icons/fa6";
 import { productActions } from '../../redux/Slices/ProductSlice';
 import { TiPlus } from 'react-icons/ti';
 import { MdOutlineRemove } from 'react-icons/md';
 import { CiTrash } from 'react-icons/ci';
 import { PiHeartStraightFill } from 'react-icons/pi';
 import { GetCategorie } from '../Functions';
-import axios from 'axios';
+import Favorits from './Components/Favorits';
 
 
 export function ProductPanier({item}){
@@ -88,27 +85,6 @@ export function ProductPanier({item}){
 
 export function Product({item, favorit}) {
   const dispatch = useDispatch()
-  let userId = useSelector(state => state.User.data.id)
-
-  const AddToFav = () => {
-    let fav = {
-      userId: userId,
-      productId: item.id
-    }
-
-    axios.post('http://127.0.0.1:8000/api/favoris/', fav)
-        .then((res)=> {
-          console.log(res);
-          dispatch(panierActions.addToFavorites(item))
-        })
-        .catch((err)=> {
-          console.log(err);
-        })
-  }
-
-  const removeFromFav = () => {
-    dispatch(panierActions.removeFromFavorites(item.id))
-  }
 
   const OpenProduct = () => {
     dispatch(productActions.open(item))
@@ -128,49 +104,7 @@ export function Product({item, favorit}) {
             <img src ={item.image}  className='h-full rounded-sm' alt='product' />  
           </button>
           
-
-          {favorit
-            ?
-              <button 
-                onClick={removeFromFav} 
-                onMouseEnter={()=> setHover(true)} 
-                onMouseLeave={()=> setHover(false)}
-                title='Remove product from your Wish List' 
-                className=' absolute top-1 left-1 transition-all text-black bg-white opacity-80 hover:opacity-100 px-2 rounded-full'
-              > 
-                {hover 
-                  ?
-                    <div className='px-3 py-1 text-gray-800'>
-                      <GoTrash size={12}  />
-                    </div>
-                  :
-                    <div className='flex items-center space-x-2'>
-                      <p className=' text-sm'> {item.fav} </p> 
-                      <FaHeart color="red" size={14}/> 
-                    </div>
-                }
-              </button>
-            :
-              <button 
-                onClick={AddToFav} 
-                onMouseEnter={()=> setHover(true)} 
-                onMouseLeave={()=> setHover(false)}
-                title='Add product to your Wish List' 
-                className=' absolute top-1 left-1 transition-all text-black bg-white opacity-80 hover:opacity-100 px-2 rounded-full'
-              > 
-                {hover 
-                  ?
-                    <div className='px-3 py-1 text-gray-800'>
-                      <FaPlus size={12}  />
-                    </div>
-                  :
-                    <div className='flex items-center space-x-2'>
-                      <p className=' text-sm'> {item.fav} </p> 
-                      <FaHeart color="red" size={14}/> 
-                    </div>
-                }
-              </button>
-          }
+          <Favorits item={item} hover={hover} setHover={setHover} favorit={favorit} />
         </div>
         <div  className='px-1'>
           <h1 className='font-medium text-lg'> {item?.titre} </h1>
@@ -198,7 +132,7 @@ export const  ProdcutSearch = ({item}) => {
   return (
     <button onClick={OpenProduct} className='flex space-x-2 hover:bg-gray-300 p-2 rounded-md transition-all'>
       <div className='w-20 rounded-md overflow-hidden'>
-        <img className='w-20 h-20' src={item.image} alt={`image ${item.id}`} />
+        <img className='w-20 h-20' src={`http://127.0.0.1:8000/${item.image}`} alt={`image ${item.id}`} />
       </div>
       <div className='flex justify-between flex-1'>
         <h1> {item.titre} </h1>
