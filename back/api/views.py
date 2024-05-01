@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from rest_framework import generics, status
-from .serializers import UserSerializer, SellerRequestsSerializer, CategorieSerializer, ProductsSerializer, FavSerializer
+from .serializers import UserSerializer, SellerRequestsSerializer, CategorieSerializer, ProductsSerializer, FavSerializer, PanierSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .models import User, SellerRequests ,Categorie, Products, Favoris
+from .models import User, SellerRequests ,Categorie, Products, Favoris, Panier
 from django.db.models import Q
 
 
@@ -245,3 +245,28 @@ class getFavPk(generics.RetrieveUpdateDestroyAPIView):
     queryset = Favoris.objects.all()
     serializer_class = FavSerializer
     lookup_field = "pk"
+
+
+class PanierReq(generics.ListCreateAPIView):
+    serializer_class = PanierSerializer
+
+    def get_queryset(self):
+        userid = self.kwargs.get('userid')
+        if userid is not None:
+            return Panier.objects.filter(userId=userid)
+        else:
+            return Panier.objects.all()
+    
+    def post(self, request, format=None):
+        userId = request.data.get("userId", "") 
+        productId = request.data.get("productId", "") 
+
+        panier = Panier.objects.create(
+            userId = userId,
+            productId = productId,
+        )
+
+        panierSerializer = PanierSerializer(panier)
+        return Response(panierSerializer.data, status=status.HTTP_200_OK)
+
+    
