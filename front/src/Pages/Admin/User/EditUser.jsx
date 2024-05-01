@@ -7,6 +7,7 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { GetUser } from '../../../Components/Functions';
 import { useParams,useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar';
 
 const Buttons = ({createFun, condittion}) => {
   return(
@@ -74,7 +75,7 @@ function EditUser() {
 return (
   <>
   
-  <Navadmin />
+  <SellerNavbar />
 
   <main className='min-h-screen flex mt-28'>
     <Sidebar />

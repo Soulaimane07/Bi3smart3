@@ -28,7 +28,7 @@ export const GetCategorie = (id) => {
   const [product, setProduct] = useState({})
 
   useEffect(()=> {
-    axios.get(`http://127.0.0.1:8000/api/categorie/${id}/`)
+    axios.get(`http://127.0.0.1:8000/api/categorie/${id}`)
       .then(res => {
         setProduct(res.data)
       })
