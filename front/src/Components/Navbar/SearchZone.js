@@ -12,7 +12,6 @@ function SearchZone() {
     useEffect(()=>{
         axios.get(`http://127.0.0.1:8000/api/searchproducts/${searchTerm}/`)
             .then((res)=> {
-                console.log(res.data);
                 setProducts(res.data)
             })
             .catch((err)=> {
