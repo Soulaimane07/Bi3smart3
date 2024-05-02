@@ -10,12 +10,11 @@ import { useEffect } from 'react';
 import { UserActions } from './redux/Slices/UserSlice';
 import  Product  from './Pages/Client/Products/Product';
 import { favoritsActions, getFavorits } from './redux/Slices/FavoritsSlice';
+import { getPanier, panierActions } from './redux/Slices/PanierSlices';
  
 function App() { 
   let productPage = useSelector(state => state.ProductPage.opened)
   let authPage = useSelector(state => state.authPage.opened)
-  // console.log(useSelector(state => state.User));
-
   const dispatch = useDispatch()
  
   useEffect(()=> {
@@ -25,13 +24,14 @@ function App() {
     if(user) {
       dispatch(UserActions.login(user))
       dispatch(getFavorits(user?.id))
+      dispatch(getPanier(user?.id))
     } else {
       dispatch(UserActions.logout())
       dispatch(favoritsActions.emptyFavorites())
+      dispatch(panierActions.emptyPanier())
     }
   }, [dispatch])
 
-  // console.log(useSelector(state => state.Favorits))
 
   return (
     <BrowserRouter>

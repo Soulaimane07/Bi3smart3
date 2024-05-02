@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux';
 
 function OrderSummery({page, Orderdata}) {
@@ -16,7 +16,6 @@ function OrderSummery({page, Orderdata}) {
       '../images/paypal.svg',
       '../images/venmo.svg',
    ]
-
 
     const [navbar, setNavbar] = useState(false)
     const [y, setY] = useState(0)
@@ -37,6 +36,14 @@ function OrderSummery({page, Orderdata}) {
     window.addEventListener('scroll',changebg)
 
 
+
+    const navigate = useNavigate()
+    const Commander = () => {
+      localStorage.setItem("bi3smart_commande", JSON.stringify({"products": productsSelected, "price": price}))
+      navigate("/commande")
+    }
+
+
   return (
     <div className={`${navbar ? 'top-6' : 'top-36'} transition-all w-96 h-60 right-0 sticky`}>
     <div className='bg-gray-100 py-6 px-6 mb-4 rounded-md'>
@@ -44,11 +51,9 @@ function OrderSummery({page, Orderdata}) {
         <h1 className='text-2xl mb-2 font-bold'>Order Summary</h1>
         <h2 className='text-2xl'>${price}</h2>
         {page === "panier" &&(
-            <Link to={productsSelected.length!==0 && '/commande'}> 
-              <div className={`bg-blue-500 text-white w-full py-2 text-center mt-6 rounded-lg  ${productsSelected.length==0 ? 'opacity-40 cursor-default':'opacity-100  hover:scale-105 transition-all'} `}>
-                Checkout Now ({productsSelected.length})
-              </div>
-            </Link>
+            <button onClick={Commander} className={`bg-blue-500 text-white w-full py-2 text-center mt-6 rounded-lg  ${productsSelected.length==0 ? 'opacity-40 cursor-default':'opacity-100  hover:scale-105 transition-all'} `}>
+              Checkout Now ({productsSelected.length})
+            </button>
         )}
         {page === "commande" &&(
             <button disabled={condition} className={ `${condition ? "opacity-40" : "hover:scale-105"} bg-blue-500 text-white w-full py-2 text-center mt-6 rounded-lg transition-all`}> 
@@ -56,7 +61,6 @@ function OrderSummery({page, Orderdata}) {
             </button>
         )}
       </div>
-
     </div>
     <div className=' bg-gray-100 px-6 py-4 rounded-md'> 
         <h1 className='mb-4 font-bold text-lg'>We Accept</h1>

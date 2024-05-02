@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, SellerRequests, Categorie, Products, Favoris
+from .models import User, SellerRequests, Categorie, Products, Favoris, Panier
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -36,4 +36,14 @@ class FavSerializer(serializers.ModelSerializer):
         fields = '__all__'  
 
 
+class PanierCreationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Panier
+        exclude = ['userId']  # Exclude userId from creation serializer
 
+class PanierRetrievalSerializer(serializers.ModelSerializer):
+    productId = ProductsSerializer()  # Include product data in retrieval serializer
+
+    class Meta:
+        model = Panier
+        fields = '__all__'

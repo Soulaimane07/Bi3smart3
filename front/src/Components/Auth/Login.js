@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { authPageActions } from '../../redux/Slices/AuthSlice';
 import { UserActions } from '../../redux/Slices/UserSlice';
 import { getFavorits } from '../../redux/Slices/FavoritsSlice';
+import { getPanier } from '../../redux/Slices/PanierSlices';
 
 function Login({setPage}) {
     const dispatch = useDispatch()
@@ -43,6 +44,7 @@ function Login({setPage}) {
             .then((data) => {
                 data?.isRequested && (dispatch(UserActions.sellerRequest()))
                 dispatch(getFavorits(data.id))
+                dispatch(getPanier(data.id))
                 dispatch(UserActions.login(data))
             })
             .catch((error) => console.log(error));

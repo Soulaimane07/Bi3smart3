@@ -5,6 +5,7 @@ import { UserActions } from '../../redux/Slices/UserSlice';
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import { favoritsActions } from '../../redux/Slices/FavoritsSlice';
+import { panierActions } from '../../redux/Slices/PanierSlices';
 
 
 function Profile({close}) {
@@ -16,6 +17,7 @@ function Profile({close}) {
     const logout = () => {
         dispatch(UserActions.logout())
         dispatch(favoritsActions.emptyFavorites())
+        dispatch(panierActions.emptyPanier())
         close(false)
     }
 

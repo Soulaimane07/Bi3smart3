@@ -24,6 +24,10 @@ urlpatterns = [
     path("favoris/<int:pk>/", views.getFavPk.as_view()),
     path("favorisuser/<int:userid>/", views.getFav.as_view()),
     path("removefavoris/", views.removeFav.as_view()),
+
+    path("panier/", views.PanierReq.as_view()),
+    path("panierpk/<int:pk>/", views.PanierReqPk.as_view()),
+    path("panier/<int:userid>/", views.PanierReq.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

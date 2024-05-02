@@ -1,4 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import axios from 'axios';
+
+export const getPanier = createAsyncThunk('panier', async (userId)=> {
+  try {
+    const response = await axios.get(`http://127.0.0.1:8000/api/panier/${userId}/`)
+    return response.data
+  } catch (error) {
+    console.log(error);
+    return error.message
+  }
+})
 
 export const PanierSlices = createSlice({
   name: 'Panier',
@@ -6,36 +17,44 @@ export const PanierSlices = createSlice({
     products: [],
     productsSelected: [],
     price: 0,
-    productsFavorites: [],
+    isLoading: false,
+    isError: false
   },
   reducers: {
-    addProduct: (state, action)=> {
-      state.products.push(action.payload)
-    },
-    removeProduct: (state, action)=> {
-      state.products = state.products.filter(function(item) {
-        return item.productItem.id !== action.payload
-      })
+    emptyPanier: (state, action)=> {
+      state.products = []
     },
     addSelectProduct: (state, action)=> {
-      console.log("Select");
       state.productsSelected.push(action.payload)
-      state.productsSelected = Array.from(
-        new Set(state.productsSelected.map(item => JSON.stringify(item)))
-      ).map(item => JSON.parse(item));
     },
     removeSelectProduct: (state, action)=> {
       state.productsSelected = state.productsSelected.filter(function(item) {
-        return item.productItem.id !== action.payload.productItem.id
+        return item !== action.payload
       })
+    },
+    setPrice: (state, action)=> {
+      state.price = action.payload
     },
     calculePrice: (state, action)=> {
       state.price = 0
       state.productsSelected.map((item)=> {
-        state.price = state.price + item.productItem.prix
+        state.price = state.price + item.prix * item.quantite
       })
     },
   },
+  extraReducers(builder){
+    builder
+      .addCase(getPanier.pending, (state, action) => {
+        state.isLoading = true
+      })
+      .addCase(getPanier.fulfilled, (state, action)=> {
+        state.products = action.payload
+      })
+      .addCase(getPanier.rejected, (state, action)=> {
+        state.isError = action.error.message
+      })
+
+  }
 })
 
 export const panierActions = PanierSlices.actions

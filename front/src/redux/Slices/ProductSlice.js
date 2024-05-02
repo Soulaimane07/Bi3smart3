@@ -30,7 +30,8 @@ export const productSlice = createSlice({
     isLoadingPC: false,
     isError: false,
     opened: false,
-    product: {}
+    product: {},
+    addedToPanier: false
   },
   reducers: {
     open: (state, action) => {
@@ -40,6 +41,12 @@ export const productSlice = createSlice({
     close: (state) => {
       state.opened = false
       state.product = {}
+    },
+    openAdded: (state, action) => {
+      state.addedToPanier = true
+    },
+    closeAdded: (state) => {
+      state.addedToPanier = false
     },
   },
   extraReducers(builder) {

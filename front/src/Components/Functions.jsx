@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts, getProductsByCategorie } from "../redux/Slices/ProductSlice";
 import { panierActions } from "../redux/Slices/PanierSlices";
 
-export const apiUrl = 'http://127.0.0.1:8000/api'
+export const apiUrl = 'http://127.0.0.1:8000'
 
 export const sizes = ["XS", "S", "M", "L", "XL"]
 
@@ -134,7 +134,5 @@ export const TopPage = () => {
     window.scrollTo(0, 0)
   }, [])  
 }
-
-
 
 

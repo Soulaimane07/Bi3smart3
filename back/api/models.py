@@ -61,3 +61,15 @@ class Favoris(models.Model):
 
    # def __str__(self):
       #  return self.name
+
+
+
+class Panier(models.Model):
+    userId = models.ForeignKey(User, on_delete= models.CASCADE, null=True, blank=True)
+    productId = models.ForeignKey(Products, on_delete= models.CASCADE)
+    quantite = models.IntegerField(default=1)
+    prix = models.FloatField(default=0)
+    size = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.userId

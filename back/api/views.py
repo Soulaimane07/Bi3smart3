@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from rest_framework import generics, status
-from .serializers import UserSerializer, SellerRequestsSerializer, CategorieSerializer, ProductsSerializer, FavSerializer
+from .serializers import PanierCreationSerializer, PanierRetrievalSerializer, UserSerializer, SellerRequestsSerializer, CategorieSerializer, ProductsSerializer, FavSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from .models import User, SellerRequests ,Categorie, Products, Favoris
+from .models import User, SellerRequests ,Categorie, Products, Favoris, Panier
 from django.db.models import Q
 
 
@@ -247,26 +247,32 @@ class getFavPk(generics.RetrieveUpdateDestroyAPIView):
     lookup_field = "pk"
 
 
-# class PanierReq(generics.ListCreateAPIView):
-#     serializer_class = PanierSerializer
 
-#     def get_queryset(self):
-#         userid = self.kwargs.get('userid')
-#         if userid is not None:
-#             return Panier.objects.filter(userId=userid)
-#         else:
-#             return Panier.objects.all()
-    
-#     def post(self, request, format=None):
-#         userId = request.data.get("userId", "") 
-#         productId = request.data.get("productId", "") 
 
-#         panier = Panier.objects.create(
-#             userId = userId,
-#             productId = productId,
-#         )
+class PanierReq(generics.ListCreateAPIView):
+    queryset = Panier.objects.all()
+    serializer_class = PanierRetrievalSerializer
 
-#         panierSerializer = PanierSerializer(panier)
-#         return Response(panierSerializer.data, status=status.HTTP_200_OK)
+    def get_serializer_class(self):
+        if self.request.method == 'POST': 
+            return PanierCreationSerializer
+        return PanierRetrievalSerializer
 
-    
+    def list(self, request, *args, **kwargs):
+        userid = self.kwargs.get('userid')
+        if userid is not None:
+            paniers = Panier.objects.filter(userId=userid)
+            serializer = PanierRetrievalSerializer(paniers, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        return super().list(request, *args, **kwargs)
+
+    def perform_create(self, serializer):
+        user_id = self.request.data.get("userId")
+        user = User.objects.get(pk=user_id)
+        serializer.save(userId=user)
+
+class PanierReqPk(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Panier.objects.all()
+    serializer_class = PanierRetrievalSerializer
+    lookup_field = "pk"

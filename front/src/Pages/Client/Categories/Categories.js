@@ -48,7 +48,7 @@ export const Categories = () => {
                     <Product item={item} key={key} />
                   )}
             </div>
-            {list?.length === 0 && <Empty />}
+            {list?.length === 0 && <div className='mt-14'> <Empty /> </div>}
         </div>
     </main>
     <Footer />
