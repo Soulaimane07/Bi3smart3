@@ -4,7 +4,7 @@ import { BiEditAlt } from "react-icons/bi";
 import { IoAdd } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
+import {  Removeproduct } from '../../../Components/Functions';
 function Product() {
   const Products = useSelector(state => state.ProductPage.products)
   return (
@@ -62,7 +62,7 @@ function Product() {
                     <BiEditAlt size={25} />
                 </button>
                 </Link>
-                <button  className=' opacity-40 hover:opacity-100 hover:text-red-600 transition-all '>
+                <button onClick={()=>Removeproduct(Product.id)}  className=' opacity-40 hover:opacity-100 hover:text-red-600 transition-all '>
                     <CiTrash size={25} />
                 </button>
                 </td>
