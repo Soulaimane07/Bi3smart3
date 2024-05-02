@@ -12,6 +12,7 @@ import Favorits from './Components/Favorits';
 import { authPageActions } from '../../redux/Slices/AuthSlice';
 import axios from 'axios';
 import { getFavorits } from '../../redux/Slices/FavoritsSlice';
+import { FaCircle } from "react-icons/fa";
 
 
 export function ProductPanier({item}){
@@ -201,5 +202,36 @@ export const  ProdcutSearch = ({item}) => {
         <h1> ${item.prix} </h1>
       </div>
     </button>
+  )
+}
+
+export const ProductCommande = ({item}) => {
+ const categorie = GetCategorie(item?.productId?.categorie)
+
+  return(
+    <div className='bg-gray-100 w-full rounded-sm px-2 py-2 flex flex-row space-x-4'>
+      <img src={`${apiUrl}${item?.productId?.image}`} alt={`image ${item.id}`} className='w-40 rounded-sm' />
+      <div className='w-full py-2'>
+        <div className='text-2xl font-medium flex items-center space-x-6 mb-1'> 
+          <h1>{item.productId.titre} </h1>
+          <div className='opacity-90 flex items-center'>
+            <span className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded"> {item?.size ?? "size"} </span>
+            <span className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded"> {categorie.titre ?? "Categorie"} </span>
+          </div>
+        </div>
+        <div className='flex flex-row items-center space-x-4 font-normal'>
+          <div>
+            <h1> Quantite </h1>
+            <h1> Prix </h1>
+            <h1 className=' font-medium'> Total </h1>
+          </div>
+          <div>
+            <h1> {item.quantite} </h1>
+            <h1> $ {item.productId.prix} </h1>
+            <h1 className=' font-medium'> $ {item.productId.prix*item.quantite} </h1>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Navbar from '../../../Components/Navbar/Navbar'
 import Footer from '../../../Components/Footer/Footer'
-import {Product} from '../../../Components/Product/Product';
+import {Product, ProductCommande} from '../../../Components/Product/Product';
 import { useDispatch, useSelector } from 'react-redux';
 import OrderSummery from '../../../Components/OrderSummery';
 import { panierActions } from '../../../redux/Slices/PanierSlices';
 
 function Commande() {
+    const dispatch = useDispatch()
+
     const [fname,setfname]=useState("")  
     const [lname,setlname]=useState("")
     const [tel,settel]=useState("")
@@ -34,33 +36,22 @@ function Commande() {
 
 
 
-    const dispatch = useDispatch()
 
-    const [productsCommande, setProductsCommande] = useState({})
-
-    let products = useSelector((state)=> state.Panier.products)
-    let selectedProducts = useSelector((state)=> state.Panier.productsSelected)
-
+    const [savedCommande, setSavedCommande] = useState({})
 
     useEffect(()=> {
-        let productsDetails = []
-
         let data = localStorage.getItem("bi3smart_commande")
-        setProductsCommande(JSON.parse(data))
-
-
-
-        productsCommande.products?.map((item,key)=>(
-            productsDetails = [...products?.filter((itemm)=> itemm.id == item), ...productsDetails]
-        ))
-        console.log("dd", productsDetails);
-
+        setSavedCommande(JSON.parse(data))
     }, [])
 
-    dispatch(panierActions.setPrice(productsCommande?.price))
-
-
+    let products = useSelector((state)=> state.Panier.products)
     
+    let productsDetails = []
+    savedCommande?.products?.map((item,key)=>(
+        productsDetails = [...products?.filter((itemm)=> itemm.id == item), ...productsDetails]
+    ))
+
+    dispatch(panierActions.setPrice(savedCommande?.price))
 
     
     
@@ -85,10 +76,10 @@ function Commande() {
                 
                 <div className='rounded-lg mb-12'>
                     <h1 className=' text-xl uppercase rounded-md font-bold mb-3'>Order Details </h1>
-                    <div className=' grid grid-cols-4 px-5 py-5 gap-1 bg-white rounded-md'>
-                        {/* {products.map((item,key)=>( 
-                            <Product item={item.productItem} key={key} />
-                        ))} */}
+                    <div className=' flex flex-col space-y-4 px-5 py-5  bg-white rounded-md'>
+                        {productsDetails?.map((item,key)=>( 
+                            <ProductCommande item={item} key={key} />
+                        ))}
                     </div>
                 </div>
 
