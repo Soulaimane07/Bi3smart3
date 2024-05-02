@@ -5,10 +5,10 @@ import Footer from '../../../Components/Footer/Footer'
 import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar'
 import { GetUsers, GetCategories } from '../../../Components/Functions';
 import { getProducts } from '../../../redux/Slices/ProductSlice'
-
+import { useSelector } from 'react-redux';
 function Dashboard() {
     const users = GetUsers()
-    const products = getProducts()
+    const products = useSelector(state => state.ProductPage.products)
     const categories = GetCategories()
     const list =[
         {

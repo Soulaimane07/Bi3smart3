@@ -9,7 +9,7 @@ import { GetCategorie } from '../../../Components/Functions';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-
+import { IoIosClose } from 'react-icons/io';
 
 const Buttons = ({createFun, condittion}) => {
   return(
@@ -39,10 +39,10 @@ function EditCategorie() {
     setImage(Categorie.image)
 }},[Categorie])
 
-const newCategory = {
+let newCategory = {
   titre: titre,
 }
-
+if(typeof(image) === "object"){ newCategory = {...newCategory, image}}
 let condittion = !titre || !image ;
 
 console.log(newCategory);
@@ -64,7 +64,9 @@ const Update = (e) => {
       .catch(err => {
           console.log(err);
       })
+
 }
+const [clearImage, setClearImage] = useState(false)
   return (
     <>
     <SellerNavbar />
@@ -88,17 +90,28 @@ const Update = (e) => {
           <div  className='bg-white px-6 py-6 rounded-sm '>
               <div className='w-full flex items-stretch space-x-8'>
                   <div className="w-2/5 flex items-center justify-center">
-                      <label htmlFor="dropzone-file" className="flex h-full flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
-                          <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                              <svg className="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                              </svg>
-                              <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Click to upload</span> or drag and drop</p>
-                              <p className="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                          </div>
-                          <input onChange={(e)=> setImage(e.target.files[0])} id="dropzone-file" type="file" className="hidden" accept="image/png, image/jpeg" />
-                      </label>
-                  </div> 
+                  {image && <div onMouseEnter={()=> setClearImage(true)} onMouseLeave={()=> setClearImage(false)} className='Image absolute top-0 left-0 flex w-full h-full justify-center items-center  '>
+                              {clearImage && 
+                                  <div onClick={()=> setImage(null)} className=' cursor-pointer  flex w-full h-full justify-center items-center'>
+                                      <IoIosClose  size={60} />
+                                  </div> 
+                              }
+                          </div> }
+                          {!image 
+                              ?
+                                  <label htmlFor="dropzone-file" className="flex h-full flex-col items-center justify-center w-full border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50">
+                                      <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                          <svg className="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                              <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                          </svg>
+                                          <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                                          <p className="text-xs text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                      </div>
+                                      <input onChange={(e)=> setImage(e.target.files[0])} id="dropzone-file" type="file" className="hidden" accept="image/png, image/jpeg" />
+                                  </label>
+                              :   <img src={image} />
+                          }
+                      </div> 
 
                   <div className='flex-1'>
                       <div className='py-2'>

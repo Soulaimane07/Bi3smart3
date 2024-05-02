@@ -6,8 +6,8 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { GetCategories } from '../../../Components/Functions';
 import axios from 'axios';
 import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar'
-
-
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Buttons = ({createFun, condittion}) => {
     return(
@@ -25,17 +25,18 @@ const Buttons = ({createFun, condittion}) => {
 
 function AddProduct() {
     const categories = GetCategories()
-
+    const navigate = useNavigate();
     const [titre, setTitre] = useState('')
     const [prix, setPrix] = useState(0)
     const [categorie, setCategorie] = useState(0)
     const [image, setImage] = useState(null)
-
+    let userid = useSelector(state=>state.User.data.id)
     const newProduct = {
         titre: titre,
         prix: Number(prix),
         categorie: Number(categorie),
-        image: image
+        image: image,
+        seller: userid,
     }
 
     let condittion = titre.length === 0 || categorie === 0 || image === null
@@ -45,8 +46,6 @@ function AddProduct() {
 
     const Create = (e) => {
         // e.preventDefault();
-        console.log("Created !");
-
         axios.post('http://127.0.0.1:8000/api/products/', newProduct, {
             headers: {
               "Content-Type": "multipart/form-data",
@@ -54,6 +53,7 @@ function AddProduct() {
           })
             .then(res => {
                 console.log(res);
+                navigate("/admin/readproduct")
             })
             .catch(err => {
                 console.log(err);

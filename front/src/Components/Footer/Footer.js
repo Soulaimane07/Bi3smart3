@@ -7,7 +7,7 @@ function Footer() {
             <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div className="md:flex md:justify-between">
                     <Link to={'/'} className="mb-6 md:mb-0">
-                       <img src="../images/logoblack.png" className='w-24' />
+                       <img src="../../images/logoblack.png" className='w-24' />
                     </Link>
                     <div className="grid grid-cols-2 gap-8">
                  
