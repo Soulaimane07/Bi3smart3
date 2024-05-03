@@ -13,6 +13,7 @@ function SearchZone() {
         axios.get(`http://127.0.0.1:8000/api/searchproducts/${searchTerm}/`)
             .then((res)=> {
                 setProducts(res.data)
+                console.log(res.data)
             })
             .catch((err)=> {
                 console.error(err);
