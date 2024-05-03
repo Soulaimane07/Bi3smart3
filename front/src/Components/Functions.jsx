@@ -108,6 +108,12 @@ export const Removeproduct = (id) => {
     console.log("Deleted !");
   })
 }
+export const Removecategorie = (id) => {
+  axios.delete(`http://127.0.0.1:8000/api/categorie/${id}`)
+  .then(res =>{
+    console.log("Deleted !");
+  })
+}
 
 
 export const GetProductbyIDSeller = () =>{

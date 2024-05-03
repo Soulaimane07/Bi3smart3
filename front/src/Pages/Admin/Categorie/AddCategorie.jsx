@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import Footer from '../../../Components/Footer/Footer'
 import Sidebar from '../../../Components/Navbar/Sidebar'
-import { Link } from 'react-router-dom';
+
 import { FaArrowLeft } from "react-icons/fa6";
 import axios from 'axios';
 import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar'
-
+import { Link, useNavigate, useParams } from 'react-router-dom';
 const Buttons = ({createFun, condittion}) => {
   return(
       <div className='flex space-x-2 items-stretch'>
@@ -34,7 +34,7 @@ let condittion = titre.length === 0 || image === null
 
 console.log(newCategory);
 
-
+const navigate = useNavigate()
 const Create = (e) => {
     // e.preventDefault();
     console.log("Created !");
@@ -46,6 +46,7 @@ const Create = (e) => {
       })
         .then(res => {
             console.log(res);
+            navigate("/admin/readcategorie")
         })
         .catch(err => {
             console.log(err);
