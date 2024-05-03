@@ -62,6 +62,10 @@ function OrderSummery({page, Orderdata}) {
         body: JSON.stringify(body)
       })
 
+      !response.ok && setLoading(false)
+      
+
+
       const session = await response.json()
 
       const result = stripe.redirectToCheckout({
