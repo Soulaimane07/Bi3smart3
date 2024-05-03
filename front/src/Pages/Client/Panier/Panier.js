@@ -13,13 +13,17 @@ function Panier() {
 
     let products = useSelector((state)=> state.Panier.products)
     let userId = useSelector(state => state.User.data?.id)
-
+    
     const dispatch = useDispatch()
-
+    
     const OpenAuth = () => {
         dispatch(authPageActions.open())
     }
     
+    
+    // let productsSelected = useSelector((state)=> state.Panier.productsSelected)
+    // console.log(productsSelected);
+
     
     return (
         <>

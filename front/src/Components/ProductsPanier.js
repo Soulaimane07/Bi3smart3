@@ -21,6 +21,8 @@ function ProductsPanier() {
         ))
   
         dispatch(panierActions.setPrice(price))
+
+        console.log(productsDetails);
     }, [selectedProducts, products])
     
 
