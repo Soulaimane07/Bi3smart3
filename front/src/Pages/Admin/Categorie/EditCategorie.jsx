@@ -89,7 +89,7 @@ const [clearImage, setClearImage] = useState(false)
       <main className='bg-gray-100 px-8 py-6 rounded-sm'>
           <div  className='bg-white px-6 py-6 rounded-sm '>
               <div className='w-full flex items-stretch space-x-8'>
-                  <div className="w-2/5 flex items-center justify-center">
+                  <div className="w-2/5 flex items-center justify-center relative">
                   {image && <div onMouseEnter={()=> setClearImage(true)} onMouseLeave={()=> setClearImage(false)} className='Image absolute top-0 left-0 flex w-full h-full justify-center items-center  '>
                               {clearImage && 
                                   <div onClick={()=> setImage(null)} className=' cursor-pointer  flex w-full h-full justify-center items-center'>

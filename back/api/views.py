@@ -6,6 +6,7 @@ from rest_framework.response import Response
 
 from .models import User, SellerRequests ,Categorie, Products, Favoris, Panier
 from django.db.models import Q
+import google.generativeai as genai
 
 
 
@@ -159,20 +160,31 @@ class Search(generics.ListCreateAPIView):
 
     def get_queryset(self):
         search_term = self.kwargs.get('searchTerm')
+        if not search_term:
+            return Products.objects.none()
 
-        if search_term:
-            products = Products.objects.filter(titre__icontains=search_term)
-        else:
-            products = Products.objects.all()
+        api_key = 'AIzaSyAmbRMhkWdPbqRp04UYPKwX1o0toL2Y5iA'
+        genai.configure(api_key=api_key)
+        model = genai.GenerativeModel('gemini-pro')
+        chat = model.start_chat(history=[])
 
-        return products
+        
+        productslist = Products.objects.all()
+        
+        instructions= 'i want the answer to be only from this list and just one  : ', productslist
+        instructions2='  i want the response '
+        condition ='this :%20 means space '
+        
+        response = chat.send_message(condition + str(instructions)   + search_term )
+        print(response.text)
+        return Products.objects.filter(titre__icontains=response.text )  
+        
 
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
         serializer = self.serializer_class(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-
-
+    
 class Productbyidseller(generics.ListAPIView):
     serializer_class = ProductsSerializer
 
