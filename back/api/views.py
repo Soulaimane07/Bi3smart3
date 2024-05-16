@@ -198,6 +198,10 @@ class Productbyidseller(generics.ListAPIView):
 
 
 
+        
+
+
+
 class getFav(generics.ListCreateAPIView):
     serializer_class = FavSerializer
 
@@ -257,6 +261,10 @@ class getFavPk(generics.RetrieveUpdateDestroyAPIView):
     queryset = Favoris.objects.all()
     serializer_class = FavSerializer
     lookup_field = "pk"
+
+
+
+
 
 
 
