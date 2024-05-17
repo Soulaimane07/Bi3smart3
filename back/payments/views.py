@@ -15,10 +15,8 @@ class CreateCheckoutSessionView(APIView):
     def post(self, request):
         try:
             products_data = request.data
-            # print(products_data)
             
             line_items = []
-            # productsId = []
             for product_data in products_data:
                 line_item = {
                     'price_data': {
@@ -116,11 +114,10 @@ class CommandesReq(generics.ListAPIView):
         user_id = self.kwargs.get('userId')
 
         if user_id is not None:
-            # Retrieve CommandeDetails objects related to the user ID
             commande_details = CommandeDetails.objects.filter(commandeId__userId=user_id)
             return commande_details
         else:
-            return CommandeDetails.objects.none()  # Optimized for efficiency
+            return CommandeDetails.objects.none()
 
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()

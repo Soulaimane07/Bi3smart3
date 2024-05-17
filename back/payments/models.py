@@ -1,7 +1,6 @@
 from django.db import models
 from api.models import Products, User
 
-# Create your models here.
 
 class Commande(models.Model):
     userId = models.ForeignKey(User, on_delete= models.CASCADE, null=True, blank=True)

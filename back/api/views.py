@@ -73,9 +73,6 @@ class UserLogin(APIView):
             return Response("Email parameter missing", status=status.HTTP_400_BAD_REQUEST)
         
 
-
-
-
 class SellerRequestsList(generics.ListCreateAPIView):
     queryset = SellerRequests.objects.all()
     serializer_class = SellerRequestsSerializer
@@ -85,6 +82,8 @@ class SellerRequestsPk(generics.RetrieveUpdateDestroyAPIView):
     queryset = SellerRequests.objects.all()
     serializer_class = SellerRequestsSerializer
     lookup_field = "pk"
+
+
 
 
 
@@ -120,8 +119,6 @@ class CategorieReqTitle(generics.ListAPIView):
             return Response(serializer.data)
 
 
-
-
 class ProductsReq(generics.ListAPIView):
     serializer_class = ProductsSerializer
 
@@ -146,13 +143,20 @@ class ProductsReqPk(generics.RetrieveUpdateDestroyAPIView):
     lookup_field = "pk"
     
 
-def getproductby(self, request, format=None):
-    categorie = request.data.get("categorie", "") 
-    print(categorie)
+class Productbyidseller(generics.ListAPIView):
+    serializer_class = ProductsSerializer
 
-    products = Products.objects.all()
-    serializer = ProductsSerializer(products) 
-    return Response(serializer.data, status=status.HTTP_201_CREATED)
+    def get_queryset(self):
+        sellerid = self.kwargs.get('sellerid')
+        if sellerid is not None:
+            return Products.objects.filter(seller=sellerid)
+        else:
+            return Products.objects.all()
+
+
+
+
+
 
 
 class Search(generics.ListCreateAPIView):
@@ -185,17 +189,6 @@ class Search(generics.ListCreateAPIView):
         serializer = self.serializer_class(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
-class Productbyidseller(generics.ListAPIView):
-    serializer_class = ProductsSerializer
-
-    def get_queryset(self):
-        sellerid = self.kwargs.get('sellerid')
-        if sellerid is not None:
-            return Products.objects.filter(seller=sellerid)
-        else:
-            return Products.objects.all()
-        
-
 
 
         
@@ -261,11 +254,10 @@ class getFavPk(generics.RetrieveUpdateDestroyAPIView):
     queryset = Favoris.objects.all()
     serializer_class = FavSerializer
     lookup_field = "pk"
+    
 
 
-
-
-
+        
 
 
 
