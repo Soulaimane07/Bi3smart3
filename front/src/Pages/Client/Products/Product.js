@@ -37,7 +37,7 @@ function Product() {
                 "size": size
             }
         
-            axios.post('http://127.0.0.1:8000/api/panier/', panier)
+            axios.post('http://15.237.160.116:8000/api/panier/', panier)
                 .then((res)=> {
                     dispatch(getPanier(userId))
                     dispatch(productActions.openAdded())

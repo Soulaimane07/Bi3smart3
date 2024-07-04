@@ -20,7 +20,7 @@ export const Categories = () => {
   let categorie = parametre.categorie
   
   useEffect(()=> {
-    axios.get(`http://127.0.0.1:8000/api/categorie/${categorie}`)
+    axios.get(`http://15.237.160.116:8000/api/categorie/${categorie}`)
       .then((res)=> {
         res.data.id && dispatch(getProductsByCategorie(res.data.id))  
       })

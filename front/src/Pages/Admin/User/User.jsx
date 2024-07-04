@@ -17,7 +17,7 @@ function User() {
          //e.preventDefault();
         console.log("Updated !");
         const newUserData={role:"seller"}
-        axios.patch(`http://127.0.0.1:8000/api/users/${id}/`, newUserData, {
+        axios.patch(`http://15.237.160.116:8000/api/users/${id}/`, newUserData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },

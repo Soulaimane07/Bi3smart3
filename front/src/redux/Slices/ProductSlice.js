@@ -3,7 +3,7 @@ import axios from 'axios'
 
 export const getProducts = createAsyncThunk('products', async ()=> {
   try {
-    const response = await axios.get(`http://127.0.0.1:8000/api/products/`)
+    const response = await axios.get(`http://15.237.160.116:8000/api/products/`)
     return response.data
   } catch (error) {
     console.log(error);
@@ -13,7 +13,7 @@ export const getProducts = createAsyncThunk('products', async ()=> {
 
 export const getProductsByCategorie = createAsyncThunk('productsByCategorie', async (Categorie)=> {
   try {
-    const response = await axios.get(`http://127.0.0.1:8000/api/getproductbycategorie/${Categorie}/`)
+    const response = await axios.get(`http://15.237.160.116:8000/api/getproductbycategorie/${Categorie}/`)
     return response.data
   } catch (error) {
     console.log(error);

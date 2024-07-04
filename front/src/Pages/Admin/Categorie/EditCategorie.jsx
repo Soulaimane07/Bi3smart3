@@ -52,7 +52,7 @@ const Update = (e) => {
   // e.preventDefault();
   console.log("Updated!");
 
-  axios.patch(`http://127.0.0.1:8000/api/categorie/${id}`, newCategory, {
+  axios.patch(`http://15.237.160.116:8000/api/categorie/${id}`, newCategory, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

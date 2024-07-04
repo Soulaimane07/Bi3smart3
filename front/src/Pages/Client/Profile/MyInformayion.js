@@ -31,7 +31,7 @@ function MyInformayion() {
         e.preventDefault();
         setLoading(true)
 
-        axios.patch(`http://127.0.0.1:8000/api/users/${user?.id}/`, data)
+        axios.patch(`http://15.237.160.116:8000/api/users/${user?.id}/`, data)
             .then((res)=> {
                 console.log(res.data);
                 setSuccess(true)

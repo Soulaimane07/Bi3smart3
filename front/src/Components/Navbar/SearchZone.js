@@ -10,7 +10,7 @@ function SearchZone() {
     const [products, setProducts] = useState([])
 
     useEffect(()=>{
-        axios.get(`http://127.0.0.1:8000/api/searchproducts/${searchTerm}/`)
+        axios.get(`http://15.237.160.116:8000/api/searchproducts/${searchTerm}/`)
             .then((res)=> {
                 setProducts(res.data)
                 console.log(res.data)

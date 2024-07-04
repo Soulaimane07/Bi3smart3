@@ -44,7 +44,7 @@ function AddUser() {
         // e.preventDefault();
         console.log("Created !");
 
-        axios.post('http://127.0.0.1:8000/api/users/', newUser, {
+        axios.post('http://15.237.160.116:8000/api/users/', newUser, {
             headers: {
               "Content-Type": "multipart/form-data",
             },

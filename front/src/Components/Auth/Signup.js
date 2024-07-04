@@ -23,7 +23,7 @@ function Signup({setPage}) {
         e.preventDefault();
         setErr(null)
 
-        fetch("http://127.0.0.1:8000/api/users/", {
+        fetch("http://15.237.160.116:8000/api/users/", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

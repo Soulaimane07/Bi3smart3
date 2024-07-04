@@ -23,7 +23,7 @@ export function ProductPanier({item}){
 
 
   const Remove = () => {
-      axios.delete(`http://127.0.0.1:8000/api/panierpk/${item.id}/`)
+      axios.delete(`http://15.237.160.116:8000/api/panierpk/${item.id}/`)
         .then((res)=> {
           dispatch(getPanier(item?.userId))
           dispatch(panierActions.removeSelectProduct(item.id))
@@ -52,7 +52,7 @@ export function ProductPanier({item}){
               productId: item.productId.id
           }
       
-          axios.post('http://127.0.0.1:8000/api/favoris/', fav)
+          axios.post('http://15.237.160.116:8000/api/favoris/', fav)
               .then((res)=> {
                   dispatch(getFavorits(userId))
                   dispatch(getProducts())
@@ -68,7 +68,7 @@ export function ProductPanier({item}){
 
     let quantite = counter + 1
 
-    axios.patch(`http://127.0.0.1:8000/api/panierpk/${item?.id}/`, {quantite})
+    axios.patch(`http://15.237.160.116:8000/api/panierpk/${item?.id}/`, {quantite})
       .then((res)=>{
         dispatch(getPanier(item?.userId))
       })
@@ -82,7 +82,7 @@ export function ProductPanier({item}){
 
     let quantite = counter - 1
 
-    axios.patch(`http://127.0.0.1:8000/api/panierpk/${item?.id}/`, {quantite})
+    axios.patch(`http://15.237.160.116:8000/api/panierpk/${item?.id}/`, {quantite})
       .then((res)=>{
         dispatch(getPanier(item?.userId))
       })
@@ -195,7 +195,7 @@ export const  ProdcutSearch = ({item}) => {
   return (
     <button onClick={OpenProduct} className='flex space-x-2 hover:bg-gray-300 p-2 rounded-md transition-all'>
       <div className='w-20 rounded-md overflow-hidden'>
-        <img className='w-20 h-20' src={`http://127.0.0.1:8000/${item.image}`} alt={`image ${item.id}`} />
+        <img className='w-20 h-20' src={`http://15.237.160.116:8000/${item.image}`} alt={`image ${item.id}`} />
       </div>
       <div className='flex justify-between flex-1'>
         <h1> {item.titre} </h1>
