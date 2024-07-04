@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_ROOT = ''
@@ -32,10 +33,11 @@ ALLOWED_HOSTS = []
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
+    'http://bi3smart.s3-website.eu-west-3.amazonaws.com',
 ]
 
 CORS_ALLOW_CREDENTIALS = True
-
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -66,6 +68,8 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://localhost:3001",
+    "http://bi3smart.s3-website.eu-west-3.amazonaws.com",
 ]
 
 ROOT_URLCONF = 'back.urls'
