@@ -167,7 +167,7 @@ export const  ProdcutSearch = ({item}) => {
   return (
     <button onClick={OpenProduct} className='flex space-x-2 hover:bg-gray-300 p-2 rounded-md transition-all'>
       <div className='w-20 rounded-md overflow-hidden'>
-        <img className='w-20 h-20' src={`http://15.237.160.116:8000/${item.image}`} alt={`image ${item.id}`} />
+        <img className='w-20 h-20' src={`http://15.237.160.116:8000/${item.image}`} alt={`product${item.id}`} />
       </div>
       <div className='flex justify-between flex-1'>
         <h1> {item.titre} </h1>
@@ -182,7 +182,7 @@ export const ProductCommande = ({item}) => {
 
   return(
     <div className='bg-gray-100 w-full rounded-sm px-2 py-2 flex flex-row space-x-4'>
-      <img src={`${apiUrl}${item?.productId?.image}`} alt={`image ${item.id}`} className='w-40 rounded-sm' />
+      <img src={`${apiUrl}${item?.productId?.image}`} alt={`product${item.id}`} className='w-40 rounded-sm' />
       <div className='w-full py-2'>
         <div className='text-2xl font-medium flex items-center space-x-6 mb-1'> 
           <h1>{item.productId.titre} </h1>

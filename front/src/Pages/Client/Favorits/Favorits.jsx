@@ -1,7 +1,6 @@
 import React, { useEffect } from "react"
 import Navbar from "../../../Components/Navbar/Navbar"
 import Footer from "../../../Components/Footer/Footer"
-import Filtrage from "../Products/Filtrage"
 import {Product} from "../../../Components/Product/Product"
 import { useSelector, useDispatch } from 'react-redux';
 import { authPageActions } from "../../../redux/Slices/AuthSlice"
