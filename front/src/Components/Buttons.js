@@ -27,7 +27,7 @@ export const GetTopButton = () => {
     }
       
     return (
-        <button onClick={()=> TopPage()} className={`${isVisible ? "visible" : "hidden"} fixed bottom-6 rounded-full opacity-60 hover:opacity-100 transition-all right-20 bg-gray-100 hover:bg-white shadow drop-shadow-xl hover:shadow-lg px-6 py-6 `}>
+        <button onClick={()=> TopPage()} className={`${isVisible ? "visible" : "hidden"} fixed bottom-6 rounded-full opacity-60 hover:opacity-100 transition-all right-6 md:right-20 bg-gray-100 hover:bg-white shadow drop-shadow-xl hover:shadow-lg px-4 py-4 md:px-6 md:py-6 `}>
             <FaAngleUp size={20} />
         </button>
     )

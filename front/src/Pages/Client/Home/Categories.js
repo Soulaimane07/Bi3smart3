@@ -9,7 +9,7 @@ function Categories() {
     return (
         <div className='mt-28'>
             <h1 className='text-center font-medium text-3xl'> Popular Categories </h1>
-            <div className='flex justify-center mt-10 px-20 space-x-10'>
+            <div className=' overflow-x-scroll flex md:justify-center mt-10 px-6 md:px-20 space-x-10 py-6 '>
                 {data?.length === 0
                     ? 
                         <CategorieSkeletonList />

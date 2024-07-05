@@ -40,10 +40,9 @@ export const Categories = () => {
 
         <div className='w-full border-l-2 border-gray-100 min-h-svh'>
             <h1 className=' text-3xl text-center font-medium px-10 mt-4 py-8 rounded-md uppercase'> {categorie} </h1>
-            <div className='grid grid-cols-5 gap-2 px-20 flex-1'>
+            <div className='grid grid-cols-1 md:grid-cols-5 gap-2 px-6 md:px-20 flex-1'>
               {isLoading && <ProductSkeletonList />}
-              {list?.length != 0
-                &&
+              {list?.length != 0 &&
                   list?.map((item,key)=>
                     <Product item={item} key={key} />
                   )}

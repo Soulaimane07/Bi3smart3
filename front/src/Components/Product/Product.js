@@ -84,8 +84,8 @@ export function ProductPanier({item}){
 
 
  return (
-      <div className={`${selected?.length !== 0  ? 'bg-blue-100' : 'bg-white'} cursor-pointer transition-all w-full px-2 py-2 flex rounded-md items-stretch`}>
-          <img onClick={selectProduct} className='w-36 h-28 rounded-sm' alt='' src={`${apiUrl}${item.productId.image}`} />
+      <div className={`${selected?.length !== 0  ? 'bg-blue-100' : 'bg-white'} cursor-pointer transition-all w-full px-2 py-2 flex flex-col md:flex-row rounded-md items-stretch`}>
+          <img onClick={selectProduct} className='w-36 h-28 rounded-sm mx-auto' alt='' src={`${apiUrl}${item.productId.image}`} />
           <div className=' left text-left  mx-3 w-full flex flex-col'>
               <div onClick={selectProduct} className='pt-2 h-full'> 
                   <div className='text-2xl font-medium flex items-center space-x-6 mb-1'> 
@@ -99,7 +99,7 @@ export function ProductPanier({item}){
                   <h2 className=' text-lg font-bold'> Total: ${item.productId.prix*item?.quantite}</h2>
               </div>
           
-              <div className=' cursor-default flex space-x-2 justify-end  items-center mt-3'>
+              <div className=' cursor-default flex space-x-2 justify-end  items-center mt-3 px-2 md:px-0'>
                   <div className='flex'>
                       <button onClick={addQuantite} className=' border-2 rounded-l-lg px-2'>
                           <TiPlus />

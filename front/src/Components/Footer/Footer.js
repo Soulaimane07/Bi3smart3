@@ -31,9 +31,9 @@ function Footer() {
             <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
                 <div className="md:flex md:justify-between">
                     <Link to={'/'} className="mb-6 md:mb-0">
-                       <img src="../../images/logoblack.png" className='w-24' />
+                       <img src="../../images/logoblack.png" className='w-20 md:w-24' />
                     </Link>
-                    <div className="grid grid-cols-3 gap-20">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-20 mt-8 md:mt-0">
                         <div>
                             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-black">Follow us</h2>
                             <ul className="text-gray-500 dark:text-gray-600 font-medium">

@@ -33,7 +33,7 @@ function Favorits(){
                 <h1 className=' text-3xl text-center font-medium px-10 mt-4 py-8 rounded-md'> My WishList</h1>
                 
                 {list?.length !== 0 ?
-                    <div className='grid grid-cols-5 gap-2 px-20 flex-1'>
+                    <div className='grid grid-cols-1 md:grid-cols-5 gap-2 px-6 md:px-20 flex-1'>
                         {list?.map((item,key)=>
                             <Product item={item.productId} key={key} favorit={true} />
                         )}

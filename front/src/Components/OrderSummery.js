@@ -80,7 +80,7 @@ function OrderSummery({page, Orderdata}) {
     
 
   return (
-    <div className={`${navbar ? 'top-6' : 'top-36'} transition-all w-96 h-60 right-0 sticky`}>
+    <div className={`${navbar ? 'top-6' : 'top-36'} transition-all w-full md:w-96 md:mb-0 mb-10 right-0 md:sticky`}>
     <div className='bg-gray-100 py-6 px-6 mb-4 rounded-md'>
       <div>
         <h1 className='text-2xl mb-2 font-bold'>Order Summary</h1>
