@@ -25,7 +25,7 @@ function Features() {
     ]
 
   return (
-    <div className='flex justify-center space-x-20 mt-20'>
+    <div className='flex justify-center space-x-32 mt-20'>
         {data.map((item,key)=>(
             <div key={key} className='flex items-center space-x-4'>
                 <img src={item.image} alt={`feature ${key}`} className='w-16 opacity-90' />

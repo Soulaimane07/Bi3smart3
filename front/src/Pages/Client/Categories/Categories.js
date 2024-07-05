@@ -36,11 +36,11 @@ export const Categories = () => {
     <>
     <Navbar />
     <main className={` min-h-screen mt-28 flex items-start`}>
-        <Filtrage />
+        {/* <Filtrage /> */}
 
-        <div className='w-5/6 border-l-2 border-gray-100 min-h-svh'>
+        <div className='w-full border-l-2 border-gray-100 min-h-svh'>
             <h1 className=' text-3xl text-center font-medium px-10 mt-4 py-8 rounded-md uppercase'> {categorie} </h1>
-            <div className='grid grid-cols-4 gap-2 px-20 flex-1'>
+            <div className='grid grid-cols-5 gap-2 px-20 flex-1'>
               {isLoading && <ProductSkeletonList />}
               {list?.length != 0
                 &&

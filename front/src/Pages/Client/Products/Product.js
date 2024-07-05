@@ -59,10 +59,10 @@ function Product() {
 
   return (
     <div className='fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-30 transition-all w-full h-full z-40 mx-0 flex justify-center items-center'>
-        <div className='relative flex items-stretch space-x-6 bg-white text-black h-fit w-1/2 rounded-lg py-10 px-10'>
+        <div className='relative flex items-stretch space-x-8 bg-white text-black h-fit w-1/2 rounded-lg py-10 px-10'>
             
-            <div className='w-1/2 rounded-md overflow-hidden'>
-                <img src={productItem.image} alt='' className='w-full h-full' />
+            <div style={{ backgroundImage: `url(${productItem.image})` }} className='w-1/3 bg-contain; bg-cover rounded-md overflow-hidden bg-red-600 '>
+                {/* <img src={productItem.image} alt='' className=' max-h-full h-auto' /> */}
             </div>
             <div className='flex-1 flex flex-col clear-start'>
                 <div className='flex-1 h-full'>
