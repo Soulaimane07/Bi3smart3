@@ -42,7 +42,7 @@ export const Categories = () => {
             <h1 className=' text-3xl text-center font-medium px-10 mt-4 py-8 rounded-md uppercase'> {categorie} </h1>
             <div className='grid grid-cols-4 gap-2 px-20 flex-1'>
               {isLoading && <ProductSkeletonList />}
-              {list?.length != 0
+              {list?.length !== 0
                 &&
                   list?.map((item,key)=>
                     <Product item={item} key={key} />
