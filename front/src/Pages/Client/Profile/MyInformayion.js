@@ -52,7 +52,7 @@ function MyInformayion() {
     }
 
   return (
-    <form onSubmit={Update} className=' mx-auto w-1/2'>
+    <form onSubmit={Update} className=' mx-auto w-full md:w-1/2 '>
         {success && 
             <div className=' bg-green-500 text-white border border-spacing-2 justify-between w-full mb-4 transition-all px-4 pr-2 py-2 rounded-sm border-green-500 flex space-x-2 items-center '>
                 <div className='flex items-center space-x-2'>

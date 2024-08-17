@@ -41,7 +41,7 @@ function Profile({close}) {
     user.role === 'seller' && (path = '/seller/dashboard')
     
     return (
-        <div className='ProfileBox bg-gray-100 px-6 py-4 absolute right-20 top-20 w-72 rounded-md'>
+        <div className='ProfileBox w-full bg-gray-100 px-6 py-4 absolute left-0 md:left-auto md:right-20 top-20 md:w-72 rounded-md'>
             {user &&
                 <>
                     <button onClick={()=> close(false)} className='absolute top-4 right-4 hover:scale-110 transition-all'><IoCloseOutline size={26} /></button>

@@ -48,17 +48,17 @@ function Profile() {
     <>
         <Navbar />
 
-        <main className='min-h-screen mt-32 flex px-20 pt-10'>
-            <div className="w-80">
+        <main className='min-h-screen mt-24 md:mt-32 flex flex-col md:flex-row px-6 md:px-20 pt-10'>
+            <div className="md:w-80 flex flex-row md:flex-col">
                 {list.map((item,key)=>(
-                    <button onClick={()=> setComponent(key)} key={key} className={`${component === key && 'text-blue-500 border-r-blue-500 '} hover:text-blue-500 flex justify-between items-center hover:border-r-blue-500  border-2 border-transparent rounded-sm transition-all w-full py-4 text-left px-4`}> 
+                    <button onClick={()=> setComponent(key)} key={key} className={`${component === key && 'text-blue-500 border-2 border-b-blue-500 md:border-b-transparent md:border-r-blue-500 '} hover:text-blue-500 flex justify-between items-center hover:border-b-blue-500 md:hover:border-b-transparent md:hover:border-r-blue-500  border-2 border-transparent rounded-sm transition-all w-full py-4 text-left px-4`}> 
                         <p>{item.title} </p>
                         {key === 1 && <p className='bg-blue-100 px-2 text-sm rounded-full'>{commandes?.length}</p>}
                     </button>
                 ))}
             </div>
 
-            <section className=' w-full pl-10'>
+            <section className=' w-full px-4 md:px-0 md:pl-10 mt-10 md:mt-0'>
                 {list[component].component}
             </section>
         </main>
