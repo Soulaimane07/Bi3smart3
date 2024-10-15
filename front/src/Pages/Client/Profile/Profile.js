@@ -15,7 +15,7 @@ function Profile() {
     const [commandes, setCommandes] = useState([])
 
     useEffect(()=> {
-        axios.get(`http://127.0.0.1:8000/payment/commandes/${user?.id}/`)
+        axios.get(`https://d23i3x5oooaihp.cloudfront.net/payment/commandes/${user?.id}/`)
             .then((res)=> {
                 console.log(res.data);
                 setCommandes(res.data)

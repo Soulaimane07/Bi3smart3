@@ -56,7 +56,7 @@ function OrderSummery({page, Orderdata}) {
       const body = productsDetails
       const headers = {"Content-Type": "application/json"}
       
-      const response = await fetch('http://127.0.0.1:8000/payment/checkout/', {
+      const response = await fetch('https://d23i3x5oooaihp.cloudfront.net/payment/checkout/', {
         method: "POST",
         headers: headers,
         body: JSON.stringify(body)

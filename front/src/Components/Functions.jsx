@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts, getProductsByCategorie } from "../redux/Slices/ProductSlice";
 import { panierActions } from "../redux/Slices/PanierSlices";
 
-export const apiUrl = 'http://127.0.0.1:8000'
+export const apiUrl = 'https://d23i3x5oooaihp.cloudfront.net'
 
 export const sizes = ["XS", "S", "M", "L", "XL"]
 
@@ -14,7 +14,7 @@ export const GetProduct = (id) => {
   const [product, setProduct] = useState({})
 
   useEffect(()=>{
-    axios.get(`http://127.0.0.1:8000/api/products/${id}`)
+    axios.get(`https://d23i3x5oooaihp.cloudfront.net/api/products/${id}`)
       .then(res => {
         setProduct(res.data)
       })
@@ -28,7 +28,7 @@ export const GetCategorie = (id) => {
   const [product, setProduct] = useState({})
 
   useEffect(()=> {
-    axios.get(`http://127.0.0.1:8000/api/categorie/${id}`)
+    axios.get(`https://d23i3x5oooaihp.cloudfront.net/api/categorie/${id}`)
       .then(res => {
         setProduct(res.data)
       })
@@ -45,7 +45,7 @@ export const GetCategories = () =>{
    const [categorie ,setcategorie] = useState([])
 
   useEffect(()=> {
-    axios.get(" http://127.0.0.1:8000/api/categorie/")
+    axios.get(" https://d23i3x5oooaihp.cloudfront.net/api/categorie/")
         .then(res=> {
             setcategorie(res.data)
         })
@@ -58,7 +58,7 @@ export const GetUsers = () => {
   const [users, setUsers] = useState([])
  
   useEffect(()=>{
-    axios.get(" http://127.0.0.1:8000/api/users/")
+    axios.get(" https://d23i3x5oooaihp.cloudfront.net/api/users/")
       .then(res => {
         setUsers(res.data)
       })
@@ -72,7 +72,7 @@ export const GetUser = (id) => {
   const [user, setUser] = useState([])
  
   useEffect(()=>{
-    axios.get(`http://127.0.0.1:8000/api/users/${id}/`)
+    axios.get(`https://d23i3x5oooaihp.cloudfront.net/api/users/${id}/`)
       .then(res => {
         setUser(res.data)
       })
@@ -86,7 +86,7 @@ export const GetSellers = () => {
   const [sellers, setSellers] = useState([])
  
   useEffect(()=>{
-    axios.get(" http://127.0.0.1:8000/api/sellerrequests/")
+    axios.get(" https://d23i3x5oooaihp.cloudfront.net/api/sellerrequests/")
       .then(res => {
         setSellers(res.data)
       })
@@ -96,20 +96,20 @@ export const GetSellers = () => {
 }
 
 export const Removeuser = (id) => {
-  axios.delete(`http://127.0.0.1:8000/api/users/${id}/`)
+  axios.delete(`https://d23i3x5oooaihp.cloudfront.net/api/users/${id}/`)
   .then(res =>{
     console.log("Deleted !");
   })
 }
 
 export const Removeproduct = (id) => {
-  axios.delete(`http://127.0.0.1:8000/api/products/${id}`)
+  axios.delete(`https://d23i3x5oooaihp.cloudfront.net/api/products/${id}`)
   .then(res =>{
     console.log("Deleted !");
   })
 }
 export const Removecategorie = (id) => {
-  axios.delete(`http://127.0.0.1:8000/api/categorie/${id}`)
+  axios.delete(`https://d23i3x5oooaihp.cloudfront.net/api/categorie/${id}`)
   .then(res =>{
     console.log("Deleted !");
   })
@@ -121,7 +121,7 @@ export const GetProductbyIDSeller = () =>{
    let [data , setdata] = useState()
 
   useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/api/getproductbyidseller/${userid}/`)
+    axios.get(`https://d23i3x5oooaihp.cloudfront.net/api/getproductbyidseller/${userid}/`)
          .then(res=> {
             setdata(res.data)
           })

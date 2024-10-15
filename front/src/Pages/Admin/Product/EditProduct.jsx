@@ -71,7 +71,7 @@ function EditProduct() {
       setLoading(true)
       setMessage(null)
 
-      axios.patch(`http://127.0.0.1:8000/api/products/${id}`,newProduct, {
+      axios.patch(`https://d23i3x5oooaihp.cloudfront.net/api/products/${id}`,newProduct, {
               headers: {
               "Content-Type": "multipart/form-data",
               },

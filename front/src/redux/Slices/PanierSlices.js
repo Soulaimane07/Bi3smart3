@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const getPanier = createAsyncThunk('panier', async (userId)=> {
   try {
-    const response = await axios.get(`http://127.0.0.1:8000/api/panier/${userId}/`)
+    const response = await axios.get(`https://d23i3x5oooaihp.cloudfront.net/api/panier/${userId}/`)
     return response.data
   } catch (error) {
     console.log(error);

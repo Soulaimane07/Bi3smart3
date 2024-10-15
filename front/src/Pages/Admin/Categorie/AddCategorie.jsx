@@ -39,7 +39,7 @@ const Create = (e) => {
     // e.preventDefault();
     console.log("Created !");
 
-    axios.post('http://127.0.0.1:8000/api/categorie/', newCategory, {
+    axios.post('https://d23i3x5oooaihp.cloudfront.net/api/categorie/', newCategory, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

@@ -23,7 +23,7 @@ function Signup({setPage}) {
         e.preventDefault();
         setErr(null)
 
-        fetch("http://127.0.0.1:8000/api/users/", {
+        fetch("https://d23i3x5oooaihp.cloudfront.net/api/users/", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

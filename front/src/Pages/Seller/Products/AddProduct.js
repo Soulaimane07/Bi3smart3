@@ -63,7 +63,7 @@ function AddProduct() {
         setMessage(null)
         setLoading(true)
 
-        axios.post('http://127.0.0.1:8000/api/products/', newProduct, {
+        axios.post('https://d23i3x5oooaihp.cloudfront.net/api/products/', newProduct, {
             headers: {
               "Content-Type": "multipart/form-data",
             },

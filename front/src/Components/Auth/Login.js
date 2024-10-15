@@ -21,7 +21,7 @@ function Login({setPage}) {
         setErr(null)
         dispatch(UserActions.loading())
 
-        fetch("http://127.0.0.1:8000/api/users/login/", {
+        fetch("https://d23i3x5oooaihp.cloudfront.net/api/users/login/", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

@@ -22,7 +22,7 @@ function Profile({close}) {
     }
 
     const RequestSeller = () => {
-        fetch("http://127.0.0.1:8000/api/sellerrequests/", {
+        fetch("https://d23i3x5oooaihp.cloudfront.net/api/sellerrequests/", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
