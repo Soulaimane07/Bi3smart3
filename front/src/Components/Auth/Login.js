@@ -21,7 +21,11 @@ function Login({setPage}) {
         setErr(null)
         dispatch(UserActions.loading())
 
+<<<<<<< HEAD
         fetch("https://d23i3x5oooaihp.cloudfront.net/api/users/login/", {
+=======
+        fetch("http://15.237.160.116:8000/api/users/login/", {
+>>>>>>> 487402f88bb91c5e6afa682365d3be4e9d657a43
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -53,7 +57,7 @@ function Login({setPage}) {
     let condittion = email === '' || password === ''
 
   return (
-    <div className='relative bg-gray-800 text-white h-fit w-1/4 rounded-lg py-10 px-10'>
+    <div className='relative bg-gray-800 text-white h-fit mx-4 md:mx-0 md:w-1/4 rounded-lg py-10 px-10'>
         <button onClick={closeAuth} className='absolute top-4 right-4 text-white opacity-80 hover:opacity-100 hover:scale-110 transition'> <IoClose size={30} /> </button>
         
         <h1 className='text-center text-3xl mb-6'> Sign In </h1>

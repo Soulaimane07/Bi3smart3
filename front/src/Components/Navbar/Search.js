@@ -21,7 +21,7 @@ function Search() {
     }, [searchTerm, dispatch])
 
     return (
-        <div className='absolute left-0 right-0 mx-auto flex space-x-3 items-center  bg-gray-200 rounded-full w-1/3 px-4 py-1'>
+        <div className='absolute hidden left-0 right-0 mx-auto md:flex space-x-3 items-center  bg-gray-200 rounded-full w-1/3 px-4 py-1'>
             <div className='text-gray-400'>
                 <CiSearch size={24} />
             </div>

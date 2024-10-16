@@ -20,7 +20,11 @@ function Favorits({item, hover, setHover, favorit}) {
                 productId: item.id
             }
         
+<<<<<<< HEAD
             axios.post('https://d23i3x5oooaihp.cloudfront.net/api/favoris/', fav)
+=======
+            axios.post('http://15.237.160.116:8000/api/favoris/', fav)
+>>>>>>> 487402f88bb91c5e6afa682365d3be4e9d657a43
                 .then((res)=> {
                     dispatch(getFavorits(userId))
                     dispatch(getProducts())
@@ -41,7 +45,11 @@ function Favorits({item, hover, setHover, favorit}) {
                 productId: item.id
             }
         
+<<<<<<< HEAD
             axios.post('https://d23i3x5oooaihp.cloudfront.net/api/removefavoris/', fav)
+=======
+            axios.post('http://15.237.160.116:8000/api/removefavoris/', fav)
+>>>>>>> 487402f88bb91c5e6afa682365d3be4e9d657a43
                 .then((res)=> {
                     dispatch(getFavorits(userId))
                     dispatch(getProducts())

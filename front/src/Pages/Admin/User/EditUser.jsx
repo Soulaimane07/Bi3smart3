@@ -57,7 +57,11 @@ function EditUser() {
       // e.preventDefault();
       console.log("Updated !");
 
+<<<<<<< HEAD
       axios.patch(`https://d23i3x5oooaihp.cloudfront.net/api/users/${id}/`, newUserData, {
+=======
+      axios.patch(`http://15.237.160.116:8000/api/users/${id}/`, newUserData, {
+>>>>>>> 487402f88bb91c5e6afa682365d3be4e9d657a43
           headers: {
             "Content-Type": "multipart/form-data",
           },

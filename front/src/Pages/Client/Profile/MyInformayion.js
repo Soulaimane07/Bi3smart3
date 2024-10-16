@@ -31,7 +31,11 @@ function MyInformayion() {
         e.preventDefault();
         setLoading(true)
 
+<<<<<<< HEAD
         axios.patch(`https://d23i3x5oooaihp.cloudfront.net/api/users/${user?.id}/`, data)
+=======
+        axios.patch(`http://15.237.160.116:8000/api/users/${user?.id}/`, data)
+>>>>>>> 487402f88bb91c5e6afa682365d3be4e9d657a43
             .then((res)=> {
                 console.log(res.data);
                 setSuccess(true)
@@ -52,7 +56,7 @@ function MyInformayion() {
     }
 
   return (
-    <form onSubmit={Update} className=' mx-auto w-1/2'>
+    <form onSubmit={Update} className=' mx-auto w-full md:w-1/2 '>
         {success && 
             <div className=' bg-green-500 text-white border border-spacing-2 justify-between w-full mb-4 transition-all px-4 pr-2 py-2 rounded-sm border-green-500 flex space-x-2 items-center '>
                 <div className='flex items-center space-x-2'>

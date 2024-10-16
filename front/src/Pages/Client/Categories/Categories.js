@@ -1,6 +1,5 @@
 import Navbar from '../../../Components/Navbar/Navbar'
 import Footer from '../../../Components/Footer/Footer'
-import Filtrage from '../Products/Filtrage'
 import {Product} from '../../../Components/Product/Product'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -27,7 +26,7 @@ export const Categories = () => {
       .catch((err)=> {
         console.log(err);
       })
-  }, [categorie])
+  }, [categorie, dispatch])
 
   let list = useSelector(state => state.ProductPage.productsByCategorie)
   let isLoading = useSelector(state => state.ProductPage.isLoadingPC)
@@ -40,10 +39,9 @@ export const Categories = () => {
 
         <div className='w-full border-l-2 border-gray-100 min-h-svh'>
             <h1 className=' text-3xl text-center font-medium px-10 mt-4 py-8 rounded-md uppercase'> {categorie} </h1>
-            <div className='grid grid-cols-4 gap-2 px-20 flex-1'>
+            <div className='grid grid-cols-1 md:grid-cols-5 gap-2 px-6 md:px-20 flex-1'>
               {isLoading && <ProductSkeletonList />}
-              {list?.length != 0
-                &&
+              {list?.length !== 0 &&
                   list?.map((item,key)=>
                     <Product item={item} key={key} />
                   )}

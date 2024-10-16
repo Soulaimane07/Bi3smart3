@@ -6,7 +6,7 @@ from rest_framework.response import Response
 
 from .models import User, SellerRequests ,Categorie, Products, Favoris, Panier
 from django.db.models import Q
-import google.generativeai as genai
+# import google.generativeai as genai
 
 
 
