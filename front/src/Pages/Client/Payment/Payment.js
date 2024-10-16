@@ -13,7 +13,7 @@ const ProductDisplay = () => (
       <h5>$20.00</h5>
       </div>
     </div>
-    <form action={`https://d23i3x5oooaihp.cloudfront.net/payment/checkout/`} method="POST">
+    <form action={`${BaseUrl}/payment/checkout/`} method="POST">
       <button type="submit">
         Checkout
       </button>

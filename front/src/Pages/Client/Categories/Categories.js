@@ -8,7 +8,7 @@ import { getProductsByCategorie } from '../../../redux/Slices/ProductSlice'
 import { ProductSkeletonList } from '../../../Components/Skeletons'
 import axios from 'axios'
 import Empty from '../../../Components/Empty'
-import { TopPage } from '../../../Components/Functions'
+import { BaseUrl, TopPage } from '../../../Components/Functions'
 
 
 export const Categories = () => {
@@ -19,7 +19,7 @@ export const Categories = () => {
   let categorie = parametre.categorie
   
   useEffect(()=> {
-    axios.get(`https://d23i3x5oooaihp.cloudfront.net/api/categorie/${categorie}`)
+    axios.get(`${BaseUrl}/api/categorie/${categorie}`)
       .then((res)=> {
         res.data.id && dispatch(getProductsByCategorie(res.data.id))  
       })

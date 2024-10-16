@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { FaArrowLeft, FaUpDown } from "react-icons/fa6";
 import axios from 'axios';
 import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar'
-import { GetCategorie } from '../../../Components/Functions';
+import { BaseUrl, GetCategorie } from '../../../Components/Functions';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -52,7 +52,7 @@ const Update = (e) => {
   // e.preventDefault();
   console.log("Updated!");
 
-  axios.patch(`https://d23i3x5oooaihp.cloudfront.net/api/categorie/${id}`, newCategory, {
+  axios.patch(`${BaseUrl}/api/categorie/${id}`, newCategory, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

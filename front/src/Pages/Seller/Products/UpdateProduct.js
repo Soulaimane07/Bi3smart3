@@ -3,7 +3,7 @@ import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar'
 import Footer from '../../../Components/Footer/Footer'
 import SellerSidebar from '../../../Components/Navbar/Seller/SellerSidebar'
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { GetCategories, GetProduct, GetProducts } from '../../../Components/Functions';
+import { BaseUrl, GetCategories, GetProduct, GetProducts } from '../../../Components/Functions';
 import axios from 'axios';
 import Error from '../../../Components/Error/Error';
 import { IoIosClose } from 'react-icons/io';
@@ -71,7 +71,7 @@ function UpdateProduct() {
         setLoading(true)
         setMessage(null)
 
-        axios.patch(`https://d23i3x5oooaihp.cloudfront.net/api/products/${id}`,newProduct, {
+        axios.patch(`${BaseUrl}/api/products/${id}`,newProduct, {
                 headers: {
                 "Content-Type": "multipart/form-data",
                 },

@@ -6,6 +6,8 @@ import { FaArrowLeft } from "react-icons/fa6";
 import axios from 'axios';
 import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar'
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { BaseUrl } from '../../../Components/Functions';
+
 const Buttons = ({createFun, condittion}) => {
   return(
       <div className='flex space-x-2 items-stretch'>
@@ -39,7 +41,7 @@ const Create = (e) => {
     // e.preventDefault();
     console.log("Created !");
 
-    axios.post('https://d23i3x5oooaihp.cloudfront.net/api/categorie/', newCategory, {
+    axios.post(`${BaseUrl}/api/categorie/`, newCategory, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

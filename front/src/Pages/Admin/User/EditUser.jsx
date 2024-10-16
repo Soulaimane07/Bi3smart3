@@ -4,7 +4,7 @@ import Footer from '../../../Components/Footer/Footer'
 import Sidebar from '../../../Components/Navbar/Sidebar'
 import { Link } from 'react-router-dom';
 import { FaArrowLeft } from "react-icons/fa6";
-import { GetUser } from '../../../Components/Functions';
+import { BaseUrl, GetUser } from '../../../Components/Functions';
 import { useParams,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar';
@@ -57,11 +57,7 @@ function EditUser() {
       // e.preventDefault();
       console.log("Updated !");
 
-<<<<<<< HEAD
-      axios.patch(`https://d23i3x5oooaihp.cloudfront.net/api/users/${id}/`, newUserData, {
-=======
-      axios.patch(`http://15.237.160.116:8000/api/users/${id}/`, newUserData, {
->>>>>>> 487402f88bb91c5e6afa682365d3be4e9d657a43
+      axios.patch(`${BaseUrl}/api/users/${id}/`, newUserData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

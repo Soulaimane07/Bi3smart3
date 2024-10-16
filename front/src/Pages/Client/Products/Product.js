@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { sizes } from '../../../Components/Functions';
+import { BaseUrl, sizes } from '../../../Components/Functions';
 import { LiaShippingFastSolid } from "react-icons/lia";
 import { BsBox2 } from "react-icons/bs";
 import { HiOutlineInboxArrowDown } from "react-icons/hi2";
@@ -37,11 +37,7 @@ function Product() {
                 "size": size
             }
         
-<<<<<<< HEAD
-            axios.post('https://d23i3x5oooaihp.cloudfront.net/api/panier/', panier)
-=======
-            axios.post('http://15.237.160.116:8000/api/panier/', panier)
->>>>>>> 487402f88bb91c5e6afa682365d3be4e9d657a43
+            axios.post(`${BaseUrl}/api/panier/`, panier)
                 .then((res)=> {
                     dispatch(getPanier(userId))
                     dispatch(productActions.openAdded())

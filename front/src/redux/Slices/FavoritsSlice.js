@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { BaseUrl } from "../../Components/Functions";
 
 export const getFavorits = createAsyncThunk('favorits', async (userId)=> {
     try {
-      const response = await axios.get(`https://d23i3x5oooaihp.cloudfront.net/api/favorisuser/${userId}/`)
+      const response = await axios.get(`${BaseUrl}/api/favorisuser/${userId}/`)
       return response.data
     } catch (error) {
       console.log(error);

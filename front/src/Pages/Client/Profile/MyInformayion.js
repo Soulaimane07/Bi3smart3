@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { UserActions } from '../../../redux/Slices/UserSlice'
 import { IoAlertCircleOutline, IoClose } from 'react-icons/io5'
+import { BaseUrl } from '../../../Components/Functions'
 
 function MyInformayion() {
     const user = useSelector(state => state.User?.data)
@@ -31,11 +32,7 @@ function MyInformayion() {
         e.preventDefault();
         setLoading(true)
 
-<<<<<<< HEAD
-        axios.patch(`https://d23i3x5oooaihp.cloudfront.net/api/users/${user?.id}/`, data)
-=======
-        axios.patch(`http://15.237.160.116:8000/api/users/${user?.id}/`, data)
->>>>>>> 487402f88bb91c5e6afa682365d3be4e9d657a43
+        axios.patch(`${BaseUrl}/api/users/${user?.id}/`, data)
             .then((res)=> {
                 console.log(res.data);
                 setSuccess(true)

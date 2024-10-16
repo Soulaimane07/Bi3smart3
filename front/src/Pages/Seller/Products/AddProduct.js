@@ -3,7 +3,7 @@ import SellerNavbar from '../../../Components/Navbar/Seller/SellerNavbar'
 import Footer from '../../../Components/Footer/Footer'
 import SellerSidebar from '../../../Components/Navbar/Seller/SellerSidebar'
 import { Link, useNavigate } from 'react-router-dom';
-import { GetCategories } from '../../../Components/Functions';
+import { BaseUrl, GetCategories } from '../../../Components/Functions';
 import axios from 'axios';
 import Error from '../../../Components/Error/Error';
 import { useSelector } from 'react-redux';
@@ -63,7 +63,7 @@ function AddProduct() {
         setMessage(null)
         setLoading(true)
 
-        axios.post('https://d23i3x5oooaihp.cloudfront.net/api/products/', newProduct, {
+        axios.post(`${BaseUrl}/api/products/`, newProduct, {
             headers: {
               "Content-Type": "multipart/form-data",
             },

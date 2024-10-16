@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import {loadStripe} from '@stripe/stripe-js';
+import { BaseUrl } from './Functions';
 
 function OrderSummery({page, Orderdata}) {
     let price = useSelector(state => state.Panier.price); 
@@ -56,11 +57,7 @@ function OrderSummery({page, Orderdata}) {
       const body = productsDetails
       const headers = {"Content-Type": "application/json"}
       
-<<<<<<< HEAD
-      const response = await fetch('https://d23i3x5oooaihp.cloudfront.net/payment/checkout/', {
-=======
-      const response = await fetch('http://15.237.160.116:8000/payment/checkout/', {
->>>>>>> 487402f88bb91c5e6afa682365d3be4e9d657a43
+      const response = await fetch(`${BaseUrl}/payment/checkout/`, {
         method: "POST",
         headers: headers,
         body: JSON.stringify(body)

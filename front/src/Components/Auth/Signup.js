@@ -3,6 +3,7 @@ import { IoClose } from "react-icons/io5";
 import { useDispatch } from 'react-redux';
 import { authPageActions } from '../../redux/Slices/AuthSlice';
 import { UserActions } from '../../redux/Slices/UserSlice';
+import { BaseUrl } from '../Functions';
 
 function Signup({setPage}) {
     const dispatch = useDispatch()
@@ -23,11 +24,7 @@ function Signup({setPage}) {
         e.preventDefault();
         setErr(null)
 
-<<<<<<< HEAD
-        fetch("https://d23i3x5oooaihp.cloudfront.net/api/users/", {
-=======
-        fetch("http://15.237.160.116:8000/api/users/", {
->>>>>>> 487402f88bb91c5e6afa682365d3be4e9d657a43
+        fetch(`${BaseUrl}/api/users/`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

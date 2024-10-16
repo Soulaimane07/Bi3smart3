@@ -6,7 +6,7 @@ import { productActions } from '../../redux/Slices/ProductSlice';
 import { TiPlus } from 'react-icons/ti';
 import { MdOutlineRemove } from 'react-icons/md';
 import { CiTrash } from 'react-icons/ci';
-import { GetCategorie, apiUrl } from '../Functions';
+import { BaseUrl, GetCategorie, apiUrl } from '../Functions';
 import Favorits from './Components/Favorits';
 import axios from 'axios';
 
@@ -19,11 +19,7 @@ export function ProductPanier({item}){
 
 
   const Remove = () => {
-<<<<<<< HEAD
-      axios.delete(`https://d23i3x5oooaihp.cloudfront.net/api/panierpk/${item.id}/`)
-=======
-      axios.delete(`http://15.237.160.116:8000/api/panierpk/${item.id}/`)
->>>>>>> 487402f88bb91c5e6afa682365d3be4e9d657a43
+      axios.delete(`${BaseUrl}/api/panierpk/${item.id}/`)
         .then((res)=> {
           dispatch(getPanier(item?.userId))
           dispatch(panierActions.removeSelectProduct(item.id))
@@ -42,40 +38,14 @@ export function ProductPanier({item}){
 
 
 
-<<<<<<< HEAD
-  const addToFav = () => {
-      if(userId === undefined){
-        dispatch(authPageActions.open())
-      }else{
-          let fav = {
-              userId: userId,
-              productId: item.productId.id
-          }
-      
-          axios.post('https://d23i3x5oooaihp.cloudfront.net/api/favoris/', fav)
-              .then((res)=> {
-                  dispatch(getFavorits(userId))
-                  dispatch(getProducts())
-          })
-          .catch((err)=> {
-              console.log(err);
-          })
-      }
-  }
-=======
-  
->>>>>>> 487402f88bb91c5e6afa682365d3be4e9d657a43
+ 
   
   const addQuantite = () => {
     setcounter(counter+1)
 
     let quantite = counter + 1
 
-<<<<<<< HEAD
-    axios.patch(`https://d23i3x5oooaihp.cloudfront.net/api/panierpk/${item?.id}/`, {quantite})
-=======
-    axios.patch(`http://15.237.160.116:8000/api/panierpk/${item?.id}/`, {quantite})
->>>>>>> 487402f88bb91c5e6afa682365d3be4e9d657a43
+    axios.patch(`${BaseUrl}/api/panierpk/${item?.id}/`, {quantite})
       .then((res)=>{
         dispatch(getPanier(item?.userId))
       })
@@ -89,11 +59,7 @@ export function ProductPanier({item}){
 
     let quantite = counter - 1
 
-<<<<<<< HEAD
-    axios.patch(`https://d23i3x5oooaihp.cloudfront.net/api/panierpk/${item?.id}/`, {quantite})
-=======
-    axios.patch(`http://15.237.160.116:8000/api/panierpk/${item?.id}/`, {quantite})
->>>>>>> 487402f88bb91c5e6afa682365d3be4e9d657a43
+    axios.patch(`${BaseUrl}/api/panierpk/${item?.id}/`, {quantite})
       .then((res)=>{
         dispatch(getPanier(item?.userId))
       })
@@ -201,11 +167,7 @@ export const  ProdcutSearch = ({item}) => {
   return (
     <button onClick={OpenProduct} className='flex space-x-2 hover:bg-gray-300 p-2 rounded-md transition-all'>
       <div className='w-20 rounded-md overflow-hidden'>
-<<<<<<< HEAD
-        <img className='w-20 h-20' src={`https://d23i3x5oooaihp.cloudfront.net/${item.image}`} alt={`image ${item.id}`} />
-=======
-        <img className='w-20 h-20' src={`http://15.237.160.116:8000/${item.image}`} alt={`product${item.id}`} />
->>>>>>> 487402f88bb91c5e6afa682365d3be4e9d657a43
+        <img className='w-20 h-20' src={`${BaseUrl}/${item.image}`} alt={`image ${item.id}`} />
       </div>
       <div className='flex justify-between flex-1'>
         <h1> {item.titre} </h1>

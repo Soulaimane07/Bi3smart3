@@ -6,6 +6,7 @@ import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 import { Link } from 'react-router-dom';
 import { favoritsActions } from '../../redux/Slices/FavoritsSlice';
 import { panierActions } from '../../redux/Slices/PanierSlices';
+import { BaseUrl } from '../Functions';
 
 
 function Profile({close}) {
@@ -22,11 +23,7 @@ function Profile({close}) {
     }
 
     const RequestSeller = () => {
-<<<<<<< HEAD
-        fetch("https://d23i3x5oooaihp.cloudfront.net/api/sellerrequests/", {
-=======
-        fetch("http://15.237.160.116:8000/api/sellerrequests/", {
->>>>>>> 487402f88bb91c5e6afa682365d3be4e9d657a43
+        fetch(`${BaseUrl}/api/sellerrequests/`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

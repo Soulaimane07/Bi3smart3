@@ -5,6 +5,7 @@ import { authPageActions } from '../../redux/Slices/AuthSlice';
 import { UserActions } from '../../redux/Slices/UserSlice';
 import { getFavorits } from '../../redux/Slices/FavoritsSlice';
 import { getPanier } from '../../redux/Slices/PanierSlices';
+import { BaseUrl } from '../Functions';
 
 function Login({setPage}) {
     const dispatch = useDispatch()
@@ -21,11 +22,7 @@ function Login({setPage}) {
         setErr(null)
         dispatch(UserActions.loading())
 
-<<<<<<< HEAD
-        fetch("https://d23i3x5oooaihp.cloudfront.net/api/users/login/", {
-=======
-        fetch("http://15.237.160.116:8000/api/users/login/", {
->>>>>>> 487402f88bb91c5e6afa682365d3be4e9d657a43
+        fetch(`${BaseUrl}/api/users/login/`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../../../Components/Navbar/Navbar'
 import Footer from '../../../Components/Footer/Footer'
 import MyInformayion from './MyInformayion'
-import { TopPage } from '../../../Components/Functions'
+import { BaseUrl, TopPage } from '../../../Components/Functions'
 import Commandes from './Commandes'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
@@ -15,11 +15,7 @@ function Profile() {
     const [commandes, setCommandes] = useState([])
 
     useEffect(()=> {
-<<<<<<< HEAD
-        axios.get(`https://d23i3x5oooaihp.cloudfront.net/payment/commandes/${user?.id}/`)
-=======
-        axios.get(`http://15.237.160.116:8000/payment/commandes/${user?.id}/`)
->>>>>>> 487402f88bb91c5e6afa682365d3be4e9d657a43
+        axios.get(`${BaseUrl}/payment/commandes/${user?.id}/`)
             .then((res)=> {
                 console.log(res.data);
                 setCommandes(res.data)

@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
+import { BaseUrl } from '../../Components/Functions'
 
 export const getProducts = createAsyncThunk('products', async ()=> {
   try {
-    const response = await axios.get(`https://d23i3x5oooaihp.cloudfront.net/api/products/`)
+    const response = await axios.get(`${BaseUrl}/api/products/`)
     return response.data
   } catch (error) {
     console.log(error);
@@ -13,7 +14,7 @@ export const getProducts = createAsyncThunk('products', async ()=> {
 
 export const getProductsByCategorie = createAsyncThunk('productsByCategorie', async (Categorie)=> {
   try {
-    const response = await axios.get(`https://d23i3x5oooaihp.cloudfront.net/api/getproductbycategorie/${Categorie}/`)
+    const response = await axios.get(`${BaseUrl}/api/getproductbycategorie/${Categorie}/`)
     return response.data
   } catch (error) {
     console.log(error);
