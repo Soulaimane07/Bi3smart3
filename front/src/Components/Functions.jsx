@@ -46,7 +46,7 @@ export const GetCategories = () =>{
    const [categorie ,setcategorie] = useState([])
 
   useEffect(()=> {
-    axios.get(" ${BaseUrl}/api/categorie/")
+    axios.get(`${BaseUrl}/api/categorie/`)
         .then(res=> {
             setcategorie(res.data)
         })
@@ -59,7 +59,7 @@ export const GetUsers = () => {
   const [users, setUsers] = useState([])
  
   useEffect(()=>{
-    axios.get(" ${BaseUrl}/api/users/")
+    axios.get(`${BaseUrl}/api/users/`)
       .then(res => {
         setUsers(res.data)
       })
@@ -87,7 +87,7 @@ export const GetSellers = () => {
   const [sellers, setSellers] = useState([])
  
   useEffect(()=>{
-    axios.get(" ${BaseUrl}/api/sellerrequests/")
+    axios.get(`${BaseUrl}/api/sellerrequests/`)
       .then(res => {
         setSellers(res.data)
       })
